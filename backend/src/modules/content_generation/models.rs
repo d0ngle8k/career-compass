@@ -8,6 +8,7 @@ pub struct ExtractedMetadata {
     pub position: String,
     pub years_experience: String,
     pub key_skills: String,
+    pub certificates: Option<String>,
     pub email: Option<String>,
     pub phone: Option<String>,
     pub address: Option<String>,

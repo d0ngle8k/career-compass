@@ -261,15 +261,91 @@ fn extract_address(cv_text: &str) -> Option<String> {
 /// Extract key skills from CV (simplified - could be enhanced with NLP)
 fn extract_key_skills(cv_text: &str) -> String {
     let lower = cv_text.to_lowercase();
-    let mut skills = Vec::new();
     
-    // Common tech skills
+    // Try to find and extract from SKILLS section first
+    // Look for section headers like "SKILLS:", "TECHNICAL SKILLS", etc.
+    let section_match = cv_text
+        .lines()
+        .enumerate()
+        .find(|(_, line)| {
+            let lower_line = line.to_lowercase();
+            lower_line.contains("technical skills")
+                || (lower_line.contains("skills") && !lower_line.contains("soft skills"))
+                || lower_line.contains("competencies")
+                || lower_line.contains("core skills")
+        });
+    
+    if let Some((start_idx, _)) = section_match {
+        let mut skills = Vec::new();
+        
+        // Collect lines after the section header until we hit another section
+        for (idx, line) in cv_text.lines().enumerate().skip(start_idx + 1) {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                continue;
+            }
+            
+            // Check if this looks like a section header (all caps, no commas, no bullets)
+            // Section headers are typically all caps with minimal punctuation
+            let looks_like_section_header = trimmed.to_uppercase() == trimmed
+                && !trimmed.contains(',')
+                && !trimmed.starts_with("•")
+                && !trimmed.starts_with("-")
+                && !trimmed.starts_with("*")
+                && trimmed.split_whitespace().count() <= 3
+                && (trimmed.contains("EXPERIENCE")
+                    || trimmed.contains("EDUCATION")
+                    || trimmed.contains("CERTIF")
+                    || trimmed.contains("PROJECT")
+                    || trimmed.contains("AWARD")
+                    || trimmed.contains("LANGUAGE"));
+
+            if looks_like_section_header {
+                break;
+            }
+            
+            let cleaned_line = clean_line(line);
+            let parts: Vec<String> = cleaned_line
+                .split(|c: char| c == ',' || c == ' ')
+                .filter(|s| {
+                    let s_lower = s.to_lowercase();
+                    // Filter out common words and symbols
+                    !["and", "or", "the", "a", "an", "-", "•", "*", "+"].contains(&s_lower.as_str())
+                        && s.len() > 1
+                })
+                .map(|s| s.to_string())
+                .collect();
+            
+            skills.extend(parts);
+        }
+        
+        if !skills.is_empty() {
+            // Remove duplicates while preserving order
+            let mut unique_skills = Vec::new();
+            let mut seen = std::collections::HashSet::new();
+            for skill in skills {
+                let skill_lower = skill.to_lowercase();
+                if !seen.contains(&skill_lower) && skill.len() > 1 {
+                    unique_skills.push(skill);
+                    seen.insert(skill_lower);
+                }
+            }
+            
+            if !unique_skills.is_empty() {
+                return unique_skills.join(", ");
+            }
+        }
+    }
+    
+    // Fallback: Pattern matching with common tech skills
+    let mut skills = Vec::new();
     let skill_patterns = [
         "python", "java", "javascript", "typescript", "react", "vue", "angular",
         "node", "docker", "kubernetes", "aws", "gcp", "azure", "sql", "mongodb",
         "postgresql", "redis", "kafka", "rust", "go", "c++", "c#", ".net",
         "spring boot", "django", "flask", "fastapi", "tensorflow", "pytorch",
-        "machine learning", "deep learning", "ai", "data science"
+        "machine learning", "deep learning", "ai", "data science", "git", "linux",
+        "jenkins", "terraform", "ci/cd", "agile"
     ];
     
     for skill in skill_patterns {
@@ -282,7 +358,75 @@ fn extract_key_skills(cv_text: &str) -> String {
         return "software development, problem solving, teamwork".to_string();
     }
     
-    skills.into_iter().take(5).collect::<Vec<_>>().join(", ")
+    skills.into_iter().collect::<Vec<_>>().join(", ")
+}
+
+/// Extract certificates from CV
+fn extract_certificates(cv_text: &str) -> Option<String> {
+    // Look for CERTIFICATES, CERTIFICATIONS, or CREDENTIALS section
+    let section_match = cv_text
+        .lines()
+        .enumerate()
+        .find(|(_, line)| {
+            let lower_line = line.to_lowercase();
+            lower_line.contains("certificates")
+                || lower_line.contains("certifications")
+                || lower_line.contains("credentials")
+        });
+    
+    if let Some((start_idx, _)) = section_match {
+        let mut certificates = Vec::new();
+        
+        // Collect lines after the section header until we hit another section
+        for (idx, line) in cv_text.lines().enumerate().skip(start_idx + 1) {
+            let trimmed = line.trim();
+            if trimmed.is_empty() {
+                continue;
+            }
+            
+            // Check if this looks like a section header (all caps, keywords)
+            let looks_like_section_header = trimmed.to_uppercase() == trimmed
+                && !trimmed.contains(',')
+                && !trimmed.starts_with("•")
+                && !trimmed.starts_with("-")
+                && !trimmed.starts_with("*")
+                && trimmed.split_whitespace().count() <= 3
+                && (trimmed.contains("EXPERIENCE")
+                    || trimmed.contains("EDUCATION")
+                    || trimmed.contains("SKILLS")
+                    || trimmed.contains("PROJECT")
+                    || trimmed.contains("AWARD")
+                    || trimmed.contains("LANGUAGE")
+                    || trimmed.contains("WORK")
+                    || trimmed.contains("PROFESSIONAL"));
+
+            if looks_like_section_header {
+                break;
+            }
+            
+            if !trimmed.is_empty() {
+                let cleaned = clean_line(trimmed);
+                
+                // Remove bullet points, dashes, and numbers at the start
+                let cert = cleaned
+                    .trim_start_matches(|c: char| {
+                        c == '•' || c == '*' || c == '-' || c == '+' || c.is_numeric()
+                    })
+                    .trim_start_matches(|c: char| c == '.' || c == ')' || c == ':')
+                    .trim();
+                
+                if cert.len() > 3 {
+                    certificates.push(cert.to_string());
+                }
+            }
+        }
+        
+        if !certificates.is_empty() {
+            return Some(certificates.join("; "));
+        }
+    }
+    
+    None
 }
 
 /// Extract company name from JD
@@ -496,6 +640,10 @@ fn build_context(cv_text: &str, jd_text: &str, language: &str) -> Context {
         context.insert("address", address);
     }
     
+    if let Some(certificates) = &metadata.certificates {
+        context.insert("certificates", certificates);
+    }
+    
     context
 }
 
@@ -507,6 +655,7 @@ pub fn extract_metadata(cv_text: &str, jd_text: &str, language: &str) -> Extract
         position: extract_position(jd_text),
         years_experience: extract_years_experience(cv_text),
         key_skills: extract_key_skills(cv_text),
+        certificates: extract_certificates(cv_text),
         email: extract_email(cv_text),
         phone: extract_phone(cv_text),
         address: extract_address(cv_text),
