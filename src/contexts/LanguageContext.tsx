@@ -138,6 +138,21 @@ const translations: Translations = {
     en: "Hello! I'm CVGenius AI assistant. I can help you improve your CV, rewrite bullet points or answer questions about your application. Ask me anything! 🚀",
   },
   "chatbot.placeholder": { vi: "Hỏi về CV của bạn...", en: "Ask about your CV..." },
+  // Auth
+  "nav.login": { vi: "Đăng nhập", en: "Login" },
+  "nav.logout": { vi: "Đăng xuất", en: "Logout" },
+  "auth.subtitle": { vi: "Đăng nhập để bắt đầu phân tích CV", en: "Sign in to start analyzing your CV" },
+  "auth.google": { vi: "Đăng nhập với Google", en: "Sign in with Google" },
+  "auth.or": { vi: "hoặc", en: "or" },
+  "auth.email": { vi: "Email", en: "Email" },
+  "auth.send.otp": { vi: "Gửi mã xác thực", en: "Send verification code" },
+  "auth.otp.sent": { vi: "Đã gửi mã xác thực! Kiểm tra email của bạn.", en: "Code sent! Check your email." },
+  "auth.otp.check": { vi: "Nhập mã 6 số đã gửi đến", en: "Enter the 6-digit code sent to" },
+  "auth.verify": { vi: "Xác thực", en: "Verify" },
+  "auth.back": { vi: "← Quay lại", en: "← Go back" },
+  "auth.login.success": { vi: "Đăng nhập thành công!", en: "Login successful!" },
+  "solution.login.required": { vi: "Vui lòng đăng nhập để sử dụng tính năng này", en: "Please login to use this feature" },
+  "solution.file.too.large": { vi: "File quá lớn. Vui lòng chọn file dưới 5MB.", en: "File too large. Please select a file under 5MB." },
 };
 
 interface LanguageContextType {
