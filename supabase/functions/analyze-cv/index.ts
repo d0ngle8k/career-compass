@@ -267,7 +267,8 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { cvText, jdText, language, templateStyle } = await req.json();
+    const { cvText, jdText, language, templateStyle, mode } = await req.json();
+    const analysisMode = mode || "full";
 
     // Edge case: missing inputs
     if (!cvText || !jdText) {
