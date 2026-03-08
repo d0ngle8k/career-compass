@@ -30,6 +30,8 @@ const App = () => (
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/solution" element={<SolutionPage />} />
+              <Route path="/write-mail" element={<WriteMailPage />} />
+              <Route path="/write-cover-letter" element={<WriteCoverLetterPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFound />} />
