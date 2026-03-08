@@ -5,10 +5,9 @@ import { Target, Users, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const team = [
-  { name: "Nguyễn Văn A", role: "Project Lead / AI Engineer", avatar: "NA" },
-  { name: "Trần Thị B", role: "Frontend Developer", avatar: "TB" },
-  { name: "Lê Văn C", role: "Backend Developer", avatar: "LC" },
-  { name: "Phạm Thị D", role: "UX Designer", avatar: "PD" },
+  { name: "Trương Gia Thành", role: "Project Lead", avatar: "TT" },
+  { name: "Đoàn Văn Khoan", role: "Backend Developer", avatar: "DK" },
+  { name: "Nguyễn Hoàng Anh Kha", role: "UX/UI Designer", avatar: "NK" },
 ];
 
 const AboutPage = () => {
