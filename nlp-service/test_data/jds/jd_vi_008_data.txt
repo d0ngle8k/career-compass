@@ -1,0 +1,22 @@
+VỊ TRÍ: Data Analyst
+
+MÔ TẢ CÔNG VIỆC:
+- Phân tích dữ liệu và xây dựng mô hình dự đoán
+- Làm sạch và xử lý dữ liệu lớn
+- Tạo dashboard và báo cáo trực quan
+- Làm việc với SQL, Python, Tableau để phân tích dữ liệu
+- Triển khai mô hình predictive analytics
+- Cộng tác với các team khác để hiểu business requirements
+
+YÊU CẦU:
+- Tối thiểu 2 năm kinh nghiệm phân tích dữ liệu
+- Thành thạo SQL, Python
+- Kinh nghiệm với SQL, Excel, Data Visualization
+- Hiểu biết về thống kê và xác suất
+- SQL và database queries
+- Kỹ năng trình bày và communication
+
+ƯU TIÊN:
+- Kinh nghiệm với Power BI, Python, R
+- Kinh nghiệm triển khai mô hình vào production
+- Background về toán hoặc thống kê

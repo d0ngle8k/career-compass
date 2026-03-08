@@ -1,0 +1,33 @@
+NAME: James Anderson
+
+POSITION: Research Scientist
+
+CONTACT INFORMATION:
+Email: james.anderson@email.com
+Phone: +1-616-550-9005
+Location: San Francisco, CA
+
+EDUCATION:
+PhD of Applied Mathematics
+University of Toronto
+Graduated: 2020
+GPA: 3.59/4.0
+
+WORK EXPERIENCE: 4 years
+
+AI Engineer - Goldman Sachs
+4 years
+Worked at Goldman Sachs as AI Engineer
+
+SKILLS:
+Power BI, Machine Learning, Statistics, Hadoop, Python, Deep Learning, Pandas, AI, Scikit-learn, TensorFlow
+
+ACHIEVEMENTS:
+- Optimized team workflow processes
+- Improved system performance by 30%
+- Delivered projects on time and within budget
+- Received Employee of the Year award
+
+LANGUAGES:
+English: Native
+Chinese: Basic

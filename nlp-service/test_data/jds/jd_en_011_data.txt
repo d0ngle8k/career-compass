@@ -1,0 +1,22 @@
+POSITION: Data Analyst
+
+JOB DESCRIPTION:
+- Analyze data and build predictive models
+- Clean and process large datasets
+- Create dashboards and visual reports
+- Work with SQL, Python, Tableau for data analysis
+- Deploy predictive analytics models
+- Collaborate with teams to understand business requirements
+
+REQUIREMENTS:
+- Minimum 2 years of data analysis experience
+- Proficient in SQL, Python
+- Experience with SQL, Excel, Data Visualization
+- Understanding of statistics and probability
+- SQL and database queries
+- Strong presentation and communication skills
+
+PREFERRED:
+- Experience with Power BI, Python, R
+- Experience deploying models to production
+- Background in mathematics or statistics

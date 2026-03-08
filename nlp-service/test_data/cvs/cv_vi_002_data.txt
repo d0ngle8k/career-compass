@@ -1,0 +1,49 @@
+HỌ VÀ TÊN: Trần Thị Bình
+
+VỊ TRÍ ỨNG TUYỂN: Business Intelligence Analyst
+
+THÔNG TIN LIÊN HỆ:
+Email: trần.thị.bình@email.com
+Điện thoại: 0492478425
+Địa chỉ: Đà Nẵng
+
+HỌC VẤN:
+Tiến sĩ Thống kê
+Đại học Kinh tế TP.HCM
+Tốt nghiệp năm 2012
+GPA: 3.78/4.0
+
+KINH NGHIỆM LÀM VIỆC: 11 năm
+
+Machine Learning Engineer - Viettel
+3 năm
+Làm việc tại Viettel với vai trò Machine Learning Engineer
+
+Research Scientist - Lazada Vietnam
+2 năm
+Làm việc tại Lazada Vietnam với vai trò Research Scientist
+
+Machine Learning Engineer - Sendo
+1 năm
+Làm việc tại Sendo với vai trò Machine Learning Engineer
+
+Data Consultant - Sendo
+3 năm
+Làm việc tại Sendo với vai trò Data Consultant
+
+AI Engineer - Base.vn
+2 năm
+Làm việc tại Base.vn với vai trò AI Engineer
+
+KỸ NĂNG:
+NumPy, Machine Learning, PyTorch, Big Data, SQL, Pandas, Power BI, Deep Learning, ETL, Tableau, R, Scikit-learn, AI, Hadoop
+
+THÀNH TỰU:
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Nhận giải thưởng nhân viên xuất sắc
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

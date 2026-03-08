@@ -1,0 +1,53 @@
+HỌ VÀ TÊN: Tạ Văn Hùng
+
+VỊ TRÍ ỨNG TUYỂN: Backend Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: tạ.văn.hùng@email.com
+Điện thoại: 0679568740
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Tiến sĩ Hệ thống Thông tin
+Đại học Khoa học Tự nhiên
+Tốt nghiệp năm 2009
+GPA: 3.49/4.0
+
+KINH NGHIỆM LÀM VIỆC: 15 năm
+
+Software Architect - VinFast
+1 năm
+Làm việc tại VinFast với vai trò Software Architect
+
+Full-stack Developer - Vietcombank
+3 năm
+Làm việc tại Vietcombank với vai trò Full-stack Developer
+
+Mobile Developer - VNG Corporation
+2 năm
+Làm việc tại VNG Corporation với vai trò Mobile Developer
+
+Mobile Developer - Masan Group
+4 năm
+Làm việc tại Masan Group với vai trò Mobile Developer
+
+Software Engineer - Vietcombank
+4 năm
+Làm việc tại Vietcombank với vai trò Software Engineer
+
+Lập trình viên Python - Grab Vietnam
+1 năm
+Làm việc tại Grab Vietnam với vai trò Lập trình viên Python
+
+KỸ NĂNG:
+Node.js, GraphQL, Spring Boot, AWS, SQL, REST API, Scrum, Java
+
+THÀNH TỰU:
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Cải thiện hiệu suất hệ thống 30%
+- Nhận giải thưởng nhân viên xuất sắc
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Tốt

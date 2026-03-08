@@ -1,0 +1,55 @@
+HỌ VÀ TÊN: Âu Văn Rạng
+
+VỊ TRÍ ỨNG TUYỂN: Software Engineer
+
+THÔNG TIN LIÊN HỆ:
+Email: âu.văn.rạng@email.com
+Điện thoại: 0985409256
+Địa chỉ: TP. Hồ Chí Minh
+
+HỌC VẤN:
+Tiến sĩ Khoa học Máy tính
+Đại học Ngoại Thương
+Tốt nghiệp năm 2009
+GPA: 3.82/4.0
+
+KINH NGHIỆM LÀM VIỆC: 14 năm
+
+Full-stack Developer - Got It
+1 năm
+Làm việc tại Got It với vai trò Full-stack Developer
+
+Software Architect - Grab Vietnam
+1 năm
+Làm việc tại Grab Vietnam với vai trò Software Architect
+
+Backend Developer - VNPT
+3 năm
+Làm việc tại VNPT với vai trò Backend Developer
+
+Software Engineer - Masan Group
+3 năm
+Làm việc tại Masan Group với vai trò Software Engineer
+
+Lập trình viên Python - The Gioi Di Dong
+3 năm
+Làm việc tại The Gioi Di Dong với vai trò Lập trình viên Python
+
+Lập trình viên Java - Saigon Co.op
+1 năm
+Làm việc tại Saigon Co.op với vai trò Lập trình viên Java
+
+Software Engineer - Grab Vietnam
+2 năm
+Làm việc tại Grab Vietnam với vai trò Software Engineer
+
+KỸ NĂNG:
+Java, Scrum, Kubernetes, React, Spring Boot, Git, Angular, Agile
+
+THÀNH TỰU:
+- Nhận giải thưởng nhân viên xuất sắc
+- Tối ưu hóa quy trình làm việc nhóm
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Trung cấp

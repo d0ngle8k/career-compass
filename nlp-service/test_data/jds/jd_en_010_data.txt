@@ -1,0 +1,22 @@
+POSITION: Senior Data Scientist
+
+JOB DESCRIPTION:
+- Analyze data and build predictive models
+- Clean and process large datasets
+- Create dashboards and visual reports
+- Work with Python, TensorFlow, PyTorch for data analysis
+- Deploy Machine Learning và Deep Learning models
+- Collaborate with teams to understand business requirements
+
+REQUIREMENTS:
+- Minimum 5 years of data analysis experience
+- Proficient in Python, R
+- Experience with Machine Learning, Statistics, Python
+- Understanding of statistics and probability
+- SQL and database queries
+- Strong presentation and communication skills
+
+PREFERRED:
+- Experience with NLP, Computer Vision, MLOps
+- Experience deploying models to production
+- Background in mathematics or statistics

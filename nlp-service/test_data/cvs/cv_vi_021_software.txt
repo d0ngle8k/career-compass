@@ -1,0 +1,35 @@
+HỌ VÀ TÊN: Lâm Thị Uyên
+
+VỊ TRÍ ỨNG TUYỂN: Mobile Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: lâm.thị.uyên@email.com
+Điện thoại: 0470916079
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Thạc sĩ Hệ thống Thông tin
+Đại học Tôn Đức Thắng
+Tốt nghiệp năm 2020
+GPA: 3.37/4.0
+
+KINH NGHIỆM LÀM VIỆC: 3 năm
+
+Mobile Developer - VinFast
+2 năm
+Làm việc tại VinFast với vai trò Mobile Developer
+
+Mobile Developer - MB Bank
+1 năm
+Làm việc tại MB Bank với vai trò Mobile Developer
+
+KỸ NĂNG:
+React, TypeScript, AWS, REST API, Kubernetes, Docker, Spring Boot, Vue.js
+
+THÀNH TỰU:
+- Nhận giải thưởng nhân viên xuất sắc
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Giao tiếp

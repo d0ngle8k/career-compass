@@ -1,0 +1,33 @@
+HỌ VÀ TÊN: Nguyễn Văn An
+
+VỊ TRÍ ỨNG TUYỂN: Web Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: nguyễn.văn.an@email.com
+Điện thoại: 0445437411
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Kỹ sư Kỹ thuật Phần mềm
+Đại học Văn Lang
+Tốt nghiệp năm 2021
+GPA: 3.13/4.0
+
+KINH NGHIỆM LÀM VIỆC: 2 năm
+
+Backend Developer - Base.vn
+2 năm
+Làm việc tại Base.vn với vai trò Backend Developer
+
+KỸ NĂNG:
+Django, Docker, MongoDB, Python, JavaScript, Vue.js, React, AWS, Kubernetes, Java, GraphQL
+
+THÀNH TỰU:
+- Nhận giải thưởng nhân viên xuất sắc
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Cải thiện hiệu suất hệ thống 30%
+- Tối ưu hóa quy trình làm việc nhóm
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

@@ -1,0 +1,43 @@
+NAME: Kevin Evans
+
+POSITION: Web Developer
+
+CONTACT INFORMATION:
+Email: kevin.evans@email.com
+Phone: +1-869-807-4029
+Location: Austin, TX
+
+EDUCATION:
+Bachelor of Software Engineering
+University of Cambridge
+Graduated: 2012
+GPA: 3.57/4.0
+
+WORK EXPERIENCE: 11 years
+
+DevOps Engineer - Goldman Sachs
+4 years
+Worked at Goldman Sachs as DevOps Engineer
+
+Software Engineer - Goldman Sachs
+3 years
+Worked at Goldman Sachs as Software Engineer
+
+Mobile Developer - Cisco
+3 years
+Worked at Cisco as Mobile Developer
+
+Software Engineer - EY
+1 year
+Worked at EY as Software Engineer
+
+SKILLS:
+REST API, Java, Kubernetes, Angular, Node.js, Vue.js, Django, TypeScript, Docker, Python, Spring Boot, AWS, MongoDB, JavaScript, SQL
+
+ACHIEVEMENTS:
+- Trained and mentored 5+ junior developers
+- Received Employee of the Year award
+
+LANGUAGES:
+English: Native
+Spanish: Intermediate

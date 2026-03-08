@@ -1,0 +1,22 @@
+POSITION: Machine Learning Engineer
+
+JOB DESCRIPTION:
+- Analyze data and build predictive models
+- Clean and process large datasets
+- Create dashboards and visual reports
+- Work with Python, Scikit-learn, TensorFlow for data analysis
+- Deploy Machine Learning và AI models
+- Collaborate with teams to understand business requirements
+
+REQUIREMENTS:
+- Minimum 4 years of data analysis experience
+- Proficient in Python
+- Experience with Python, Machine Learning, Deep Learning
+- Understanding of statistics and probability
+- SQL and database queries
+- Strong presentation and communication skills
+
+PREFERRED:
+- Experience with MLOps, Kubernetes, Spark
+- Experience deploying models to production
+- Background in mathematics or statistics

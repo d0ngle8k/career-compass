@@ -1,0 +1,43 @@
+HỌ VÀ TÊN: Ngô Thị Linh
+
+VỊ TRÍ ỨNG TUYỂN: Full-stack Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: ngô.thị.linh@email.com
+Điện thoại: 0371932119
+Địa chỉ: TP. Hồ Chí Minh
+
+HỌC VẤN:
+Thạc sĩ Hệ thống Thông tin
+Đại học Tôn Đức Thắng
+Tốt nghiệp năm 2012
+GPA: 3.59/4.0
+
+KINH NGHIỆM LÀM VIỆC: 11 năm
+
+Lập trình viên Java - Vingroup
+2 năm
+Làm việc tại Vingroup với vai trò Lập trình viên Java
+
+Software Engineer - Got It
+3 năm
+Làm việc tại Got It với vai trò Software Engineer
+
+Software Architect - Viettel
+3 năm
+Làm việc tại Viettel với vai trò Software Architect
+
+Web Developer - Saigon Co.op
+3 năm
+Làm việc tại Saigon Co.op với vai trò Web Developer
+
+KỸ NĂNG:
+Angular, Spring Boot, JavaScript, REST API, Django, Scrum, Kubernetes, TypeScript, GraphQL, SQL, Agile, Node.js, Vue.js, Python
+
+THÀNH TỰU:
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

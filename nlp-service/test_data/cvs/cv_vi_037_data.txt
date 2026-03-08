@@ -1,0 +1,31 @@
+HỌ VÀ TÊN: Ông Thị Sáng
+
+VỊ TRÍ ỨNG TUYỂN: Machine Learning Engineer
+
+THÔNG TIN LIÊN HỆ:
+Email: ông.thị.sáng@email.com
+Điện thoại: 0454512241
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Cử nhân Trí tuệ Nhân tạo
+Đại học Văn Lang
+Tốt nghiệp năm 2022
+GPA: 3.25/4.0
+
+KINH NGHIỆM LÀM VIỆC: 1 năm
+
+Big Data Engineer - Shopee Vietnam
+1 năm
+Làm việc tại Shopee Vietnam với vai trò Big Data Engineer
+
+KỸ NĂNG:
+Spark, Pandas, Statistics, Excel, ETL, Data Visualization, Deep Learning, NumPy, Scikit-learn, Machine Learning, Big Data, TensorFlow, Hadoop
+
+THÀNH TỰU:
+- Nhận giải thưởng nhân viên xuất sắc
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

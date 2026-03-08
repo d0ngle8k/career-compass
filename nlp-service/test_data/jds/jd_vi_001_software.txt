@@ -1,0 +1,22 @@
+VỊ TRÍ: Senior Backend Developer
+
+MÔ TẢ CÔNG VIỆC:
+- Phát triển và bảo trì các ứng dụng microservices và cloud-native
+- Thiết kế và triển khai API RESTful
+- Làm việc với cơ sở dữ liệu PostgreSQL, MongoDB, Redis
+- Tham gia code review và đảm bảo chất lượng code
+- Làm việc theo phương pháp Agile/Scrum
+- Tối ưu hóa hiệu suất ứng dụng
+
+YÊU CẦU:
+- Tối thiểu 5 năm kinh nghiệm làm việc với Python, Java, hoặc Go
+- Thành thạo Python/Java/Go
+- Kinh nghiệm với FastAPI, Spring Boot, hoặc Gin
+- Hiểu biết về Git, CI/CD
+- Kỹ năng làm việc nhóm tốt
+- Tiếng Anh giao tiếp
+
+ƯU TIÊN:
+- Kinh nghiệm với Kubernetes, Docker, AWS
+- Đã từng tham gia dự án lớn
+- Có khả năng mentoring junior developers

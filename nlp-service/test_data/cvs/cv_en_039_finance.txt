@@ -1,0 +1,35 @@
+NAME: Joshua Campbell
+
+POSITION: CFO
+
+CONTACT INFORMATION:
+Email: joshua.campbell@email.com
+Phone: +1-416-572-5794
+Location: New York, NY
+
+EDUCATION:
+Bachelor of Business Administration
+Cornell University
+Graduated: 2017
+GPA: 3.60/4.0
+
+WORK EXPERIENCE: 5 years
+
+Accountant - HP
+4 years
+Worked at HP as Accountant
+
+Auditor - Deloitte
+1 year
+Worked at Deloitte as Auditor
+
+SKILLS:
+Audit, Tax Planning, VAS, Risk Management, SQL, Treasury Management, Financial Modeling, Accounting
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Improved system performance by 30%
+
+LANGUAGES:
+English: Native
+German: Advanced

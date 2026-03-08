@@ -1,0 +1,45 @@
+NAME: Melissa Edwards
+
+POSITION: Data Consultant
+
+CONTACT INFORMATION:
+Email: melissa.edwards@email.com
+Phone: +1-365-580-4717
+Location: Austin, TX
+
+EDUCATION:
+Engineer of Data Science
+Tsinghua University
+Graduated: 2013
+GPA: 3.23/4.0
+
+WORK EXPERIENCE: 11 years
+
+Big Data Engineer - Deloitte
+2 years
+Worked at Deloitte as Big Data Engineer
+
+Data Engineer - Meta
+4 years
+Worked at Meta as Data Engineer
+
+Machine Learning Engineer - Netflix
+2 years
+Worked at Netflix as Machine Learning Engineer
+
+Business Intelligence Analyst - Microsoft
+3 years
+Worked at Microsoft as Business Intelligence Analyst
+
+SKILLS:
+Machine Learning, Python, SQL, Spark, AI, R, Excel, TensorFlow, Big Data
+
+ACHIEVEMENTS:
+- Led cross-functional team of 10+ members
+- Received Employee of the Year award
+- Trained and mentored 5+ junior developers
+- Delivered projects on time and within budget
+
+LANGUAGES:
+English: Native
+German: Fluent

@@ -1,0 +1,22 @@
+POSITION: Senior Backend Developer
+
+JOB DESCRIPTION:
+- Develop and maintain microservices và cloud-native applications
+- Design and implement RESTful APIs
+- Work with PostgreSQL, MongoDB, Redis databases
+- Participate in code reviews and ensure code quality
+- Work in Agile/Scrum environment
+- Optimize application performance
+
+REQUIREMENTS:
+- Minimum 5 years of experience with Python, Java, hoặc Go
+- Proficient in Python/Java/Go
+- Experience with FastAPI, Spring Boot, hoặc Gin
+- Knowledge of Git, CI/CD
+- Strong teamwork skills
+- Good English communication
+
+PREFERRED:
+- Experience with Kubernetes, Docker, AWS
+- Previously worked on large-scale projects
+- Ability to mentor junior developers

@@ -1,0 +1,22 @@
+POSITION: Full-stack Developer
+
+JOB DESCRIPTION:
+- Develop and maintain web applications applications
+- Design and implement RESTful APIs
+- Work with MySQL, PostgreSQL databases
+- Participate in code reviews and ensure code quality
+- Work in Agile/Scrum environment
+- Optimize application performance
+
+REQUIREMENTS:
+- Minimum 3 years of experience with JavaScript, React, Node.js
+- Proficient in JavaScript/TypeScript
+- Experience with React, Vue.js, hoặc Angular
+- Knowledge of Git, CI/CD
+- Strong teamwork skills
+- Good English communication
+
+PREFERRED:
+- Experience with Next.js, GraphQL, Docker
+- Previously worked on large-scale projects
+- Ability to mentor junior developers

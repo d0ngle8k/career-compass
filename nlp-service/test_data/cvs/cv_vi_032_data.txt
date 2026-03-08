@@ -1,0 +1,33 @@
+HỌ VÀ TÊN: Quách Văn Nam
+
+VỊ TRÍ ỨNG TUYỂN: Big Data Engineer
+
+THÔNG TIN LIÊN HỆ:
+Email: quách.văn.nam@email.com
+Điện thoại: 0359309547
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Cử nhân Trí tuệ Nhân tạo
+Đại học Công nghệ - ĐHQGHN
+Tốt nghiệp năm 2020
+GPA: 3.81/4.0
+
+KINH NGHIỆM LÀM VIỆC: 2 năm
+
+Machine Learning Engineer - Vietcombank
+2 năm
+Làm việc tại Vietcombank với vai trò Machine Learning Engineer
+
+KỸ NĂNG:
+R, Pandas, Tableau, AI, SQL, PyTorch, Machine Learning, NumPy, Big Data
+
+THÀNH TỰU:
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Nhận giải thưởng nhân viên xuất sắc
+- Tối ưu hóa quy trình làm việc nhóm
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Trung cấp

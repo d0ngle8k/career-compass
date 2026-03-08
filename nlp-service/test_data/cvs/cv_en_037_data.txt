@@ -1,0 +1,37 @@
+NAME: Kenneth Turner
+
+POSITION: AI Engineer
+
+CONTACT INFORMATION:
+Email: kenneth.turner@email.com
+Phone: +1-608-316-4912
+Location: San Francisco, CA
+
+EDUCATION:
+Engineer of Statistics
+ETH Zurich
+Graduated: 2019
+GPA: 3.04/4.0
+
+WORK EXPERIENCE: 5 years
+
+AI Engineer - Goldman Sachs
+1 year
+Worked at Goldman Sachs as AI Engineer
+
+Research Scientist - Morgan Stanley
+4 years
+Worked at Morgan Stanley as Research Scientist
+
+SKILLS:
+Excel, Pandas, Power BI, Statistics, Big Data, AI, R, Deep Learning, TensorFlow, Spark, NumPy, PyTorch, Hadoop, Machine Learning, Tableau
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Received Employee of the Year award
+- Trained and mentored 5+ junior developers
+- Led cross-functional team of 10+ members
+
+LANGUAGES:
+English: Native
+Japanese: Fluent

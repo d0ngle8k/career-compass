@@ -1,0 +1,51 @@
+NAME: Sarah Davis
+
+POSITION: Treasury Analyst
+
+CONTACT INFORMATION:
+Email: sarah.davis@email.com
+Phone: +1-310-439-6713
+Location: Seattle, WA
+
+EDUCATION:
+Engineer of Business Administration
+Harvard University
+Graduated: 2011
+GPA: 3.69/4.0
+
+WORK EXPERIENCE: 11 years
+
+Investment Analyst - Deloitte
+2 years
+Worked at Deloitte as Investment Analyst
+
+Accountant - Apple
+2 years
+Worked at Apple as Accountant
+
+Controller - KPMG
+1 year
+Worked at KPMG as Controller
+
+Banking Specialist - Salesforce
+2 years
+Worked at Salesforce as Banking Specialist
+
+Treasury Analyst - Cisco
+3 years
+Worked at Cisco as Treasury Analyst
+
+Auditor - Amazon
+1 year
+Worked at Amazon as Auditor
+
+SKILLS:
+Cost Analysis, Treasury Management, SQL, Audit, Financial Analysis, Bloomberg Terminal, Power BI, Budgeting, IFRS, Corporate Finance, Accounting
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Improved system performance by 30%
+
+LANGUAGES:
+English: Native
+French: Basic

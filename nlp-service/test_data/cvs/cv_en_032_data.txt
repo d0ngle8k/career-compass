@@ -1,0 +1,45 @@
+NAME: Donna Baker
+
+POSITION: Data Engineer
+
+CONTACT INFORMATION:
+Email: donna.baker@email.com
+Phone: +1-230-827-6687
+Location: Chicago, IL
+
+EDUCATION:
+Master of Artificial Intelligence
+University of Michigan
+Graduated: 2014
+GPA: 3.60/4.0
+
+WORK EXPERIENCE: 8 years
+
+Data Scientist - Apple
+4 years
+Worked at Apple as Data Scientist
+
+Analytics Manager - Tesla
+1 year
+Worked at Tesla as Analytics Manager
+
+Data Scientist - PwC
+2 years
+Worked at PwC as Data Scientist
+
+AI Engineer - McKinsey
+1 year
+Worked at McKinsey as AI Engineer
+
+SKILLS:
+NumPy, Hadoop, Data Visualization, AI, TensorFlow, Tableau, Excel, Pandas, Spark, Deep Learning, Scikit-learn
+
+ACHIEVEMENTS:
+- Optimized team workflow processes
+- Delivered projects on time and within budget
+- Improved system performance by 30%
+- Received Employee of the Year award
+
+LANGUAGES:
+English: Native
+French: Fluent

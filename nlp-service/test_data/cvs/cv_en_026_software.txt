@@ -1,0 +1,51 @@
+NAME: Helen King
+
+POSITION: Backend Developer
+
+CONTACT INFORMATION:
+Email: helen.king@email.com
+Phone: +1-739-612-9932
+Location: San Francisco, CA
+
+EDUCATION:
+Engineer of Computer Science
+University of California, Berkeley
+Graduated: 2014
+GPA: 3.76/4.0
+
+WORK EXPERIENCE: 9 years
+
+Software Architect - Cisco
+2 years
+Worked at Cisco as Software Architect
+
+Java Developer - BCG
+2 years
+Worked at BCG as Java Developer
+
+Software Architect - Amazon
+1 year
+Worked at Amazon as Software Architect
+
+Full-stack Developer - Salesforce
+1 year
+Worked at Salesforce as Full-stack Developer
+
+Full-stack Developer - PwC
+1 year
+Worked at PwC as Full-stack Developer
+
+Full-stack Developer - Adobe
+2 years
+Worked at Adobe as Full-stack Developer
+
+SKILLS:
+Node.js, Django, Docker, Angular, GraphQL, SQL, React, Kubernetes, TypeScript
+
+ACHIEVEMENTS:
+- Optimized team workflow processes
+- Led cross-functional team of 10+ members
+
+LANGUAGES:
+English: Native
+Chinese: Basic

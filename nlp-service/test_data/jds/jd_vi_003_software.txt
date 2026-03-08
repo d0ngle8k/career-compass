@@ -1,0 +1,22 @@
+VỊ TRÍ: DevOps Engineer
+
+MÔ TẢ CÔNG VIỆC:
+- Phát triển và bảo trì các ứng dụng CI/CD pipelines và infrastructure
+- Thiết kế và triển khai API RESTful
+- Làm việc với cơ sở dữ liệu MySQL, PostgreSQL, MongoDB
+- Tham gia code review và đảm bảo chất lượng code
+- Làm việc theo phương pháp Agile/Scrum
+- Tối ưu hóa hiệu suất ứng dụng
+
+YÊU CẦU:
+- Tối thiểu 4 năm kinh nghiệm làm việc với Docker, Kubernetes, AWS/GCP
+- Thành thạo Python, Bash, Go
+- Kinh nghiệm với Terraform, Ansible, Jenkins
+- Hiểu biết về Git, CI/CD
+- Kỹ năng làm việc nhóm tốt
+- Tiếng Anh giao tiếp
+
+ƯU TIÊN:
+- Kinh nghiệm với Prometheus, Grafana, ELK Stack
+- Đã từng tham gia dự án lớn
+- Có khả năng mentoring junior developers

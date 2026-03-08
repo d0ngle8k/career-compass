@@ -1,0 +1,36 @@
+NAME: Deborah Stewart
+
+POSITION: Treasury Analyst
+
+CONTACT INFORMATION:
+Email: deborah.stewart@email.com
+Phone: +1-799-528-5511
+Location: Chicago, IL
+
+EDUCATION:
+Engineer of Accounting
+University of California, Berkeley
+Graduated: 2020
+GPA: 3.10/4.0
+
+WORK EXPERIENCE: 4 years
+
+Treasury Analyst - Tesla
+2 years
+Worked at Tesla as Treasury Analyst
+
+Auditor - IBM
+2 years
+Worked at IBM as Auditor
+
+SKILLS:
+Investment Analysis, Risk Management, Audit, Power BI, SQL, QuickBooks, Treasury Management, Cost Analysis, Financial Modeling, SAP
+
+ACHIEVEMENTS:
+- Improved system performance by 30%
+- Received Employee of the Year award
+- Delivered projects on time and within budget
+
+LANGUAGES:
+English: Native
+German: Intermediate

@@ -1,0 +1,39 @@
+HỌ VÀ TÊN: Hứa Văn Tiến
+
+VỊ TRÍ ỨNG TUYỂN: Data Analyst
+
+THÔNG TIN LIÊN HỆ:
+Email: hứa.văn.tiến@email.com
+Điện thoại: 0123628170
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Cử nhân Toán - Tin ứng dụng
+Đại học Tôn Đức Thắng
+Tốt nghiệp năm 2015
+GPA: 3.50/4.0
+
+KINH NGHIỆM LÀM VIỆC: 7 năm
+
+Big Data Engineer - Zalo
+3 năm
+Làm việc tại Zalo với vai trò Big Data Engineer
+
+Machine Learning Engineer - Got It
+2 năm
+Làm việc tại Got It với vai trò Machine Learning Engineer
+
+Analytics Manager - Vietcombank
+2 năm
+Làm việc tại Vietcombank với vai trò Analytics Manager
+
+KỸ NĂNG:
+Data Visualization, Python, Big Data, R, Statistics, TensorFlow, SQL, ETL, Spark, Excel, Pandas, PyTorch, Power BI
+
+THÀNH TỰU:
+- Tối ưu hóa quy trình làm việc nhóm
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

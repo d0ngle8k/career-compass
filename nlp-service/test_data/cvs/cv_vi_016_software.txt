@@ -1,0 +1,32 @@
+HỌ VÀ TÊN: Mai Văn Phúc
+
+VỊ TRÍ ỨNG TUYỂN: Backend Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: mai.văn.phúc@email.com
+Điện thoại: 0947851514
+Địa chỉ: Đà Nẵng
+
+HỌC VẤN:
+Kỹ sư Khoa học Máy tính
+Đại học Văn Lang
+Tốt nghiệp năm 2023
+GPA: 3.26/4.0
+
+KINH NGHIỆM LÀM VIỆC: 1 năm
+
+Frontend Developer - Grab Vietnam
+1 năm
+Làm việc tại Grab Vietnam với vai trò Frontend Developer
+
+KỸ NĂNG:
+Git, REST API, JavaScript, Python, Vue.js, Kubernetes, Scrum, GraphQL, React, Django, SQL, Spring Boot, Java
+
+THÀNH TỰU:
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

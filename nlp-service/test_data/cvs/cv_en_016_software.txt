@@ -1,0 +1,31 @@
+NAME: Susan Martinez
+
+POSITION: Mobile Developer
+
+CONTACT INFORMATION:
+Email: susan.martinez@email.com
+Phone: +1-259-225-7825
+Location: Chicago, IL
+
+EDUCATION:
+Bachelor of Computer Science
+University of Cambridge
+Graduated: 2020
+GPA: 3.41/4.0
+
+WORK EXPERIENCE: 3 years
+
+Backend Developer - Morgan Stanley
+3 years
+Worked at Morgan Stanley as Backend Developer
+
+SKILLS:
+Python, Scrum, Vue.js, Agile, MongoDB, JavaScript, GraphQL, TypeScript, AWS, SQL
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Led cross-functional team of 10+ members
+
+LANGUAGES:
+English: Native
+Spanish: Advanced

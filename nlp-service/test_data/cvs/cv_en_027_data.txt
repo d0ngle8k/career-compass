@@ -1,0 +1,31 @@
+NAME: Mark Wright
+
+POSITION: Data Analyst
+
+CONTACT INFORMATION:
+Email: mark.wright@email.com
+Phone: +1-817-738-7199
+Location: Boston, MA
+
+EDUCATION:
+PhD of Data Science
+Carnegie Mellon University
+Graduated: 2021
+GPA: 3.67/4.0
+
+WORK EXPERIENCE: 1 years
+
+Research Scientist - Accenture
+1 year
+Worked at Accenture as Research Scientist
+
+SKILLS:
+NumPy, Big Data, TensorFlow, R, Excel, AI, Deep Learning, Pandas, Spark
+
+ACHIEVEMENTS:
+- Trained and mentored 5+ junior developers
+- Received Employee of the Year award
+
+LANGUAGES:
+English: Native
+French: Basic

@@ -1,0 +1,39 @@
+NAME: Carol Carter
+
+POSITION: Treasury Analyst
+
+CONTACT INFORMATION:
+Email: carol.carter@email.com
+Phone: +1-785-600-6789
+Location: San Francisco, CA
+
+EDUCATION:
+Bachelor of Economics
+Tsinghua University
+Graduated: 2019
+GPA: 3.73/4.0
+
+WORK EXPERIENCE: 4 years
+
+Treasury Analyst - Apple
+1 year
+Worked at Apple as Treasury Analyst
+
+Auditor - SAP
+2 years
+Worked at SAP as Auditor
+
+Accountant - Google
+1 year
+Worked at Google as Accountant
+
+SKILLS:
+SAP, Risk Management, Treasury Management, Accounting, Financial Analysis, Cost Analysis, Power BI, Investment Analysis, Forecasting, Tax Planning, Excel, SQL, IFRS, Bloomberg Terminal, Financial Modeling
+
+ACHIEVEMENTS:
+- Optimized team workflow processes
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+Japanese: Basic

@@ -1,0 +1,56 @@
+HỌ VÀ TÊN: Nông Thị Mai
+
+VỊ TRÍ ỨNG TUYỂN: Web Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: nông.thị.mai@email.com
+Điện thoại: 0128799484
+Địa chỉ: Cần Thơ
+
+HỌC VẤN:
+Cử nhân Kỹ thuật Phần mềm
+Đại học Ngoại Thương
+Tốt nghiệp năm 2010
+GPA: 3.30/4.0
+
+KINH NGHIỆM LÀM VIỆC: 13 năm
+
+Lập trình viên Python - BIDV
+2 năm
+Làm việc tại BIDV với vai trò Lập trình viên Python
+
+Mobile Developer - Saigon Co.op
+2 năm
+Làm việc tại Saigon Co.op với vai trò Mobile Developer
+
+Software Architect - ACB
+2 năm
+Làm việc tại ACB với vai trò Software Architect
+
+Lập trình viên Python - MB Bank
+1 năm
+Làm việc tại MB Bank với vai trò Lập trình viên Python
+
+DevOps Engineer - VNG Corporation
+2 năm
+Làm việc tại VNG Corporation với vai trò DevOps Engineer
+
+Mobile Developer - Saigon Co.op
+3 năm
+Làm việc tại Saigon Co.op với vai trò Mobile Developer
+
+Mobile Developer - Viettel
+1 năm
+Làm việc tại Viettel với vai trò Mobile Developer
+
+KỸ NĂNG:
+TypeScript, Node.js, REST API, Docker, Agile, SQL, Java, Angular, JavaScript, React, Python, Scrum, GraphQL, Vue.js, Kubernetes
+
+THÀNH TỰU:
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Tối ưu hóa quy trình làm việc nhóm
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Tốt

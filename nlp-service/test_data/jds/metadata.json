@@ -1,0 +1,226 @@
+{
+  "total_jds": 30,
+  "by_language": {
+    "vi": 15,
+    "en": 15
+  },
+  "by_field": {
+    "software": 6,
+    "data": 6,
+    "marketing": 6,
+    "finance": 6,
+    "hr": 6
+  },
+  "jds": [
+    {
+      "id": 1,
+      "field": "software",
+      "language": "vi",
+      "title": "Senior Backend Developer",
+      "filename": "jd_vi_001_software.txt"
+    },
+    {
+      "id": 2,
+      "field": "software",
+      "language": "vi",
+      "title": "Full-stack Developer",
+      "filename": "jd_vi_002_software.txt"
+    },
+    {
+      "id": 3,
+      "field": "software",
+      "language": "vi",
+      "title": "DevOps Engineer",
+      "filename": "jd_vi_003_software.txt"
+    },
+    {
+      "id": 4,
+      "field": "software",
+      "language": "en",
+      "title": "Senior Backend Developer",
+      "filename": "jd_en_004_software.txt"
+    },
+    {
+      "id": 5,
+      "field": "software",
+      "language": "en",
+      "title": "Full-stack Developer",
+      "filename": "jd_en_005_software.txt"
+    },
+    {
+      "id": 6,
+      "field": "software",
+      "language": "en",
+      "title": "DevOps Engineer",
+      "filename": "jd_en_006_software.txt"
+    },
+    {
+      "id": 7,
+      "field": "data",
+      "language": "vi",
+      "title": "Senior Data Scientist",
+      "filename": "jd_vi_007_data.txt"
+    },
+    {
+      "id": 8,
+      "field": "data",
+      "language": "vi",
+      "title": "Data Analyst",
+      "filename": "jd_vi_008_data.txt"
+    },
+    {
+      "id": 9,
+      "field": "data",
+      "language": "vi",
+      "title": "Machine Learning Engineer",
+      "filename": "jd_vi_009_data.txt"
+    },
+    {
+      "id": 10,
+      "field": "data",
+      "language": "en",
+      "title": "Senior Data Scientist",
+      "filename": "jd_en_010_data.txt"
+    },
+    {
+      "id": 11,
+      "field": "data",
+      "language": "en",
+      "title": "Data Analyst",
+      "filename": "jd_en_011_data.txt"
+    },
+    {
+      "id": 12,
+      "field": "data",
+      "language": "en",
+      "title": "Machine Learning Engineer",
+      "filename": "jd_en_012_data.txt"
+    },
+    {
+      "id": 13,
+      "field": "marketing",
+      "language": "vi",
+      "title": "Digital Marketing Manager",
+      "filename": "jd_vi_013_marketing.txt"
+    },
+    {
+      "id": 14,
+      "field": "marketing",
+      "language": "vi",
+      "title": "Content Marketing Specialist",
+      "filename": "jd_vi_014_marketing.txt"
+    },
+    {
+      "id": 15,
+      "field": "marketing",
+      "language": "vi",
+      "title": "Social Media Manager",
+      "filename": "jd_vi_015_marketing.txt"
+    },
+    {
+      "id": 16,
+      "field": "marketing",
+      "language": "en",
+      "title": "Digital Marketing Manager",
+      "filename": "jd_en_016_marketing.txt"
+    },
+    {
+      "id": 17,
+      "field": "marketing",
+      "language": "en",
+      "title": "Content Marketing Specialist",
+      "filename": "jd_en_017_marketing.txt"
+    },
+    {
+      "id": 18,
+      "field": "marketing",
+      "language": "en",
+      "title": "Social Media Manager",
+      "filename": "jd_en_018_marketing.txt"
+    },
+    {
+      "id": 19,
+      "field": "finance",
+      "language": "vi",
+      "title": "Senior Financial Analyst",
+      "filename": "jd_vi_019_finance.txt"
+    },
+    {
+      "id": 20,
+      "field": "finance",
+      "language": "vi",
+      "title": "Accountant",
+      "filename": "jd_vi_020_finance.txt"
+    },
+    {
+      "id": 21,
+      "field": "finance",
+      "language": "vi",
+      "title": "Finance Manager",
+      "filename": "jd_vi_021_finance.txt"
+    },
+    {
+      "id": 22,
+      "field": "finance",
+      "language": "en",
+      "title": "Senior Financial Analyst",
+      "filename": "jd_en_022_finance.txt"
+    },
+    {
+      "id": 23,
+      "field": "finance",
+      "language": "en",
+      "title": "Accountant",
+      "filename": "jd_en_023_finance.txt"
+    },
+    {
+      "id": 24,
+      "field": "finance",
+      "language": "en",
+      "title": "Finance Manager",
+      "filename": "jd_en_024_finance.txt"
+    },
+    {
+      "id": 25,
+      "field": "hr",
+      "language": "vi",
+      "title": "Talent Acquisition Manager",
+      "filename": "jd_vi_025_hr.txt"
+    },
+    {
+      "id": 26,
+      "field": "hr",
+      "language": "vi",
+      "title": "HR Business Partner",
+      "filename": "jd_vi_026_hr.txt"
+    },
+    {
+      "id": 27,
+      "field": "hr",
+      "language": "vi",
+      "title": "Recruitment Specialist",
+      "filename": "jd_vi_027_hr.txt"
+    },
+    {
+      "id": 28,
+      "field": "hr",
+      "language": "en",
+      "title": "Talent Acquisition Manager",
+      "filename": "jd_en_028_hr.txt"
+    },
+    {
+      "id": 29,
+      "field": "hr",
+      "language": "en",
+      "title": "HR Business Partner",
+      "filename": "jd_en_029_hr.txt"
+    },
+    {
+      "id": 30,
+      "field": "hr",
+      "language": "en",
+      "title": "Recruitment Specialist",
+      "filename": "jd_en_030_hr.txt"
+    }
+  ]
+}

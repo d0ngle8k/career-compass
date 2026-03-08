@@ -1,0 +1,43 @@
+NAME: Thomas Robinson
+
+POSITION: Research Scientist
+
+CONTACT INFORMATION:
+Email: thomas.robinson@email.com
+Phone: +1-280-102-9586
+Location: Austin, TX
+
+EDUCATION:
+Engineer of Statistics
+Stanford University
+Graduated: 2018
+GPA: 3.09/4.0
+
+WORK EXPERIENCE: 4 years
+
+Research Scientist - KPMG
+1 year
+Worked at KPMG as Research Scientist
+
+Big Data Engineer - Tesla
+1 year
+Worked at Tesla as Big Data Engineer
+
+Data Scientist - Capgemini
+1 year
+Worked at Capgemini as Data Scientist
+
+Business Intelligence Analyst - Microsoft
+1 year
+Worked at Microsoft as Business Intelligence Analyst
+
+SKILLS:
+Pandas, Big Data, AI, Tableau, R, Deep Learning, TensorFlow, NumPy, Power BI, Data Visualization
+
+ACHIEVEMENTS:
+- Optimized team workflow processes
+- Led cross-functional team of 10+ members
+
+LANGUAGES:
+English: Native
+Japanese: Fluent

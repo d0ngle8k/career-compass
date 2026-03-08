@@ -1,0 +1,43 @@
+NAME: Stephanie Rogers
+
+POSITION: Java Developer
+
+CONTACT INFORMATION:
+Email: stephanie.rogers@email.com
+Phone: +1-783-289-7995
+Location: Seattle, WA
+
+EDUCATION:
+Engineer of Information Systems
+University of Toronto
+Graduated: 2012
+GPA: 3.10/4.0
+
+WORK EXPERIENCE: 12 years
+
+Backend Developer - Capgemini
+4 years
+Worked at Capgemini as Backend Developer
+
+Backend Developer - Cisco
+3 years
+Worked at Cisco as Backend Developer
+
+Web Developer - SAP
+3 years
+Worked at SAP as Web Developer
+
+Software Engineer - Citibank
+2 years
+Worked at Citibank as Software Engineer
+
+SKILLS:
+Git, Java, Python, Django, Angular, GraphQL, MongoDB, Vue.js, Node.js, Scrum, REST API, Agile, React, JavaScript, SQL
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+French: Basic

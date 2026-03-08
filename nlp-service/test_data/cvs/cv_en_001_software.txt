@@ -1,0 +1,31 @@
+NAME: John Smith
+
+POSITION: DevOps Engineer
+
+CONTACT INFORMATION:
+Email: john.smith@email.com
+Phone: +1-720-716-4204
+Location: Austin, TX
+
+EDUCATION:
+Bachelor of Computer Science
+Harvard University
+Graduated: 2023
+GPA: 3.79/4.0
+
+WORK EXPERIENCE: 1 years
+
+Backend Developer - Goldman Sachs
+1 year
+Worked at Goldman Sachs as Backend Developer
+
+SKILLS:
+JavaScript, Angular, Agile, Node.js, TypeScript, GraphQL, Spring Boot, MongoDB, Python, Java, Git, React
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+Spanish: Advanced

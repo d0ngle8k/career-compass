@@ -1,0 +1,22 @@
+POSITION: DevOps Engineer
+
+JOB DESCRIPTION:
+- Develop and maintain CI/CD pipelines và infrastructure applications
+- Design and implement RESTful APIs
+- Work with MySQL, PostgreSQL, MongoDB databases
+- Participate in code reviews and ensure code quality
+- Work in Agile/Scrum environment
+- Optimize application performance
+
+REQUIREMENTS:
+- Minimum 4 years of experience with Docker, Kubernetes, AWS/GCP
+- Proficient in Python, Bash, Go
+- Experience with Terraform, Ansible, Jenkins
+- Knowledge of Git, CI/CD
+- Strong teamwork skills
+- Good English communication
+
+PREFERRED:
+- Experience with Prometheus, Grafana, ELK Stack
+- Previously worked on large-scale projects
+- Ability to mentor junior developers

@@ -1,0 +1,36 @@
+NAME: Patricia Harris
+
+POSITION: Machine Learning Engineer
+
+CONTACT INFORMATION:
+Email: patricia.harris@email.com
+Phone: +1-245-596-1131
+Location: New York, NY
+
+EDUCATION:
+Master of Data Science
+University of California, Berkeley
+Graduated: 2018
+GPA: 3.14/4.0
+
+WORK EXPERIENCE: 4 years
+
+Data Engineer - Deloitte
+3 years
+Worked at Deloitte as Data Engineer
+
+Research Scientist - Intel
+1 year
+Worked at Intel as Research Scientist
+
+SKILLS:
+Statistics, R, Pandas, Data Visualization, Spark, Big Data, ETL, Hadoop, Scikit-learn, Power BI
+
+ACHIEVEMENTS:
+- Improved system performance by 30%
+- Optimized team workflow processes
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+Japanese: Intermediate

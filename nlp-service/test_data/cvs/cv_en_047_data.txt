@@ -1,0 +1,40 @@
+NAME: Edward Reed
+
+POSITION: AI Engineer
+
+CONTACT INFORMATION:
+Email: edward.reed@email.com
+Phone: +1-922-847-3001
+Location: Austin, TX
+
+EDUCATION:
+PhD of Statistics
+Carnegie Mellon University
+Graduated: 2015
+GPA: 3.30/4.0
+
+WORK EXPERIENCE: 9 years
+
+Data Consultant - Intel
+3 years
+Worked at Intel as Data Consultant
+
+Big Data Engineer - Intel
+3 years
+Worked at Intel as Big Data Engineer
+
+Machine Learning Engineer - Oracle
+3 years
+Worked at Oracle as Machine Learning Engineer
+
+SKILLS:
+Python, Big Data, Excel, NumPy, SQL, R, PyTorch, Hadoop, Spark, TensorFlow
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Optimized team workflow processes
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+German: Fluent

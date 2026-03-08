@@ -1,0 +1,47 @@
+HỌ VÀ TÊN: Từ Văn Vân
+
+VỊ TRÍ ỨNG TUYỂN: Frontend Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: từ.văn.vân@email.com
+Điện thoại: 0632304187
+Địa chỉ: Cần Thơ
+
+HỌC VẤN:
+Cử nhân Khoa học Máy tính
+Đại học Bách Khoa Hà Nội
+Tốt nghiệp năm 2010
+GPA: 3.06/4.0
+
+KINH NGHIỆM LÀM VIỆC: 14 năm
+
+DevOps Engineer - Tiki
+2 năm
+Làm việc tại Tiki với vai trò DevOps Engineer
+
+DevOps Engineer - Got It
+4 năm
+Làm việc tại Got It với vai trò DevOps Engineer
+
+DevOps Engineer - Momo
+4 năm
+Làm việc tại Momo với vai trò DevOps Engineer
+
+Full-stack Developer - VNPT
+3 năm
+Làm việc tại VNPT với vai trò Full-stack Developer
+
+Web Developer - Techcombank
+1 năm
+Làm việc tại Techcombank với vai trò Web Developer
+
+KỸ NĂNG:
+Django, Git, Scrum, Spring Boot, Python, JavaScript, React, Angular, TypeScript, Docker, GraphQL, Java, AWS, Node.js, REST API
+
+THÀNH TỰU:
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

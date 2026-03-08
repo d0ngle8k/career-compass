@@ -1,0 +1,37 @@
+NAME: Betty Walker
+
+POSITION: Data Engineer
+
+CONTACT INFORMATION:
+Email: betty.walker@email.com
+Phone: +1-841-381-9201
+Location: New York, NY
+
+EDUCATION:
+Bachelor of Applied Mathematics
+University of Toronto
+Graduated: 2018
+GPA: 3.49/4.0
+
+WORK EXPERIENCE: 4 years
+
+Analytics Manager - Cisco
+1 year
+Worked at Cisco as Analytics Manager
+
+Big Data Engineer - Google
+3 years
+Worked at Google as Big Data Engineer
+
+SKILLS:
+Statistics, Deep Learning, Python, Hadoop, ETL, TensorFlow, Power BI, PyTorch, Spark
+
+ACHIEVEMENTS:
+- Delivered projects on time and within budget
+- Led cross-functional team of 10+ members
+- Optimized team workflow processes
+- Improved system performance by 30%
+
+LANGUAGES:
+English: Native
+Spanish: Basic

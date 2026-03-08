@@ -1,0 +1,40 @@
+NAME: Robert Thomas
+
+POSITION: Auditor
+
+CONTACT INFORMATION:
+Email: robert.thomas@email.com
+Phone: +1-663-666-2825
+Location: Chicago, IL
+
+EDUCATION:
+PhD of Finance
+Yale University
+Graduated: 2015
+GPA: 3.82/4.0
+
+WORK EXPERIENCE: 8 years
+
+Investment Analyst - Goldman Sachs
+2 years
+Worked at Goldman Sachs as Investment Analyst
+
+Financial Analyst - Citibank
+2 years
+Worked at Citibank as Financial Analyst
+
+Investment Analyst - JP Morgan
+4 years
+Worked at JP Morgan as Investment Analyst
+
+SKILLS:
+Financial Analysis, Cost Analysis, Audit, VAS, Forecasting, Investment Analysis, SAP, Tax Planning, SQL, Excel, Budgeting, Risk Management, QuickBooks, Power BI, Financial Modeling
+
+ACHIEVEMENTS:
+- Received Employee of the Year award
+- Led cross-functional team of 10+ members
+- Delivered projects on time and within budget
+
+LANGUAGES:
+English: Native
+German: Intermediate

@@ -1,0 +1,43 @@
+NAME: Ronald Morgan
+
+POSITION: Controller
+
+CONTACT INFORMATION:
+Email: ronald.morgan@email.com
+Phone: +1-563-487-2598
+Location: Chicago, IL
+
+EDUCATION:
+Engineer of Business Administration
+ETH Zurich
+Graduated: 2009
+GPA: 3.84/4.0
+
+WORK EXPERIENCE: 14 years
+
+Tax Specialist - KPMG
+4 years
+Worked at KPMG as Tax Specialist
+
+Financial Analyst - JP Morgan
+4 years
+Worked at JP Morgan as Financial Analyst
+
+Banking Specialist - Goldman Sachs
+4 years
+Worked at Goldman Sachs as Banking Specialist
+
+Controller - Adobe
+2 years
+Worked at Adobe as Controller
+
+SKILLS:
+Corporate Finance, QuickBooks, Bloomberg Terminal, SQL, VAS, SAP, Tax Planning, Audit, Budgeting
+
+ACHIEVEMENTS:
+- Improved system performance by 30%
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+German: Basic

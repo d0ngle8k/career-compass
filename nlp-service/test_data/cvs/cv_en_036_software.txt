@@ -1,0 +1,32 @@
+NAME: Michelle Roberts
+
+POSITION: Software Architect
+
+CONTACT INFORMATION:
+Email: michelle.roberts@email.com
+Phone: +1-346-736-6560
+Location: Boston, MA
+
+EDUCATION:
+PhD of Software Engineering
+University of California, Berkeley
+Graduated: 2022
+GPA: 3.09/4.0
+
+WORK EXPERIENCE: 1 years
+
+Frontend Developer - Dell
+1 year
+Worked at Dell as Frontend Developer
+
+SKILLS:
+JavaScript, Git, Spring Boot, GraphQL, Kubernetes, Scrum, Python, SQL, Docker, Agile, TypeScript, React, Django, Node.js
+
+ACHIEVEMENTS:
+- Led cross-functional team of 10+ members
+- Improved system performance by 30%
+- Optimized team workflow processes
+
+LANGUAGES:
+English: Native
+German: Intermediate

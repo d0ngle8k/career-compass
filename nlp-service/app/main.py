@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
 from app.models import get_bert, get_phobert, get_similarity
+from app.improved_scoring import improved_score_cv
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -207,8 +208,20 @@ def health() -> dict[str, str]:
 
 @app.post("/score-cv", response_model=Envelope)
 def score_cv(payload: ScoreCvRequest) -> Envelope:
-    result = _score(payload.cv_text, payload.jd_text, payload.language)
-    return Envelope(success=True, data=result)
+    try:
+        result_dict = improved_score_cv(payload.cv_text, payload.jd_text, payload.language)
+        result = ScoreCvResponse(
+            score=result_dict["score"],
+            strengths=result_dict["strengths"],
+            weaknesses=result_dict["weaknesses"],
+            improvement_tips=result_dict["improvement_tips"]
+        )
+        return Envelope(success=True, data=result)
+    except Exception as e:
+        logger.error(f"Scoring error: {e}")
+        # Fallback to original scoring
+        result = _score(payload.cv_text, payload.jd_text, payload.language)
+        return Envelope(success=True, data=result)
 
 
 @app.post("/ner/vi")

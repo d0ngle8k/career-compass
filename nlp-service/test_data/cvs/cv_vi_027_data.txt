@@ -1,0 +1,55 @@
+HỌ VÀ TÊN: Lương Thị Hạnh
+
+VỊ TRÍ ỨNG TUYỂN: Data Scientist
+
+THÔNG TIN LIÊN HỆ:
+Email: lương.thị.hạnh@email.com
+Điện thoại: 0845520800
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Thạc sĩ Toán - Tin ứng dụng
+Đại học Công nghệ - ĐHQGHN
+Tốt nghiệp năm 2009
+GPA: 3.69/4.0
+
+KINH NGHIỆM LÀM VIỆC: 15 năm
+
+Research Scientist - BIDV
+1 năm
+Làm việc tại BIDV với vai trò Research Scientist
+
+Data Consultant - ACB
+3 năm
+Làm việc tại ACB với vai trò Data Consultant
+
+Data Engineer - FPT Software
+3 năm
+Làm việc tại FPT Software với vai trò Data Engineer
+
+Data Analyst - FPT Software
+3 năm
+Làm việc tại FPT Software với vai trò Data Analyst
+
+Data Consultant - Grab Vietnam
+1 năm
+Làm việc tại Grab Vietnam với vai trò Data Consultant
+
+Analytics Manager - VNPT
+2 năm
+Làm việc tại VNPT với vai trò Analytics Manager
+
+Business Intelligence Analyst - MB Bank
+2 năm
+Làm việc tại MB Bank với vai trò Business Intelligence Analyst
+
+KỸ NĂNG:
+TensorFlow, AI, Power BI, SQL, Scikit-learn, Tableau, Statistics, PyTorch, Pandas
+
+THÀNH TỰU:
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Tối ưu hóa quy trình làm việc nhóm
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

@@ -1,0 +1,52 @@
+NAME: Barbara Thompson
+
+POSITION: Financial Analyst
+
+CONTACT INFORMATION:
+Email: barbara.thompson@email.com
+Phone: +1-290-581-7387
+Location: San Francisco, CA
+
+EDUCATION:
+Master of Accounting
+National University of Singapore
+Graduated: 2012
+GPA: 3.90/4.0
+
+WORK EXPERIENCE: 10 years
+
+Accountant - EY
+2 years
+Worked at EY as Accountant
+
+Investment Analyst - Cisco
+2 years
+Worked at Cisco as Investment Analyst
+
+CFO - EY
+1 year
+Worked at EY as CFO
+
+Financial Analyst - Intel
+2 years
+Worked at Intel as Financial Analyst
+
+Investment Analyst - Meta
+1 year
+Worked at Meta as Investment Analyst
+
+CFO - Netflix
+2 years
+Worked at Netflix as CFO
+
+SKILLS:
+Treasury Management, Financial Analysis, Forecasting, Risk Management, VAS, SQL, Budgeting, Excel, Accounting, Tax Planning, SAP, Corporate Finance, Investment Analysis, Financial Modeling, Audit
+
+ACHIEVEMENTS:
+- Optimized team workflow processes
+- Led cross-functional team of 10+ members
+- Delivered projects on time and within budget
+
+LANGUAGES:
+English: Native
+Spanish: Basic

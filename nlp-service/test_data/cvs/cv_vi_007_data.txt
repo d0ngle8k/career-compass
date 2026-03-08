@@ -1,0 +1,52 @@
+HỌ VÀ TÊN: Đặng Thị Giang
+
+VỊ TRÍ ỨNG TUYỂN: Research Scientist
+
+THÔNG TIN LIÊN HỆ:
+Email: đặng.thị.giang@email.com
+Điện thoại: 0489377177
+Địa chỉ: Hà Nội
+
+HỌC VẤN:
+Thạc sĩ Khoa học Dữ liệu
+Đại học Kinh tế Quốc dân
+Tốt nghiệp năm 2012
+GPA: 3.08/4.0
+
+KINH NGHIỆM LÀM VIỆC: 12 năm
+
+Research Scientist - BIDV
+4 năm
+Làm việc tại BIDV với vai trò Research Scientist
+
+Data Analyst - VNG Corporation
+2 năm
+Làm việc tại VNG Corporation với vai trò Data Analyst
+
+Data Engineer - Grab Vietnam
+1 năm
+Làm việc tại Grab Vietnam với vai trò Data Engineer
+
+Business Intelligence Analyst - Saigon Co.op
+2 năm
+Làm việc tại Saigon Co.op với vai trò Business Intelligence Analyst
+
+Data Scientist - Zalo
+2 năm
+Làm việc tại Zalo với vai trò Data Scientist
+
+Data Consultant - Masan Group
+1 năm
+Làm việc tại Masan Group với vai trò Data Consultant
+
+KỸ NĂNG:
+Excel, R, SQL, Power BI, Spark, Pandas, Tableau, Scikit-learn, AI, Hadoop, PyTorch, Statistics
+
+THÀNH TỰU:
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Nhận giải thưởng nhân viên xuất sắc
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Thành thạo

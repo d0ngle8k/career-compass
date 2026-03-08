@@ -1,0 +1,53 @@
+HỌ VÀ TÊN: Vũ Văn Phong
+
+VỊ TRÍ ỨNG TUYỂN: Software Architect
+
+THÔNG TIN LIÊN HỆ:
+Email: vũ.văn.phong@email.com
+Điện thoại: 0693669676
+Địa chỉ: Cần Thơ
+
+HỌC VẤN:
+Thạc sĩ Công nghệ Thông tin
+Đại học Hutech
+Tốt nghiệp năm 2009
+GPA: 3.74/4.0
+
+KINH NGHIỆM LÀM VIỆC: 15 năm
+
+Mobile Developer - Lazada Vietnam
+4 năm
+Làm việc tại Lazada Vietnam với vai trò Mobile Developer
+
+DevOps Engineer - Masan Group
+1 năm
+Làm việc tại Masan Group với vai trò DevOps Engineer
+
+Software Architect - Tiki
+1 năm
+Làm việc tại Tiki với vai trò Software Architect
+
+Frontend Developer - Sendo
+4 năm
+Làm việc tại Sendo với vai trò Frontend Developer
+
+Web Developer - Techcombank
+3 năm
+Làm việc tại Techcombank với vai trò Web Developer
+
+Lập trình viên Java - ACB
+2 năm
+Làm việc tại ACB với vai trò Lập trình viên Java
+
+KỸ NĂNG:
+GraphQL, Vue.js, Node.js, Java, Spring Boot, SQL, Scrum, Git, React
+
+THÀNH TỰU:
+- Tối ưu hóa quy trình làm việc nhóm
+- Nhận giải thưởng nhân viên xuất sắc
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Cải thiện hiệu suất hệ thống 30%
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Trung cấp

@@ -1,0 +1,33 @@
+HỌ VÀ TÊN: Đoàn Thị Thủy
+
+VỊ TRÍ ỨNG TUYỂN: Backend Developer
+
+THÔNG TIN LIÊN HỆ:
+Email: đoàn.thị.thủy@email.com
+Điện thoại: 0632334023
+Địa chỉ: Hải Phòng
+
+HỌC VẤN:
+Tiến sĩ Kỹ thuật Phần mềm
+Đại học Quốc Gia TP.HCM
+Tốt nghiệp năm 2020
+GPA: 3.87/4.0
+
+KINH NGHIỆM LÀM VIỆC: 3 năm
+
+Web Developer - BIDV
+3 năm
+Làm việc tại BIDV với vai trò Web Developer
+
+KỸ NĂNG:
+Spring Boot, Python, SQL, Agile, Java, TypeScript, Git, Django, Scrum, Angular, Docker
+
+THÀNH TỰU:
+- Cải thiện hiệu suất hệ thống 30%
+- Đào tạo và hướng dẫn 5+ nhân viên mới
+- Hoàn thành dự án đúng tiến độ và ngân sách
+- Tối ưu hóa quy trình làm việc nhóm
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Khá

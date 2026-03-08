@@ -1,0 +1,52 @@
+NAME: William White
+
+POSITION: Mobile Developer
+
+CONTACT INFORMATION:
+Email: william.white@email.com
+Phone: +1-881-299-2834
+Location: Boston, MA
+
+EDUCATION:
+PhD of Computer Science
+Carnegie Mellon University
+Graduated: 2014
+GPA: 3.40/4.0
+
+WORK EXPERIENCE: 10 years
+
+Web Developer - Google
+1 year
+Worked at Google as Web Developer
+
+Mobile Developer - Salesforce
+3 years
+Worked at Salesforce as Mobile Developer
+
+Mobile Developer - Accenture
+1 year
+Worked at Accenture as Mobile Developer
+
+Full-stack Developer - Adobe
+3 years
+Worked at Adobe as Full-stack Developer
+
+Software Architect - Intel
+1 year
+Worked at Intel as Software Architect
+
+Java Developer - Cisco
+1 year
+Worked at Cisco as Java Developer
+
+SKILLS:
+Node.js, AWS, Angular, Scrum, Java, Spring Boot, GraphQL, Django, SQL, React, TypeScript, Docker
+
+ACHIEVEMENTS:
+- Trained and mentored 5+ junior developers
+- Led cross-functional team of 10+ members
+- Optimized team workflow processes
+
+LANGUAGES:
+English: Native
+French: Basic

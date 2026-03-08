@@ -1,0 +1,49 @@
+NAME: Emily Johnson
+
+POSITION: Data Engineer
+
+CONTACT INFORMATION:
+Email: emily.johnson@email.com
+Phone: +1-387-212-1174
+Location: Boston, MA
+
+EDUCATION:
+PhD of Artificial Intelligence
+Yale University
+Graduated: 2016
+GPA: 3.62/4.0
+
+WORK EXPERIENCE: 8 years
+
+Machine Learning Engineer - Adobe
+1 year
+Worked at Adobe as Machine Learning Engineer
+
+Data Consultant - EY
+3 years
+Worked at EY as Data Consultant
+
+Data Consultant - Amazon
+2 years
+Worked at Amazon as Data Consultant
+
+Data Analyst - BCG
+1 year
+Worked at BCG as Data Analyst
+
+Data Analyst - Adobe
+1 year
+Worked at Adobe as Data Analyst
+
+SKILLS:
+TensorFlow, Tableau, SQL, Scikit-learn, Deep Learning, AI, ETL, R, Statistics, Pandas
+
+ACHIEVEMENTS:
+- Improved system performance by 30%
+- Trained and mentored 5+ junior developers
+- Led cross-functional team of 10+ members
+- Delivered projects on time and within budget
+
+LANGUAGES:
+English: Native
+German: Fluent

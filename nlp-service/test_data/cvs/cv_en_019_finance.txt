@@ -1,0 +1,52 @@
+NAME: Charles Rodriguez
+
+POSITION: Investment Analyst
+
+CONTACT INFORMATION:
+Email: charles.rodriguez@email.com
+Phone: +1-759-917-8969
+Location: New York, NY
+
+EDUCATION:
+PhD of Economics
+University of Michigan
+Graduated: 2011
+GPA: 3.36/4.0
+
+WORK EXPERIENCE: 13 years
+
+CFO - Netflix
+3 years
+Worked at Netflix as CFO
+
+Treasury Analyst - Capgemini
+2 years
+Worked at Capgemini as Treasury Analyst
+
+Banking Specialist - IBM
+2 years
+Worked at IBM as Banking Specialist
+
+Investment Analyst - Accenture
+2 years
+Worked at Accenture as Investment Analyst
+
+Controller - Capgemini
+3 years
+Worked at Capgemini as Controller
+
+Banking Specialist - Intel
+1 year
+Worked at Intel as Banking Specialist
+
+SKILLS:
+Treasury Management, Accounting, IFRS, Bloomberg Terminal, Financial Modeling, Audit, Forecasting, SAP, VAS, Excel, Investment Analysis, Tax Planning, SQL, Budgeting, Financial Analysis
+
+ACHIEVEMENTS:
+- Trained and mentored 5+ junior developers
+- Optimized team workflow processes
+- Delivered projects on time and within budget
+
+LANGUAGES:
+English: Native
+French: Advanced

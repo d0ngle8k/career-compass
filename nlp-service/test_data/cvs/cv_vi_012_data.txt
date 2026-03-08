@@ -1,0 +1,44 @@
+HỌ VÀ TÊN: Dương Văn Minh
+
+VỊ TRÍ ỨNG TUYỂN: Data Scientist
+
+THÔNG TIN LIÊN HỆ:
+Email: dương.văn.minh@email.com
+Điện thoại: 0752440321
+Địa chỉ: Đà Nẵng
+
+HỌC VẤN:
+Kỹ sư Khoa học Dữ liệu
+Đại học Công nghệ - ĐHQGHN
+Tốt nghiệp năm 2016
+GPA: 3.20/4.0
+
+KINH NGHIỆM LÀM VIỆC: 8 năm
+
+Big Data Engineer - Vietcombank
+1 năm
+Làm việc tại Vietcombank với vai trò Big Data Engineer
+
+AI Engineer - Shopee Vietnam
+4 năm
+Làm việc tại Shopee Vietnam với vai trò AI Engineer
+
+Research Scientist - ACB
+1 năm
+Làm việc tại ACB với vai trò Research Scientist
+
+Business Intelligence Analyst - MB Bank
+2 năm
+Làm việc tại MB Bank với vai trò Business Intelligence Analyst
+
+KỸ NĂNG:
+Big Data, Pandas, Excel, Scikit-learn, NumPy, Data Visualization, PyTorch, SQL, ETL
+
+THÀNH TỰU:
+- Nhận giải thưởng nhân viên xuất sắc
+- Cải thiện hiệu suất hệ thống 30%
+- Tối ưu hóa quy trình làm việc nhóm
+
+NGÔN NGỮ:
+Tiếng Việt: Bản ngữ
+Tiếng Anh: Khá

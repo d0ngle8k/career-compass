@@ -1,0 +1,39 @@
+NAME: Lisa Allen
+
+POSITION: Accountant
+
+CONTACT INFORMATION:
+Email: lisa.allen@email.com
+Phone: +1-303-386-8407
+Location: San Francisco, CA
+
+EDUCATION:
+Engineer of Economics
+University of Michigan
+Graduated: 2016
+GPA: 3.92/4.0
+
+WORK EXPERIENCE: 7 years
+
+Financial Analyst - Salesforce
+3 years
+Worked at Salesforce as Financial Analyst
+
+Accountant - Cisco
+2 years
+Worked at Cisco as Accountant
+
+Treasury Analyst - Salesforce
+2 years
+Worked at Salesforce as Treasury Analyst
+
+SKILLS:
+Tax Planning, VAS, Financial Analysis, Accounting, Bloomberg Terminal, IFRS, SQL, Investment Analysis, Power BI, Cost Analysis, Corporate Finance
+
+ACHIEVEMENTS:
+- Received Employee of the Year award
+- Trained and mentored 5+ junior developers
+
+LANGUAGES:
+English: Native
+German: Fluent

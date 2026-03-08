@@ -1,0 +1,40 @@
+NAME: Donald Scott
+
+POSITION: Banking Specialist
+
+CONTACT INFORMATION:
+Email: donald.scott@email.com
+Phone: +1-412-241-8700
+Location: New York, NY
+
+EDUCATION:
+PhD of Economics
+University of Oxford
+Graduated: 2016
+GPA: 3.37/4.0
+
+WORK EXPERIENCE: 8 years
+
+Accountant - Netflix
+2 years
+Worked at Netflix as Accountant
+
+Auditor - Accenture
+4 years
+Worked at Accenture as Auditor
+
+Financial Analyst - Accenture
+2 years
+Worked at Accenture as Financial Analyst
+
+SKILLS:
+Forecasting, SQL, Bloomberg Terminal, SAP, Treasury Management, QuickBooks, Financial Modeling, Accounting, Tax Planning, VAS, Excel
+
+ACHIEVEMENTS:
+- Improved system performance by 30%
+- Optimized team workflow processes
+- Received Employee of the Year award
+
+LANGUAGES:
+English: Native
+Spanish: Fluent
