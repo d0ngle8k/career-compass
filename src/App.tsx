@@ -7,6 +7,8 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import LandingPage from "./pages/LandingPage";
 import SolutionPage from "./pages/SolutionPage";
+import WriteMailPage from "./pages/WriteMailPage";
+import WriteCoverLetterPage from "./pages/WriteCoverLetterPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import AuthPage from "./pages/AuthPage";
@@ -28,6 +30,8 @@ const App = () => (
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/solution" element={<SolutionPage />} />
+              <Route path="/write-mail" element={<WriteMailPage />} />
+              <Route path="/write-cover-letter" element={<WriteCoverLetterPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFound />} />
