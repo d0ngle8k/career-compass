@@ -174,6 +174,18 @@ const translations: Translations = {
   "signup.password.min": { vi: "Mật khẩu phải có ít nhất 6 ký tự", en: "Password must be at least 6 characters" },
   "signup.password.mismatch": { vi: "Mật khẩu xác nhận không khớp", en: "Passwords do not match" },
   "signup.success": { vi: "Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.", en: "Sign up successful! Please check your email to verify your account." },
+  // Template styles
+  "solution.template.style": { vi: "Phong cách template", en: "Template Style" },
+  "template.formal": { vi: "Trang trọng", en: "Formal" },
+  "template.formal.desc": { vi: "Phong cách chuyên nghiệp, truyền thống — phù hợp ngân hàng, tập đoàn lớn", en: "Professional, traditional style — ideal for banks, large corporations" },
+  "template.modern": { vi: "Hiện đại", en: "Modern" },
+  "template.modern.desc": { vi: "Bố cục rõ ràng, bullet points — phù hợp công ty tech, startup", en: "Clean layout, bullet points — ideal for tech companies, startups" },
+  "template.creative": { vi: "Sáng tạo", en: "Creative" },
+  "template.creative.desc": { vi: "Phong cách cá tính, storytelling — phù hợp marketing, design", en: "Personality-driven, storytelling — ideal for marketing, design" },
+  // Edge case messages
+  "solution.jd.too.short": { vi: "Mô tả công việc quá ngắn. Vui lòng cung cấp thêm chi tiết.", en: "Job description is too short. Please provide more details." },
+  "solution.cv.unreadable": { vi: "Không thể đọc nội dung CV. Vui lòng sử dụng file PDF dạng text hoặc file TXT.", en: "Could not read CV content. Please use a text-based PDF or TXT file." },
+  "solution.analyze.error": { vi: "Phân tích thất bại. Vui lòng thử lại.", en: "Analysis failed. Please try again." },
 };
 
 interface LanguageContextType {

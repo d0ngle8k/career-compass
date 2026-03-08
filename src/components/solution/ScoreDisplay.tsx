@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, AlertTriangle, Lightbulb } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ScoreDisplayProps {
   score: number;
@@ -9,6 +10,7 @@ interface ScoreDisplayProps {
 }
 
 const ScoreDisplay = ({ score, strengths, weaknesses, tips }: ScoreDisplayProps) => {
+  const { t } = useLanguage();
   const scoreColor = score >= 80 ? "text-score-high" : score >= 60 ? "text-score-mid" : "text-score-low";
   const scoreRingColor = score >= 80 ? "stroke-score-high" : score >= 60 ? "stroke-score-mid" : "stroke-score-low";
   const circumference = 2 * Math.PI * 54;
@@ -43,13 +45,13 @@ const ScoreDisplay = ({ score, strengths, weaknesses, tips }: ScoreDisplayProps)
             <span className="text-xs text-muted-foreground">/ 100</span>
           </div>
         </div>
-        <p className="text-muted-foreground mt-3 font-medium">Điểm phù hợp với JD</p>
+        <p className="text-muted-foreground mt-3 font-medium">{t("score.match")}</p>
       </div>
 
       {/* Strengths */}
       <div className="glass-card rounded-xl p-6">
         <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
-          <CheckCircle className="w-5 h-5 text-success" /> Điểm mạnh
+          <CheckCircle className="w-5 h-5 text-success" /> {t("score.strengths")}
         </h3>
         <ul className="space-y-3">
           {strengths.map((s, i) => (
@@ -70,7 +72,7 @@ const ScoreDisplay = ({ score, strengths, weaknesses, tips }: ScoreDisplayProps)
       {/* Weaknesses */}
       <div className="glass-card rounded-xl p-6">
         <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
-          <AlertTriangle className="w-5 h-5 text-score-mid" /> Điểm cần cải thiện
+          <AlertTriangle className="w-5 h-5 text-score-mid" /> {t("score.weaknesses")}
         </h3>
         <ul className="space-y-3">
           {weaknesses.map((w, i) => (
@@ -91,10 +93,10 @@ const ScoreDisplay = ({ score, strengths, weaknesses, tips }: ScoreDisplayProps)
       {/* Tips */}
       <div className="glass-card rounded-xl p-6">
         <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
-          <Lightbulb className="w-5 h-5 text-accent" /> Lời khuyên
+          <Lightbulb className="w-5 h-5 text-accent" /> {t("score.tips")}
         </h3>
         <ul className="space-y-3">
-          {tips.map((t, i) => (
+          {tips.map((tip, i) => (
             <motion.li
               key={i}
               initial={{ opacity: 0, x: -10 }}
@@ -103,7 +105,7 @@ const ScoreDisplay = ({ score, strengths, weaknesses, tips }: ScoreDisplayProps)
               className="flex items-start gap-3 text-sm text-foreground"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
-              {t}
+              {tip}
             </motion.li>
           ))}
         </ul>

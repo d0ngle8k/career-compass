@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motion, AnimatePresence } from "framer-motion";
-import { Upload, FileText, BarChart3, Mail, Sparkles, X, Globe } from "lucide-react";
+import { Upload, FileText, BarChart3, Mail, Sparkles, X, Globe, Palette } from "lucide-react";
 import ScoreDisplay from "@/components/solution/ScoreDisplay";
 import CoverLetterDisplay from "@/components/solution/CoverLetterDisplay";
 import ChatbotWidget from "@/components/ChatbotWidget";
@@ -15,6 +15,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+type TemplateStyle = "formal" | "modern" | "creative";
+
 const SolutionPage = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ const SolutionPage = () => {
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [jdText, setJdText] = useState("");
   const [language, setLanguage] = useState<"vi" | "en">("vi");
+  const [templateStyle, setTemplateStyle] = useState<TemplateStyle>("formal");
   const [activeTab, setActiveTab] = useState<"score" | "letter">("score");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<null | {
@@ -66,12 +69,23 @@ const SolutionPage = () => {
       return;
     }
 
+    if (jdText.trim().length < 20) {
+      toast.error(t("solution.jd.too.short"));
+      return;
+    }
+
     setIsAnalyzing(true);
     try {
       const cvText = await extractTextFromFile(cvFile);
 
+      if (cvText.trim().length < 30) {
+        toast.error(t("solution.cv.unreadable"));
+        setIsAnalyzing(false);
+        return;
+      }
+
       const { data, error } = await supabase.functions.invoke("analyze-cv", {
-        body: { cvText, jdText: jdText.trim(), language },
+        body: { cvText, jdText: jdText.trim(), language, templateStyle },
       });
 
       if (error) {
@@ -83,13 +97,20 @@ const SolutionPage = () => {
       }
 
       setResults(data);
+      setActiveTab("score");
     } catch (err: any) {
       console.error("Analysis error:", err);
-      toast.error(err.message || "Analysis failed");
+      toast.error(err.message || t("solution.analyze.error"));
     } finally {
       setIsAnalyzing(false);
     }
   };
+
+  const templateStyles: { value: TemplateStyle; labelKey: string; descKey: string; icon: string }[] = [
+    { value: "formal", labelKey: "template.formal", descKey: "template.formal.desc", icon: "📄" },
+    { value: "modern", labelKey: "template.modern", descKey: "template.modern.desc", icon: "✨" },
+    { value: "creative", labelKey: "template.creative", descKey: "template.creative.desc", icon: "🎨" },
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -155,6 +176,7 @@ const SolutionPage = () => {
                 />
               </motion.div>
 
+              {/* Language selector */}
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="glass-card rounded-xl p-6">
                 <Label className="font-display font-semibold text-lg text-foreground mb-3 flex items-center gap-2">
                   <Globe className="w-5 h-5 text-accent" /> {t("solution.language")}
@@ -166,6 +188,32 @@ const SolutionPage = () => {
                   <Button variant={language === "en" ? "default" : "outline"} size="sm" onClick={() => setLanguage("en")}>
                     🇬🇧 English
                   </Button>
+                </div>
+              </motion.div>
+
+              {/* Template style selector */}
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="glass-card rounded-xl p-6">
+                <Label className="font-display font-semibold text-lg text-foreground mb-3 flex items-center gap-2">
+                  <Palette className="w-5 h-5 text-accent" /> {t("solution.template.style")}
+                </Label>
+                <div className="grid grid-cols-1 gap-3 mt-3">
+                  {templateStyles.map((ts) => (
+                    <button
+                      key={ts.value}
+                      onClick={() => setTemplateStyle(ts.value)}
+                      className={`flex items-start gap-3 p-3 rounded-lg border-2 text-left transition-all ${
+                        templateStyle === ts.value
+                          ? "border-accent bg-accent/5"
+                          : "border-border hover:border-accent/30"
+                      }`}
+                    >
+                      <span className="text-xl mt-0.5">{ts.icon}</span>
+                      <div>
+                        <p className="font-medium text-sm text-foreground">{t(ts.labelKey)}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{t(ts.descKey)}</p>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </motion.div>
 
