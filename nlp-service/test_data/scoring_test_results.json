@@ -1,8 +1,8 @@
 {
   "test_info": {
     "total_tests": 100,
-    "total_time": 0.8027043342590332,
-    "timestamp": "2026-03-08 19:23:04"
+    "total_time": 0.7892360687255859,
+    "timestamp": "2026-03-08 19:38:29"
   },
   "results": [
     {
@@ -14,14 +14,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 25.2,
+      "score": 50.37,
       "score_breakdown": {},
-      "score_time": 0.006028175354003906,
+      "score_time": 0.014183998107910156,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0018374919891357422,
+      "ner_time": 0.011243104934692383,
       "ner_error": null,
-      "total_time": 0.007865667343139648
+      "total_time": 0.02542710304260254
     },
     {
       "cv_id": 2,
@@ -32,14 +32,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 51.25,
+      "score": 75.11,
       "score_breakdown": {},
-      "score_time": 0.0055844783782958984,
+      "score_time": 0.0065381526947021484,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0025093555450439453,
+      "ner_time": 0.0015103816986083984,
       "ner_error": null,
-      "total_time": 0.008093833923339844
+      "total_time": 0.008048534393310547
     },
     {
       "cv_id": 3,
@@ -50,14 +50,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 59.58,
+      "score": 73.5,
       "score_breakdown": {},
-      "score_time": 0.0050048828125,
+      "score_time": 0.006646633148193359,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002505064010620117,
+      "ner_time": 0.0025207996368408203,
       "ner_error": null,
-      "total_time": 0.007509946823120117
+      "total_time": 0.00916743278503418
     },
     {
       "cv_id": 4,
@@ -68,14 +68,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 61.25,
+      "score": 69.0,
       "score_breakdown": {},
-      "score_time": 0.007233858108520508,
+      "score_time": 0.005369663238525391,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.003668546676635742,
+      "ner_time": 0.002691984176635742,
       "ner_error": null,
-      "total_time": 0.01090240478515625
+      "total_time": 0.008061647415161133
     },
     {
       "cv_id": 5,
@@ -86,14 +86,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 68.75,
+      "score": 85.67,
       "score_breakdown": {},
-      "score_time": 0.005355119705200195,
+      "score_time": 0.006441831588745117,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.001997709274291992,
+      "ner_time": 0.0019989013671875,
       "ner_error": null,
-      "total_time": 0.0073528289794921875
+      "total_time": 0.008440732955932617
     },
     {
       "cv_id": 6,
@@ -104,14 +104,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 42.04,
+      "score": 52.07,
       "score_breakdown": {},
-      "score_time": 0.007104396820068359,
+      "score_time": 0.005908012390136719,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002901792526245117,
+      "ner_time": 0.0029621124267578125,
       "ner_error": null,
-      "total_time": 0.010006189346313477
+      "total_time": 0.008870124816894531
     },
     {
       "cv_id": 7,
@@ -122,14 +122,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 46.25,
+      "score": 63.05,
       "score_breakdown": {},
-      "score_time": 0.006974458694458008,
+      "score_time": 0.006102085113525391,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0045931339263916016,
+      "ner_time": 0.0029778480529785156,
       "ner_error": null,
-      "total_time": 0.01156759262084961
+      "total_time": 0.009079933166503906
     },
     {
       "cv_id": 8,
@@ -140,14 +140,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 45.0,
+      "score": 71.67,
       "score_breakdown": {},
-      "score_time": 0.004527568817138672,
+      "score_time": 0.005520820617675781,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0013315677642822266,
       "ner_error": null,
-      "total_time": 0.004527568817138672
+      "total_time": 0.006852388381958008
     },
     {
       "cv_id": 9,
@@ -158,14 +158,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 61.25,
+      "score": 69.83,
       "score_breakdown": {},
-      "score_time": 0.008085012435913086,
+      "score_time": 0.006693840026855469,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.001329660415649414,
       "ner_error": null,
-      "total_time": 0.008085012435913086
+      "total_time": 0.008023500442504883
     },
     {
       "cv_id": 10,
@@ -176,14 +176,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 36.25,
+      "score": 70.92,
       "score_breakdown": {},
-      "score_time": 0.007320404052734375,
+      "score_time": 0.007998228073120117,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0032749176025390625,
+      "ner_time": 0.0017292499542236328,
       "ner_error": null,
-      "total_time": 0.010595321655273438
+      "total_time": 0.00972747802734375
     },
     {
       "cv_id": 11,
@@ -194,14 +194,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 48.36,
+      "score": 61.0,
       "score_breakdown": {},
-      "score_time": 0.006547451019287109,
+      "score_time": 0.006265401840209961,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0039556026458740234,
+      "ner_time": 0.0021772384643554688,
       "ner_error": null,
-      "total_time": 0.010503053665161133
+      "total_time": 0.00844264030456543
     },
     {
       "cv_id": 12,
@@ -212,14 +212,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 35.0,
+      "score": 53.89,
       "score_breakdown": {},
-      "score_time": 0.005822658538818359,
+      "score_time": 0.005846500396728516,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002183675765991211,
       "ner_error": null,
-      "total_time": 0.005822658538818359
+      "total_time": 0.008030176162719727
     },
     {
       "cv_id": 13,
@@ -230,14 +230,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 52.92,
+      "score": 73.5,
       "score_breakdown": {},
-      "score_time": 0.011436223983764648,
+      "score_time": 0.006963253021240234,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.00200653076171875,
+      "ner_time": 0.002836942672729492,
       "ner_error": null,
-      "total_time": 0.013442754745483398
+      "total_time": 0.009800195693969727
     },
     {
       "cv_id": 14,
@@ -248,14 +248,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 51.25,
+      "score": 57.58,
       "score_breakdown": {},
-      "score_time": 0.005518198013305664,
+      "score_time": 0.003998517990112305,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.001505136489868164,
+      "ner_time": 0.002186298370361328,
       "ner_error": null,
-      "total_time": 0.007023334503173828
+      "total_time": 0.006184816360473633
     },
     {
       "cv_id": 15,
@@ -266,14 +266,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 71.25,
+      "score": 88.0,
       "score_breakdown": {},
-      "score_time": 0.008539676666259766,
+      "score_time": 0.007589817047119141,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002508878707885742,
+      "ner_time": 0.0023970603942871094,
       "ner_error": null,
-      "total_time": 0.011048555374145508
+      "total_time": 0.00998687744140625
     },
     {
       "cv_id": 16,
@@ -284,14 +284,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 28.36,
+      "score": 48.03,
       "score_breakdown": {},
-      "score_time": 0.0013456344604492188,
+      "score_time": 0.005013704299926758,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0015032291412353516,
       "ner_error": null,
-      "total_time": 0.0013456344604492188
+      "total_time": 0.006516933441162109
     },
     {
       "cv_id": 17,
@@ -302,14 +302,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 56.25,
+      "score": 73.31,
       "score_breakdown": {},
-      "score_time": 0.010324239730834961,
+      "score_time": 0.00728297233581543,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.003989458084106445,
+      "ner_time": 0.001998424530029297,
       "ner_error": null,
-      "total_time": 0.014313697814941406
+      "total_time": 0.009281396865844727
     },
     {
       "cv_id": 18,
@@ -320,14 +320,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 66.25,
+      "score": 73.5,
       "score_breakdown": {},
-      "score_time": 0.0077097415924072266,
+      "score_time": 0.007165193557739258,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002003908157348633,
+      "ner_time": 0.002147197723388672,
       "ner_error": null,
-      "total_time": 0.00971364974975586
+      "total_time": 0.00931239128112793
     },
     {
       "cv_id": 19,
@@ -338,14 +338,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 43.75,
+      "score": 55.08,
       "score_breakdown": {},
-      "score_time": 0.0035562515258789062,
+      "score_time": 0.005378007888793945,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0039691925048828125,
+      "ner_time": 0.001329660415649414,
       "ner_error": null,
-      "total_time": 0.007525444030761719
+      "total_time": 0.006707668304443359
     },
     {
       "cv_id": 20,
@@ -356,14 +356,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 71.25,
+      "score": 88.0,
       "score_breakdown": {},
-      "score_time": 0.005654811859130859,
+      "score_time": 0.006699323654174805,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002793550491333008,
+      "ner_time": 0.0025119781494140625,
       "ner_error": null,
-      "total_time": 0.008448362350463867
+      "total_time": 0.009211301803588867
     },
     {
       "cv_id": 21,
@@ -374,14 +374,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 29.54,
+      "score": 47.22,
       "score_breakdown": {},
-      "score_time": 0.002059459686279297,
+      "score_time": 0.004942893981933594,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.005032777786254883,
+      "ner_time": 0.001767873764038086,
       "ner_error": null,
-      "total_time": 0.00709223747253418
+      "total_time": 0.00671076774597168
     },
     {
       "cv_id": 22,
@@ -392,14 +392,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 42.5,
+      "score": 60.55,
       "score_breakdown": {},
-      "score_time": 0.004580497741699219,
+      "score_time": 0.005266666412353516,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0020041465759277344,
+      "ner_time": 0.0019981861114501953,
       "ner_error": null,
-      "total_time": 0.006584644317626953
+      "total_time": 0.007264852523803711
     },
     {
       "cv_id": 23,
@@ -410,14 +410,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 59.58,
+      "score": 72.67,
       "score_breakdown": {},
-      "score_time": 0.007820844650268555,
+      "score_time": 0.006407976150512695,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002466440200805664,
       "ner_error": null,
-      "total_time": 0.007820844650268555
+      "total_time": 0.00887441635131836
     },
     {
       "cv_id": 24,
@@ -428,14 +428,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 48.75,
+      "score": 66.33,
       "score_breakdown": {},
-      "score_time": 0.008318424224853516,
+      "score_time": 0.0050623416900634766,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0027027130126953125,
+      "ner_time": 0.0020046234130859375,
       "ner_error": null,
-      "total_time": 0.011021137237548828
+      "total_time": 0.007066965103149414
     },
     {
       "cv_id": 25,
@@ -446,14 +446,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 71.25,
+      "score": 88.0,
       "score_breakdown": {},
-      "score_time": 0.005637645721435547,
+      "score_time": 0.006581783294677734,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0013363361358642578,
+      "ner_time": 0.0023186206817626953,
       "ner_error": null,
-      "total_time": 0.006973981857299805
+      "total_time": 0.00890040397644043
     },
     {
       "cv_id": 26,
@@ -464,14 +464,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 45.2,
+      "score": 56.45,
       "score_breakdown": {},
-      "score_time": 0.0,
+      "score_time": 0.006667137145996094,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.007564544677734375,
+      "ner_time": 0.0024492740631103516,
       "ner_error": null,
-      "total_time": 0.007564544677734375
+      "total_time": 0.009116411209106445
     },
     {
       "cv_id": 27,
@@ -482,14 +482,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 46.25,
+      "score": 59.82,
       "score_breakdown": {},
-      "score_time": 0.007082700729370117,
+      "score_time": 0.006838798522949219,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0025131702423095703,
+      "ner_time": 0.0015184879302978516,
       "ner_error": null,
-      "total_time": 0.009595870971679688
+      "total_time": 0.00835728645324707
     },
     {
       "cv_id": 28,
@@ -500,14 +500,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 59.58,
+      "score": 73.5,
       "score_breakdown": {},
-      "score_time": 0.003108501434326172,
+      "score_time": 0.007703304290771484,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.007687568664550781,
+      "ner_time": 0.002962350845336914,
       "ner_error": null,
-      "total_time": 0.010796070098876953
+      "total_time": 0.010665655136108398
     },
     {
       "cv_id": 29,
@@ -518,14 +518,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 41.25,
+      "score": 70.5,
       "score_breakdown": {},
-      "score_time": 0.006727457046508789,
+      "score_time": 0.006041765213012695,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002504110336303711,
+      "ner_time": 0.0018074512481689453,
       "ner_error": null,
-      "total_time": 0.0092315673828125
+      "total_time": 0.00784921646118164
     },
     {
       "cv_id": 30,
@@ -536,14 +536,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 51.25,
+      "score": 74.17,
       "score_breakdown": {},
-      "score_time": 0.005780220031738281,
+      "score_time": 0.006170749664306641,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0018355846405029297,
+      "ner_time": 0.001798868179321289,
       "ner_error": null,
-      "total_time": 0.007615804672241211
+      "total_time": 0.00796961784362793
     },
     {
       "cv_id": 31,
@@ -554,14 +554,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 45.2,
+      "score": 57.31,
       "score_breakdown": {},
-      "score_time": 0.008139610290527344,
+      "score_time": 0.006977081298828125,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0029273033142089844,
+      "ner_time": 0.0022051334381103516,
       "ner_error": null,
-      "total_time": 0.011066913604736328
+      "total_time": 0.009182214736938477
     },
     {
       "cv_id": 32,
@@ -572,14 +572,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 26.25,
+      "score": 56.78,
       "score_breakdown": {},
-      "score_time": 0.004322528839111328,
+      "score_time": 0.0060312747955322266,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0018029212951660156,
+      "ner_time": 0.0008070468902587891,
       "ner_error": null,
-      "total_time": 0.006125450134277344
+      "total_time": 0.006838321685791016
     },
     {
       "cv_id": 33,
@@ -590,14 +590,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 52.92,
+      "score": 72.67,
       "score_breakdown": {},
-      "score_time": 0.0052602291107177734,
+      "score_time": 0.005523204803466797,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002393484115600586,
+      "ner_time": 0.0025086402893066406,
       "ner_error": null,
-      "total_time": 0.007653713226318359
+      "total_time": 0.008031845092773438
     },
     {
       "cv_id": 34,
@@ -608,14 +608,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 43.75,
+      "score": 68.83,
       "score_breakdown": {},
-      "score_time": 0.0051462650299072266,
+      "score_time": 0.004786968231201172,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0017468929290771484,
+      "ner_time": 0.0020020008087158203,
       "ner_error": null,
-      "total_time": 0.006893157958984375
+      "total_time": 0.006788969039916992
     },
     {
       "cv_id": 35,
@@ -626,14 +626,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 63.75,
+      "score": 52.17,
       "score_breakdown": {},
-      "score_time": 0.005093812942504883,
+      "score_time": 0.00639033317565918,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.003023386001586914,
+      "ner_time": 0.0016193389892578125,
       "ner_error": null,
-      "total_time": 0.008117198944091797
+      "total_time": 0.008009672164916992
     },
     {
       "cv_id": 36,
@@ -644,14 +644,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 51.51,
+      "score": 55.22,
       "score_breakdown": {},
-      "score_time": 0.008417606353759766,
+      "score_time": 0.007191658020019531,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0030181407928466797,
+      "ner_time": 0.0028460025787353516,
       "ner_error": null,
-      "total_time": 0.011435747146606445
+      "total_time": 0.010037660598754883
     },
     {
       "cv_id": 37,
@@ -662,14 +662,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 26.25,
+      "score": 48.59,
       "score_breakdown": {},
-      "score_time": 0.005578041076660156,
+      "score_time": 0.005095720291137695,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002001047134399414,
       "ner_error": null,
-      "total_time": 0.005578041076660156
+      "total_time": 0.007096767425537109
     },
     {
       "cv_id": 38,
@@ -680,14 +680,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 12.92,
+      "score": 58.17,
       "score_breakdown": {},
-      "score_time": 0.00891733169555664,
+      "score_time": 0.005572319030761719,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002005338668823242,
+      "ner_time": 0.0012843608856201172,
       "ner_error": null,
-      "total_time": 0.010922670364379883
+      "total_time": 0.006856679916381836
     },
     {
       "cv_id": 39,
@@ -698,14 +698,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 51.25,
+      "score": 53.83,
       "score_breakdown": {},
-      "score_time": 0.008064746856689453,
+      "score_time": 0.005502223968505859,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002309560775756836,
+      "ner_time": 0.0025091171264648438,
       "ner_error": null,
-      "total_time": 0.010374307632446289
+      "total_time": 0.008011341094970703
     },
     {
       "cv_id": 40,
@@ -716,14 +716,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 71.25,
+      "score": 86.67,
       "score_breakdown": {},
-      "score_time": 0.005822420120239258,
+      "score_time": 0.006207942962646484,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0017881393432617188,
       "ner_error": null,
-      "total_time": 0.005822420120239258
+      "total_time": 0.007996082305908203
     },
     {
       "cv_id": 41,
@@ -734,14 +734,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 39.01,
+      "score": 52.73,
       "score_breakdown": {},
-      "score_time": 0.0074596405029296875,
+      "score_time": 0.005683183670043945,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0036993026733398438,
+      "ner_time": 0.001998424530029297,
       "ner_error": null,
-      "total_time": 0.011158943176269531
+      "total_time": 0.007681608200073242
     },
     {
       "cv_id": 42,
@@ -752,14 +752,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 58.75,
+      "score": 78.57,
       "score_breakdown": {},
-      "score_time": 0.007360935211181641,
+      "score_time": 0.004965066909790039,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002314329147338867,
+      "ner_time": 0.002507448196411133,
       "ner_error": null,
-      "total_time": 0.009675264358520508
+      "total_time": 0.007472515106201172
     },
     {
       "cv_id": 43,
@@ -770,14 +770,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 72.92,
+      "score": 70.67,
       "score_breakdown": {},
-      "score_time": 0.0065267086029052734,
+      "score_time": 0.006073713302612305,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002508878707885742,
       "ner_error": null,
-      "total_time": 0.0065267086029052734
+      "total_time": 0.008582592010498047
     },
     {
       "cv_id": 44,
@@ -788,14 +788,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 43.75,
+      "score": 54.67,
       "score_breakdown": {},
-      "score_time": 0.003110170364379883,
+      "score_time": 0.005475759506225586,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.005585193634033203,
+      "ner_time": 0.0009992122650146484,
       "ner_error": null,
-      "total_time": 0.008695363998413086
+      "total_time": 0.006474971771240234
     },
     {
       "cv_id": 45,
@@ -806,14 +806,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 51.25,
+      "score": 45.5,
       "score_breakdown": {},
-      "score_time": 0.004043102264404297,
+      "score_time": 0.005864620208740234,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002008676528930664,
+      "ner_time": 0.002054929733276367,
       "ner_error": null,
-      "total_time": 0.006051778793334961
+      "total_time": 0.007919549942016602
     },
     {
       "cv_id": 46,
@@ -824,14 +824,14 @@
       "jd_id": 1,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 51.51,
+      "score": 64.64,
       "score_breakdown": {},
-      "score_time": 0.008783817291259766,
+      "score_time": 0.006556510925292969,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0019562244415283203,
+      "ner_time": 0.001508474349975586,
       "ner_error": null,
-      "total_time": 0.010740041732788086
+      "total_time": 0.008064985275268555
     },
     {
       "cv_id": 47,
@@ -842,14 +842,14 @@
       "jd_id": 7,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 31.25,
+      "score": 64.21,
       "score_breakdown": {},
-      "score_time": 0.004934549331665039,
+      "score_time": 0.005813121795654297,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.001146554946899414,
       "ner_error": null,
-      "total_time": 0.004934549331665039
+      "total_time": 0.006959676742553711
     },
     {
       "cv_id": 48,
@@ -860,14 +860,14 @@
       "jd_id": 13,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 52.92,
+      "score": 73.0,
       "score_breakdown": {},
-      "score_time": 0.0020034313201904297,
+      "score_time": 0.006878376007080078,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.007428169250488281,
+      "ner_time": 0.0022058486938476562,
       "ner_error": null,
-      "total_time": 0.009431600570678711
+      "total_time": 0.009084224700927734
     },
     {
       "cv_id": 49,
@@ -878,14 +878,14 @@
       "jd_id": 19,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 41.25,
+      "score": 62.17,
       "score_breakdown": {},
-      "score_time": 0.0039517879486083984,
+      "score_time": 0.005744218826293945,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0020046234130859375,
       "ner_error": null,
-      "total_time": 0.0039517879486083984
+      "total_time": 0.007748842239379883
     },
     {
       "cv_id": 50,
@@ -896,14 +896,14 @@
       "jd_id": 25,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 56.25,
+      "score": 58.0,
       "score_breakdown": {},
-      "score_time": 0.0030312538146972656,
+      "score_time": 0.006092548370361328,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.004642963409423828,
+      "ner_time": 0.0031905174255371094,
       "ner_error": null,
-      "total_time": 0.007674217224121094
+      "total_time": 0.009283065795898438
     },
     {
       "cv_id": 51,
@@ -914,14 +914,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 27.25,
+      "score": 44.95,
       "score_breakdown": {},
-      "score_time": 0.005173683166503906,
+      "score_time": 0.004736661911010742,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0028181076049804688,
+      "ner_time": 0.003173351287841797,
       "ner_error": null,
-      "total_time": 0.007991790771484375
+      "total_time": 0.007910013198852539
     },
     {
       "cv_id": 52,
@@ -932,14 +932,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 52.69,
+      "score": 73.21,
       "score_breakdown": {},
-      "score_time": 0.004627704620361328,
+      "score_time": 0.00484776496887207,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0025246143341064453,
+      "ner_time": 0.0027124881744384766,
       "ner_error": null,
-      "total_time": 0.0071523189544677734
+      "total_time": 0.007560253143310547
     },
     {
       "cv_id": 53,
@@ -950,14 +950,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 53.52,
+      "score": 60.17,
       "score_breakdown": {},
-      "score_time": 0.0,
+      "score_time": 0.005267620086669922,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002060413360595703,
       "ner_error": null,
-      "total_time": 0.0
+      "total_time": 0.007328033447265625
     },
     {
       "cv_id": 54,
@@ -968,14 +968,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 49.25,
+      "score": 61.33,
       "score_breakdown": {},
-      "score_time": 0.003020048141479492,
+      "score_time": 0.005911111831665039,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002160310745239258,
       "ner_error": null,
-      "total_time": 0.003020048141479492
+      "total_time": 0.008071422576904297
     },
     {
       "cv_id": 55,
@@ -986,14 +986,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 61.25,
+      "score": 70.5,
       "score_breakdown": {},
-      "score_time": 0.009856700897216797,
+      "score_time": 0.005583524703979492,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002237081527709961,
+      "ner_time": 0.0014615058898925781,
       "ner_error": null,
-      "total_time": 0.012093782424926758
+      "total_time": 0.00704503059387207
     },
     {
       "cv_id": 56,
@@ -1004,14 +1004,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 41.25,
+      "score": 61.35,
       "score_breakdown": {},
-      "score_time": 0.005990266799926758,
+      "score_time": 0.0055010318756103516,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0020051002502441406,
+      "ner_time": 0.0024695396423339844,
       "ner_error": null,
-      "total_time": 0.007995367050170898
+      "total_time": 0.007970571517944336
     },
     {
       "cv_id": 57,
@@ -1022,14 +1022,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 41.83,
+      "score": 63.25,
       "score_breakdown": {},
-      "score_time": 0.0043125152587890625,
+      "score_time": 0.00415802001953125,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0019998550415039062,
       "ner_error": null,
-      "total_time": 0.0043125152587890625
+      "total_time": 0.006157875061035156
     },
     {
       "cv_id": 58,
@@ -1040,14 +1040,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 58.98,
+      "score": 61.0,
       "score_breakdown": {},
-      "score_time": 0.0033147335052490234,
+      "score_time": 0.005974769592285156,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0009987354278564453,
       "ner_error": null,
-      "total_time": 0.0033147335052490234
+      "total_time": 0.0069735050201416016
     },
     {
       "cv_id": 59,
@@ -1058,14 +1058,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 67.0,
+      "score": 60.33,
       "score_breakdown": {},
-      "score_time": 0.009492874145507812,
+      "score_time": 0.00789642333984375,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0018172264099121094,
       "ner_error": null,
-      "total_time": 0.009492874145507812
+      "total_time": 0.00971364974975586
     },
     {
       "cv_id": 60,
@@ -1076,14 +1076,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 52.75,
+      "score": 55.42,
       "score_breakdown": {},
-      "score_time": 0.010682821273803711,
+      "score_time": 0.005675315856933594,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002170085906982422,
+      "ner_time": 0.0015060901641845703,
       "ner_error": null,
-      "total_time": 0.012852907180786133
+      "total_time": 0.007181406021118164
     },
     {
       "cv_id": 61,
@@ -1094,14 +1094,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 44.25,
+      "score": 66.16,
       "score_breakdown": {},
-      "score_time": 0.004341602325439453,
+      "score_time": 0.005787849426269531,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0025315284729003906,
+      "ner_time": 0.0015072822570800781,
       "ner_error": null,
-      "total_time": 0.006873130798339844
+      "total_time": 0.007295131683349609
     },
     {
       "cv_id": 62,
@@ -1112,14 +1112,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 32.6,
+      "score": 52.29,
       "score_breakdown": {},
-      "score_time": 0.004980325698852539,
+      "score_time": 0.005591392517089844,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.001979351043701172,
+      "ner_time": 0.0011210441589355469,
       "ner_error": null,
-      "total_time": 0.006959676742553711
+      "total_time": 0.006712436676025391
     },
     {
       "cv_id": 63,
@@ -1130,14 +1130,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 58.98,
+      "score": 61.0,
       "score_breakdown": {},
-      "score_time": 0.004014015197753906,
+      "score_time": 0.0054781436920166016,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0013287067413330078,
       "ner_error": null,
-      "total_time": 0.004014015197753906
+      "total_time": 0.006806850433349609
     },
     {
       "cv_id": 64,
@@ -1148,14 +1148,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 62.25,
+      "score": 61.33,
       "score_breakdown": {},
-      "score_time": 0.009402275085449219,
+      "score_time": 0.006686210632324219,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0037827491760253906,
+      "ner_time": 0.0013232231140136719,
       "ner_error": null,
-      "total_time": 0.01318502426147461
+      "total_time": 0.00800943374633789
     },
     {
       "cv_id": 65,
@@ -1166,14 +1166,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 43.75,
+      "score": 63.17,
       "score_breakdown": {},
-      "score_time": 0.0062863826751708984,
+      "score_time": 0.005193233489990234,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0020215511322021484,
+      "ner_time": 0.0015058517456054688,
       "ner_error": null,
-      "total_time": 0.008307933807373047
+      "total_time": 0.006699085235595703
     },
     {
       "cv_id": 66,
@@ -1184,14 +1184,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 28.75,
+      "score": 50.5,
       "score_breakdown": {},
-      "score_time": 0.005013704299926758,
+      "score_time": 0.005330085754394531,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0025272369384765625,
+      "ner_time": 0.0011906623840332031,
       "ner_error": null,
-      "total_time": 0.00754094123840332
+      "total_time": 0.006520748138427734
     },
     {
       "cv_id": 67,
@@ -1202,14 +1202,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 36.21,
+      "score": 55.82,
       "score_breakdown": {},
-      "score_time": 0.006996631622314453,
+      "score_time": 0.005498409271240234,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.001508951187133789,
+      "ner_time": 0.0014195442199707031,
       "ner_error": null,
-      "total_time": 0.008505582809448242
+      "total_time": 0.0069179534912109375
     },
     {
       "cv_id": 68,
@@ -1220,14 +1220,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 64.43,
+      "score": 61.0,
       "score_breakdown": {},
-      "score_time": 0.00644993782043457,
+      "score_time": 0.004683494567871094,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002504110336303711,
+      "ner_time": 0.002650022506713867,
       "ner_error": null,
-      "total_time": 0.008954048156738281
+      "total_time": 0.007333517074584961
     },
     {
       "cv_id": 69,
@@ -1238,14 +1238,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 68.25,
+      "score": 61.33,
       "score_breakdown": {},
-      "score_time": 0.005514383316040039,
+      "score_time": 0.006539821624755859,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0020041465759277344,
+      "ner_time": 0.0019865036010742188,
       "ner_error": null,
-      "total_time": 0.0075185298919677734
+      "total_time": 0.008526325225830078
     },
     {
       "cv_id": 70,
@@ -1256,14 +1256,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 58.75,
+      "score": 68.0,
       "score_breakdown": {},
-      "score_time": 0.005968809127807617,
+      "score_time": 0.005754947662353516,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.00168609619140625,
       "ner_error": null,
-      "total_time": 0.005968809127807617
+      "total_time": 0.007441043853759766
     },
     {
       "cv_id": 71,
@@ -1274,14 +1274,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 46.0,
+      "score": 63.43,
       "score_breakdown": {},
-      "score_time": 0.00653529167175293,
+      "score_time": 0.005429983139038086,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0015223026275634766,
+      "ner_time": 0.0015392303466796875,
       "ner_error": null,
-      "total_time": 0.008057594299316406
+      "total_time": 0.0069692134857177734
     },
     {
       "cv_id": 72,
@@ -1292,14 +1292,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 41.83,
+      "score": 62.35,
       "score_breakdown": {},
-      "score_time": 0.0015027523040771484,
+      "score_time": 0.005030632019042969,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.005510568618774414,
+      "ner_time": 0.001558065414428711,
       "ner_error": null,
-      "total_time": 0.0070133209228515625
+      "total_time": 0.00658869743347168
     },
     {
       "cv_id": 73,
@@ -1310,14 +1310,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 64.43,
+      "score": 61.0,
       "score_breakdown": {},
-      "score_time": 0.0040225982666015625,
+      "score_time": 0.005648136138916016,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002271890640258789,
       "ner_error": null,
-      "total_time": 0.0040225982666015625
+      "total_time": 0.007920026779174805
     },
     {
       "cv_id": 74,
@@ -1328,14 +1328,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 34.75,
+      "score": 59.0,
       "score_breakdown": {},
-      "score_time": 0.007283687591552734,
+      "score_time": 0.004594564437866211,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0028214454650878906,
+      "ner_time": 0.0013208389282226562,
       "ner_error": null,
-      "total_time": 0.010105133056640625
+      "total_time": 0.005915403366088867
     },
     {
       "cv_id": 75,
@@ -1346,14 +1346,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 61.25,
+      "score": 69.17,
       "score_breakdown": {},
-      "score_time": 0.005947113037109375,
+      "score_time": 0.006165981292724609,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0013759136199951172,
+      "ner_time": 0.001983165740966797,
       "ner_error": null,
-      "total_time": 0.007323026657104492
+      "total_time": 0.008149147033691406
     },
     {
       "cv_id": 76,
@@ -1364,14 +1364,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 34.25,
+      "score": 56.3,
       "score_breakdown": {},
-      "score_time": 0.003050088882446289,
+      "score_time": 0.006045103073120117,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0017840862274169922,
       "ner_error": null,
-      "total_time": 0.003050088882446289
+      "total_time": 0.00782918930053711
     },
     {
       "cv_id": 77,
@@ -1382,14 +1382,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 20.1,
+      "score": 47.72,
       "score_breakdown": {},
-      "score_time": 0.00846242904663086,
+      "score_time": 0.004006862640380859,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0011785030364990234,
+      "ner_time": 0.0011456012725830078,
       "ner_error": null,
-      "total_time": 0.009640932083129883
+      "total_time": 0.005152463912963867
     },
     {
       "cv_id": 78,
@@ -1400,14 +1400,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 17.16,
+      "score": 47.67,
       "score_breakdown": {},
-      "score_time": 0.004951953887939453,
+      "score_time": 0.005107879638671875,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0018444061279296875,
+      "ner_time": 0.0017445087432861328,
       "ner_error": null,
-      "total_time": 0.006796360015869141
+      "total_time": 0.006852388381958008
     },
     {
       "cv_id": 79,
@@ -1418,14 +1418,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 49.0,
+      "score": 59.5,
       "score_breakdown": {},
-      "score_time": 0.0029380321502685547,
+      "score_time": 0.005136251449584961,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.00099945068359375,
       "ner_error": null,
-      "total_time": 0.0029380321502685547
+      "total_time": 0.006135702133178711
     },
     {
       "cv_id": 80,
@@ -1436,14 +1436,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 46.25,
+      "score": 63.33,
       "score_breakdown": {},
-      "score_time": 0.008585214614868164,
+      "score_time": 0.00564885139465332,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.001005411148071289,
+      "ner_time": 0.0013811588287353516,
       "ner_error": null,
-      "total_time": 0.009590625762939453
+      "total_time": 0.007030010223388672
     },
     {
       "cv_id": 81,
@@ -1454,14 +1454,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 47.25,
+      "score": 60.12,
       "score_breakdown": {},
-      "score_time": 0.0071561336517333984,
+      "score_time": 0.0055446624755859375,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0020024776458740234,
       "ner_error": null,
-      "total_time": 0.0071561336517333984
+      "total_time": 0.007547140121459961
     },
     {
       "cv_id": 82,
@@ -1472,14 +1472,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 34.23,
+      "score": 55.96,
       "score_breakdown": {},
-      "score_time": 0.004119396209716797,
+      "score_time": 0.005429267883300781,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.006027936935424805,
+      "ner_time": 0.001856088638305664,
       "ner_error": null,
-      "total_time": 0.010147333145141602
+      "total_time": 0.007285356521606445
     },
     {
       "cv_id": 83,
@@ -1490,14 +1490,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 45.57,
+      "score": 58.67,
       "score_breakdown": {},
-      "score_time": 0.0056819915771484375,
+      "score_time": 0.004606008529663086,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.001005411148071289,
+      "ner_time": 0.0020263195037841797,
       "ner_error": null,
-      "total_time": 0.0066874027252197266
+      "total_time": 0.006632328033447266
     },
     {
       "cv_id": 84,
@@ -1508,14 +1508,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 54.75,
+      "score": 55.5,
       "score_breakdown": {},
-      "score_time": 0.004686117172241211,
+      "score_time": 0.005377054214477539,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0022890567779541016,
+      "ner_time": 0.0012042522430419922,
       "ner_error": null,
-      "total_time": 0.0069751739501953125
+      "total_time": 0.006581306457519531
     },
     {
       "cv_id": 85,
@@ -1526,14 +1526,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 46.25,
+      "score": 65.5,
       "score_breakdown": {},
-      "score_time": 0.0065765380859375,
+      "score_time": 0.0068051815032958984,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0024216175079345703,
+      "ner_time": 0.00048089027404785156,
       "ner_error": null,
-      "total_time": 0.00899815559387207
+      "total_time": 0.00728607177734375
     },
     {
       "cv_id": 86,
@@ -1544,14 +1544,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 30.25,
+      "score": 51.8,
       "score_breakdown": {},
-      "score_time": 0.0,
+      "score_time": 0.0064923763275146484,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.005901813507080078,
+      "ner_time": 0.0010001659393310547,
       "ner_error": null,
-      "total_time": 0.005901813507080078
+      "total_time": 0.007492542266845703
     },
     {
       "cv_id": 87,
@@ -1562,14 +1562,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 47.94,
+      "score": 72.18,
       "score_breakdown": {},
-      "score_time": 0.004149436950683594,
+      "score_time": 0.006247758865356445,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0021860599517822266,
+      "ner_time": 0.0017545223236083984,
       "ner_error": null,
-      "total_time": 0.00633549690246582
+      "total_time": 0.008002281188964844
     },
     {
       "cv_id": 88,
@@ -1580,14 +1580,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 40.57,
+      "score": 55.17,
       "score_breakdown": {},
-      "score_time": 0.0052564144134521484,
+      "score_time": 0.0057065486907958984,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.001504659652709961,
       "ner_error": null,
-      "total_time": 0.0052564144134521484
+      "total_time": 0.007211208343505859
     },
     {
       "cv_id": 89,
@@ -1598,14 +1598,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 33.25,
+      "score": 58.83,
       "score_breakdown": {},
-      "score_time": 0.003837108612060547,
+      "score_time": 0.0048182010650634766,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.00116729736328125,
       "ner_error": null,
-      "total_time": 0.003837108612060547
+      "total_time": 0.0059854984283447266
     },
     {
       "cv_id": 90,
@@ -1616,14 +1616,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 40.25,
+      "score": 61.67,
       "score_breakdown": {},
-      "score_time": 0.008584260940551758,
+      "score_time": 0.005961179733276367,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002048969268798828,
       "ner_error": null,
-      "total_time": 0.008584260940551758
+      "total_time": 0.008010149002075195
     },
     {
       "cv_id": 91,
@@ -1634,14 +1634,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 50.25,
+      "score": 67.82,
       "score_breakdown": {},
-      "score_time": 0.0075206756591796875,
+      "score_time": 0.0039217472076416016,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0028650760650634766,
       "ner_error": null,
-      "total_time": 0.0075206756591796875
+      "total_time": 0.006786823272705078
     },
     {
       "cv_id": 92,
@@ -1652,14 +1652,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 48.33,
+      "score": 73.34,
       "score_breakdown": {},
-      "score_time": 0.007622957229614258,
+      "score_time": 0.0051152706146240234,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002585887908935547,
+      "ner_time": 0.0015063285827636719,
       "ner_error": null,
-      "total_time": 0.010208845138549805
+      "total_time": 0.006621599197387695
     },
     {
       "cv_id": 93,
@@ -1670,14 +1670,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 64.43,
+      "score": 60.17,
       "score_breakdown": {},
-      "score_time": 0.0033521652221679688,
+      "score_time": 0.006521940231323242,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.002892017364501953,
       "ner_error": null,
-      "total_time": 0.0033521652221679688
+      "total_time": 0.009413957595825195
     },
     {
       "cv_id": 94,
@@ -1688,14 +1688,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 41.75,
+      "score": 56.33,
       "score_breakdown": {},
-      "score_time": 0.006341218948364258,
+      "score_time": 0.003999233245849609,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.003995656967163086,
+      "ner_time": 0.0021867752075195312,
       "ner_error": null,
-      "total_time": 0.010336875915527344
+      "total_time": 0.006186008453369141
     },
     {
       "cv_id": 95,
@@ -1706,14 +1706,14 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 66.25,
+      "score": 72.5,
       "score_breakdown": {},
-      "score_time": 0.006481647491455078,
+      "score_time": 0.0058057308197021484,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0031995773315429688,
+      "ner_time": 0.002510547637939453,
       "ner_error": null,
-      "total_time": 0.009681224822998047
+      "total_time": 0.008316278457641602
     },
     {
       "cv_id": 96,
@@ -1724,14 +1724,14 @@
       "jd_id": 4,
       "jd_title": "Senior Backend Developer",
       "jd_field": "software",
-      "score": 43.25,
+      "score": 55.57,
       "score_breakdown": {},
-      "score_time": 0.0039789676666259766,
+      "score_time": 0.005488395690917969,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0025053024291992188,
+      "ner_time": 0.0017087459564208984,
       "ner_error": null,
-      "total_time": 0.006484270095825195
+      "total_time": 0.007197141647338867
     },
     {
       "cv_id": 97,
@@ -1742,14 +1742,14 @@
       "jd_id": 10,
       "jd_title": "Senior Data Scientist",
       "jd_field": "data",
-      "score": 58.56,
+      "score": 81.67,
       "score_breakdown": {},
-      "score_time": 0.0033309459686279297,
+      "score_time": 0.004464864730834961,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0,
+      "ner_time": 0.0018095970153808594,
       "ner_error": null,
-      "total_time": 0.0033309459686279297
+      "total_time": 0.00627446174621582
     },
     {
       "cv_id": 98,
@@ -1760,14 +1760,14 @@
       "jd_id": 16,
       "jd_title": "Digital Marketing Manager",
       "jd_field": "marketing",
-      "score": 55.23,
+      "score": 58.17,
       "score_breakdown": {},
-      "score_time": 0.00802159309387207,
+      "score_time": 0.0060062408447265625,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0015048980712890625,
+      "ner_time": 0.001998424530029297,
       "ner_error": null,
-      "total_time": 0.009526491165161133
+      "total_time": 0.00800466537475586
     },
     {
       "cv_id": 99,
@@ -1778,14 +1778,14 @@
       "jd_id": 22,
       "jd_title": "Senior Financial Analyst",
       "jd_field": "finance",
-      "score": 43.25,
+      "score": 60.5,
       "score_breakdown": {},
-      "score_time": 0.007665395736694336,
+      "score_time": 0.004088401794433594,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.002003192901611328,
+      "ner_time": 0.0026977062225341797,
       "ner_error": null,
-      "total_time": 0.009668588638305664
+      "total_time": 0.0067861080169677734
     },
     {
       "cv_id": 100,
@@ -1796,30 +1796,30 @@
       "jd_id": 28,
       "jd_title": "Talent Acquisition Manager",
       "jd_field": "hr",
-      "score": 36.25,
+      "score": 60.5,
       "score_breakdown": {},
-      "score_time": 0.004006862640380859,
+      "score_time": 0.004397153854370117,
       "score_error": null,
       "ner_entities": [],
-      "ner_time": 0.0019981861114501953,
+      "ner_time": 0.0008447170257568359,
       "ner_error": null,
-      "total_time": 0.006005048751831055
+      "total_time": 0.005241870880126953
     }
   ],
   "analysis": {
     "overall": {
       "total_tests": 100,
-      "total_time": 0.8027043342590332,
-      "avg_time_per_test": 0.008027043342590332,
+      "total_time": 0.7892360687255859,
+      "avg_time_per_test": 0.00789236068725586,
       "success_rate": 100.0
     },
     "scoring": {
-      "avg_score": 48.0739,
-      "median_score": 48.135,
-      "min_score": 12.92,
-      "max_score": 72.92,
-      "std_dev": 13.066349323218159,
-      "avg_time": 0.0057384538650512695,
+      "avg_score": 63.0024,
+      "median_score": 61.0,
+      "min_score": 44.95,
+      "max_score": 88.0,
+      "std_dev": 9.74882765497804,
+      "avg_time": 0.005854225158691407,
       "error_count": 0,
       "error_rate": 0.0
     },
@@ -1827,122 +1827,61 @@
       "total_entities_extracted": 0,
       "avg_entities_per_cv": 0,
       "entity_types_distribution": {},
-      "avg_time": 0.002095608711242676,
+      "avg_time": 0.002002272605895996,
       "error_count": 0,
       "error_rate": 0.0
     },
     "by_language": {
       "vietnamese": {
         "count": 50,
-        "avg_score": 49.2104,
+        "avg_score": 65.1338,
         "avg_entities": 0
       },
       "english": {
         "count": 50,
-        "avg_score": 46.9374,
+        "avg_score": 60.871,
         "avg_entities": 0
       }
     },
     "by_field": {
       "software": {
         "count": 20,
-        "avg_score": 39.934,
-        "min_score": 25.2,
-        "max_score": 51.51,
+        "avg_score": 56.152,
+        "min_score": 44.95,
+        "max_score": 67.82,
         "avg_entities": 0
       },
       "data": {
         "count": 20,
-        "avg_score": 41.716,
-        "min_score": 20.1,
-        "max_score": 58.75,
+        "avg_score": 63.5835,
+        "min_score": 47.72,
+        "max_score": 81.67,
         "avg_entities": 0
       },
       "marketing": {
         "count": 20,
-        "avg_score": 52.8945,
-        "min_score": 12.92,
-        "max_score": 72.92,
+        "avg_score": 64.8435,
+        "min_score": 47.67,
+        "max_score": 73.5,
         "avg_entities": 0
       },
       "finance": {
         "count": 20,
-        "avg_score": 49.55,
-        "min_score": 33.25,
-        "max_score": 68.25,
+        "avg_score": 61.089999999999996,
+        "min_score": 53.83,
+        "max_score": 70.5,
         "avg_entities": 0
       },
       "hr": {
         "count": 20,
-        "avg_score": 56.275,
-        "min_score": 36.25,
-        "max_score": 71.25,
+        "avg_score": 69.343,
+        "min_score": 45.5,
+        "max_score": 88.0,
         "avg_entities": 0
       }
     },
     "performance_issues": {
-      "low_scores": [
-        {
-          "cv_name": "Nguyễn Văn An",
-          "jd_title": "Senior Backend Developer",
-          "score": 25.2,
-          "field": "software"
-        },
-        {
-          "cv_name": "Mai Văn Phúc",
-          "jd_title": "Senior Backend Developer",
-          "score": 28.36,
-          "field": "software"
-        },
-        {
-          "cv_name": "Lâm Thị Uyên",
-          "jd_title": "Senior Backend Developer",
-          "score": 29.54,
-          "field": "software"
-        },
-        {
-          "cv_name": "Quách Văn Nam",
-          "jd_title": "Senior Data Scientist",
-          "score": 26.25,
-          "field": "data"
-        },
-        {
-          "cv_name": "Ông Thị Sáng",
-          "jd_title": "Senior Data Scientist",
-          "score": 26.25,
-          "field": "data"
-        },
-        {
-          "cv_name": "Ứng Văn Tâm",
-          "jd_title": "Digital Marketing Manager",
-          "score": 12.92,
-          "field": "marketing"
-        },
-        {
-          "cv_name": "John Smith",
-          "jd_title": "Senior Backend Developer",
-          "score": 27.25,
-          "field": "software"
-        },
-        {
-          "cv_name": "Susan Martinez",
-          "jd_title": "Senior Backend Developer",
-          "score": 28.75,
-          "field": "software"
-        },
-        {
-          "cv_name": "Mark Wright",
-          "jd_title": "Senior Data Scientist",
-          "score": 20.1,
-          "field": "data"
-        },
-        {
-          "cv_name": "Sandra Lopez",
-          "jd_title": "Digital Marketing Manager",
-          "score": 17.16,
-          "field": "marketing"
-        }
-      ],
+      "low_scores": [],
       "high_variance_fields": [],
       "slow_operations": [],
       "ner_failures": [

@@ -9,11 +9,13 @@ from pydantic import BaseModel, Field
 
 from app.models import get_bert, get_phobert, get_similarity
 from app.improved_scoring import improved_score_cv
+from app.advanced_scoring import get_advanced_scorer
+from app.enhanced_scoring import get_enhanced_scorer
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Career Compass NLP Service", version="0.2.0")
+app = FastAPI(title="Career Compass NLP Service", version="0.4.0")
 
 
 @app.on_event("startup")
@@ -209,7 +211,10 @@ def health() -> dict[str, str]:
 @app.post("/score-cv", response_model=Envelope)
 def score_cv(payload: ScoreCvRequest) -> Envelope:
     try:
-        result_dict = improved_score_cv(payload.cv_text, payload.jd_text, payload.language)
+        # Use enhanced scoring algorithm with related skills and field-specific weights
+        scorer = get_enhanced_scorer()
+        result_dict = scorer.score_cv(payload.cv_text, payload.jd_text, payload.language)
+        
         result = ScoreCvResponse(
             score=result_dict["score"],
             strengths=result_dict["strengths"],
@@ -218,10 +223,35 @@ def score_cv(payload: ScoreCvRequest) -> Envelope:
         )
         return Envelope(success=True, data=result)
     except Exception as e:
-        logger.error(f"Scoring error: {e}")
-        # Fallback to original scoring
-        result = _score(payload.cv_text, payload.jd_text, payload.language)
-        return Envelope(success=True, data=result)
+        logger.error(f"Enhanced scoring error: {e}, falling back to advanced scoring")
+        try:
+            # Fallback to advanced scoring
+            scorer = get_advanced_scorer()
+            result_dict = scorer.score_cv(payload.cv_text, payload.jd_text, payload.language)
+            result = ScoreCvResponse(
+                score=result_dict["score"],
+                strengths=result_dict["strengths"],
+                weaknesses=result_dict["weaknesses"],
+                improvement_tips=result_dict["improvement_tips"]
+            )
+            return Envelope(success=True, data=result)
+        except Exception as e2:
+            logger.error(f"Advanced scoring error: {e2}, falling back to improved scoring")
+            try:
+                # Fallback to improved scoring
+                result_dict = improved_score_cv(payload.cv_text, payload.jd_text, payload.language)
+                result = ScoreCvResponse(
+                    score=result_dict["score"],
+                    strengths=result_dict["strengths"],
+                    weaknesses=result_dict["weaknesses"],
+                    improvement_tips=result_dict["improvement_tips"]
+                )
+                return Envelope(success=True, data=result)
+            except Exception as e3:
+                logger.error(f"Improved scoring error: {e3}, falling back to basic scoring")
+                # Fallback to original scoring
+                result = _score(payload.cv_text, payload.jd_text, payload.language)
+                return Envelope(success=True, data=result)
 
 
 @app.post("/ner/vi")
