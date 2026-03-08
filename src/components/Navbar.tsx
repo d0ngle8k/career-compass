@@ -1,16 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { Menu, X, Sun, Moon, Globe } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const { user, signOut } = useAuth();
 
   const navItems = [
     { label: t("nav.home"), path: "/" },
@@ -64,47 +64,29 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Theme Toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleTheme}
-            className="ml-1 relative overflow-hidden"
-            aria-label="Toggle theme"
-          >
-            <AnimatePresence mode="wait">
-              {theme === "light" ? (
-                <motion.div
-                  key="sun"
-                  initial={{ rotate: -90, scale: 0 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  exit={{ rotate: 90, scale: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Sun className="w-4 h-4" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="moon"
-                  initial={{ rotate: 90, scale: 0 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  exit={{ rotate: -90, scale: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Moon className="w-4 h-4" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </Button>
-
-          <Link to="/solution" className="ml-2">
-            <Button variant="cta" size="sm">{t("nav.cta")}</Button>
-          </Link>
+          {/* Auth */}
+          {user ? (
+            <div className="ml-2 flex items-center gap-2">
+              <span className="text-sm text-muted-foreground flex items-center gap-1">
+                <User className="w-4 h-4" />
+                {user.email?.split("@")[0]}
+              </span>
+              <Button variant="ghost" size="sm" onClick={signOut} className="gap-1">
+                <LogOut className="w-4 h-4" />
+              </Button>
+            </div>
+          ) : (
+            <Link to="/auth" className="ml-2">
+              <Button variant="cta" size="sm" className="gap-1">
+                <LogIn className="w-4 h-4" />
+                {t("nav.login")}
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile controls */}
         <div className="flex items-center gap-1 md:hidden">
-          {/* Language - mobile */}
           <div className="flex items-center bg-secondary rounded-lg p-0.5">
             <button
               onClick={() => setLanguage("vi")}
@@ -123,10 +105,6 @@ const Navbar = () => {
               EN
             </button>
           </div>
-
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === "light" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </Button>
 
           <Button variant="ghost" size="icon" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X /> : <Menu />}
@@ -154,9 +132,17 @@ const Navbar = () => {
                   </Button>
                 </Link>
               ))}
-              <Link to="/solution" onClick={() => setMobileOpen(false)}>
-                <Button variant="cta" className="w-full mt-2">{t("nav.cta")}</Button>
-              </Link>
+              {user ? (
+                <Button variant="outline" className="w-full mt-2 gap-2" onClick={() => { signOut(); setMobileOpen(false); }}>
+                  <LogOut className="w-4 h-4" /> {t("nav.logout")}
+                </Button>
+              ) : (
+                <Link to="/auth" onClick={() => setMobileOpen(false)}>
+                  <Button variant="cta" className="w-full mt-2 gap-1">
+                    <LogIn className="w-4 h-4" /> {t("nav.login")}
+                  </Button>
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

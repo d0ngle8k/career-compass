@@ -3,28 +3,28 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import StarryBackground from "@/components/StarryBackground";
+import { AuthProvider } from "@/contexts/AuthContext";
 import LandingPage from "./pages/LandingPage";
 import SolutionPage from "./pages/SolutionPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <LanguageProvider>
+    <LanguageProvider>
+      <AuthProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <StarryBackground />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingPage />} />
+              <Route path="/auth" element={<AuthPage />} />
               <Route path="/solution" element={<SolutionPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
@@ -32,8 +32,8 @@ const App = () => (
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+      </AuthProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 
