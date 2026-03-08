@@ -7,6 +7,8 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import LandingPage from "./pages/LandingPage";
 import SolutionPage from "./pages/SolutionPage";
+import WriteMailPage from "./pages/WriteMailPage";
+import WriteCoverLetterPage from "./pages/WriteCoverLetterPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import AuthPage from "./pages/AuthPage";
