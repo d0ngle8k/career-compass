@@ -413,30 +413,8 @@ serve(async (req) => {
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
         ],
-        tools: [
-          {
-            type: "function",
-            function: {
-              name: "analyze_cv",
-              description: "Return structured CV analysis with professional email and cover letter",
-              parameters: {
-                type: "object",
-                properties: {
-                  score: { type: "number", description: "Match score 0-100" },
-                  strengths: { type: "array", items: { type: "string" }, description: "3-5 specific strengths" },
-                  weaknesses: { type: "array", items: { type: "string" }, description: "3-5 areas to improve" },
-                  improvement_tips: { type: "array", items: { type: "string" }, description: "3-5 actionable tips" },
-                  email_subject: { type: "string", description: "Professional email subject line" },
-                  email_body: { type: "string", description: "Complete application email body following the template style" },
-                  cover_letter: { type: "string", description: "Complete professional cover letter following the template style" },
-                },
-                required: ["score", "strengths", "weaknesses", "improvement_tips", "email_subject", "email_body", "cover_letter"],
-                additionalProperties: false,
-              },
-            },
-          },
-        ],
-        tool_choice: { type: "function", function: { name: "analyze_cv" } },
+        tools: [toolDef],
+        tool_choice: { type: "function", function: { name: toolName } },
       }),
     });
 
