@@ -9,19 +9,51 @@ import { Mail, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { sendContactMessage } from "@/shared/lib/emailjs";
+
+type ContactFormState = {
+  name: string;
+  email: string;
+  text: string;
+};
 
 const ContactPage = () => {
   const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState<ContactFormState>({
+    name: "",
+    email: "",
+    text: "",
+  });
   const { t } = useLanguage();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!form.name.trim() || !form.email.trim() || !form.text.trim()) {
+      toast.error(t("contact.error.required"));
+      return;
+    }
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+
+    try {
+      await sendContactMessage({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        text: form.text.trim(),
+      });
+
       toast.success(t("contact.success"));
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+      setForm({ name: "", email: "", text: "" });
+    } catch (error) {
+      if (error instanceof Error && error.message === "EMAILJS_NOT_CONFIGURED") {
+        toast.error(t("contact.error.config"));
+      } else {
+        toast.error(t("contact.error.send"));
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -45,15 +77,38 @@ const ContactPage = () => {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <Label htmlFor="name">{t("contact.name")}</Label>
-                  <Input id="name" placeholder="Nguyễn Văn A" required className="mt-1.5" />
+                  <Input
+                    id="name"
+                    value={form.name}
+                    onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
+                    placeholder="Nguyễn Văn A"
+                    required
+                    className="mt-1.5"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="email">{t("contact.email")}</Label>
-                  <Input id="email" type="email" placeholder="email@example.com" required className="mt-1.5" />
+                  <Input
+                    id="email"
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
+                    placeholder="email@example.com"
+                    required
+                    className="mt-1.5"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="message">{t("contact.message")}</Label>
-                  <Textarea id="message" placeholder={t("contact.message.placeholder")} rows={5} required className="mt-1.5" />
+                  <Textarea
+                    id="message"
+                    value={form.text}
+                    onChange={(e) => setForm((prev) => ({ ...prev, text: e.target.value }))}
+                    placeholder={t("contact.message.placeholder")}
+                    rows={5}
+                    required
+                    className="mt-1.5"
+                  />
                 </div>
                 <Button type="submit" variant="cta" size="lg" className="gap-2" disabled={loading}>
                   <Send className="w-4 h-4" /> {loading ? t("contact.sending") : t("contact.submit")}

@@ -61,6 +61,12 @@ The backend uses Tera templates for professional email and cover letter generati
 
 👉 **See [SETUP_GUIDE.md](./SETUP_GUIDE.md)** for step-by-step PostgreSQL and OAuth setup.
 
+### Contact Form (EmailJS)
+
+Contact page is integrated with EmailJS and sends 3 fields from user input: `name`, `email`, `text`.
+
+👉 **See [SETUP_GUIDE.md](./SETUP_GUIDE.md#-step-7-emailjs-setup-contact-form)** to configure Service ID, Template ID, and Public Key.
+
 ### Quick Steps:
 - **Python 3.11+** (for NLP service)
 - Google Gemini API key

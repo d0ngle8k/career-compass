@@ -130,6 +130,9 @@ const translations: Translations = {
   "contact.submit": { vi: "Gửi tin nhắn", en: "Send Message" },
   "contact.sending": { vi: "Đang gửi...", en: "Sending..." },
   "contact.success": { vi: "Cảm ơn bạn! Chúng tôi sẽ phản hồi sớm nhất.", en: "Thank you! We'll respond as soon as possible." },
+  "contact.error.required": { vi: "Vui lòng nhập đầy đủ Họ tên, Email và Nội dung.", en: "Please provide name, email, and message." },
+  "contact.error.config": { vi: "EmailJS chưa được cấu hình. Vui lòng liên hệ quản trị viên.", en: "EmailJS is not configured. Please contact the administrator." },
+  "contact.error.send": { vi: "Gửi tin nhắn thất bại. Vui lòng thử lại sau.", en: "Failed to send message. Please try again later." },
   "contact.support": { vi: "Thông tin hỗ trợ", en: "Support Info" },
   "contact.address": { vi: "Địa chỉ", en: "Address" },
   // Chatbot

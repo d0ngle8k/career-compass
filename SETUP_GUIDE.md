@@ -1,4 +1,4 @@
-s# Career Compass AI - OAuth & Database Setup Guide
+# Career Compass AI - OAuth & Database Setup Guide
 
 ## 🎯 Quick Start Overview
 
@@ -275,6 +275,50 @@ SELECT id, email, name, provider, created_at FROM users;
 ```
 
 You should see your OAuth user(s) listed.
+
+---
+
+## ✉️ Step 7: EmailJS Setup (Contact Form)
+
+Contact page now sends user feedback via EmailJS with exactly 3 fields:
+- `name`
+- `email`
+- `text`
+
+### 7.1 Create EmailJS Service & Template
+
+1. Go to [EmailJS Dashboard](https://dashboard.emailjs.com/)
+2. Create an Email Service (Gmail/Outlook/SMTP)
+3. Create an Email Template and include variables:
+   - `{{name}}`
+   - `{{email}}`
+   - `{{text}}`
+4. Copy the following values:
+   - Service ID
+   - Template ID
+   - Public Key
+
+### 7.2 Configure Frontend Environment
+
+Create/update `frontend/.env`:
+
+```env
+VITE_BACKEND_URL=http://127.0.0.1:9000
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+You can also copy from `frontend/.env.example` and fill real values.
+
+### 7.3 Test Contact Form
+
+1. Start frontend: `cd frontend && npm run dev`
+2. Open `/contact`
+3. Fill `Họ tên`, `Email`, `Nội dung`
+4. Submit and verify email arrives at your configured inbox
+
+If config is missing, UI will show a clear `EmailJS is not configured` error toast.
 
 ---
 
