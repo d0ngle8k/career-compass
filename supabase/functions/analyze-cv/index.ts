@@ -303,48 +303,103 @@ serve(async (req) => {
     const emailTemplate = EMAIL_TEMPLATES[language as "vi" | "en"]?.[style as "formal" | "modern" | "creative"] || EMAIL_TEMPLATES.vi.formal;
     const coverTemplate = COVER_LETTER_TEMPLATES[language as "vi" | "en"]?.[style as "formal" | "modern" | "creative"] || COVER_LETTER_TEMPLATES.vi.formal;
 
-    const systemPrompt = `You are an expert career consultant, professional resume writer, and application letter specialist. You have deep expertise in crafting compelling cover letters and application emails that get responses.
+    let systemPrompt = "";
+    let userPrompt = "";
+    let toolDef: any = null;
+    let toolName = "";
 
-Your task is to analyze the candidate's CV against the job description, then generate professional application materials.
-
-IMPORTANT RULES:
-1. ALL output text must be in ${lang}.
-2. Use the template style "${style}" as reference for tone and structure.
-3. Replace ALL placeholder brackets [like this] with actual information extracted from the CV and JD.
-4. If the CV doesn't contain certain info (name, email, phone), use reasonable placeholders like "[Your Name]" in ${lang}.
-5. Quantify achievements whenever possible (numbers, percentages, metrics).
-6. Reference SPECIFIC skills from the CV that match the JD requirements.
-7. The cover letter and email must feel authentic and personalized, not generic.
-8. For "formal" style: Professional, traditional business format.
-9. For "modern" style: Clean, structured with bullet points and sections.
-10. For "creative" style: Engaging, personality-driven with emojis and storytelling.`;
-
-    const userPrompt = `## CV Content:
-${cvText}
-
-## Job Description:
-${jdText}
-
-## Email Template Reference (${style} style, ${lang}):
-${emailTemplate}
-
-## Cover Letter Template Reference (${style} style, ${lang}):
-${coverTemplate}
-
----
-
-INSTRUCTIONS:
-1. Analyze the CV against the JD thoroughly.
-2. Score the match (0-100) based on: skills match, experience relevance, education fit, keyword alignment.
-3. Identify 3-5 specific strengths where the CV matches the JD.
-4. Identify 3-5 specific areas where the CV falls short of JD requirements.
-5. Provide 3-5 actionable improvement tips.
-6. Write a complete application email following the ${style} template style above. Replace all placeholders with actual data from the CV. The email must reference specific matching skills.
-7. Write a complete cover letter following the ${style} template style above. Replace all placeholders with actual data from the CV. The cover letter must be detailed, professional, and tailored to this specific JD.
-
-CRITICAL: Do NOT leave any [placeholder brackets] in the final output. Extract real information from the CV to fill them in. If info is unavailable, write "${language === "en" ? "[Your Name]" : "[Họ tên của bạn]"}" etc.
-
-All text must be in ${lang}.`;
+    if (analysisMode === "score_only") {
+      systemPrompt = `You are an expert career consultant. Analyze the candidate's CV against the job description and provide a detailed scoring. ALL output must be in ${lang}.`;
+      userPrompt = `## CV Content:\n${cvText}\n\n## Job Description:\n${jdText}\n\nScore the CV match (0-100), list 3-5 strengths, 3-5 weaknesses, and 3-5 improvement tips. All in ${lang}.`;
+      toolName = "score_cv";
+      toolDef = {
+        type: "function",
+        function: {
+          name: "score_cv",
+          description: "Return structured CV scoring",
+          parameters: {
+            type: "object",
+            properties: {
+              score: { type: "number", description: "Match score 0-100" },
+              strengths: { type: "array", items: { type: "string" } },
+              weaknesses: { type: "array", items: { type: "string" } },
+              improvement_tips: { type: "array", items: { type: "string" } },
+            },
+            required: ["score", "strengths", "weaknesses", "improvement_tips"],
+            additionalProperties: false,
+          },
+        },
+      };
+    } else if (analysisMode === "email_only") {
+      const emailTemplate = EMAIL_TEMPLATES[language as "vi" | "en"]?.[style as "formal" | "modern" | "creative"] || EMAIL_TEMPLATES.vi.formal;
+      systemPrompt = `You are an expert career consultant and email writer. Write a professional application email. Use "${style}" style. ALL output must be in ${lang}. Replace ALL [placeholders] with real data from CV.`;
+      userPrompt = `## CV Content:\n${cvText}\n\n## Job Description:\n${jdText}\n\n## Email Template Reference (${style}, ${lang}):\n${emailTemplate}\n\nWrite a complete application email. Replace all placeholders with actual CV data. All in ${lang}.`;
+      toolName = "write_email";
+      toolDef = {
+        type: "function",
+        function: {
+          name: "write_email",
+          description: "Return application email",
+          parameters: {
+            type: "object",
+            properties: {
+              email_subject: { type: "string", description: "Professional email subject" },
+              email_body: { type: "string", description: "Complete email body" },
+            },
+            required: ["email_subject", "email_body"],
+            additionalProperties: false,
+          },
+        },
+      };
+    } else if (analysisMode === "cover_letter_only") {
+      const coverTemplate = COVER_LETTER_TEMPLATES[language as "vi" | "en"]?.[style as "formal" | "modern" | "creative"] || COVER_LETTER_TEMPLATES.vi.formal;
+      systemPrompt = `You are an expert career consultant and cover letter writer. Write a professional cover letter. Use "${style}" style. ALL output must be in ${lang}. Replace ALL [placeholders] with real data from CV.`;
+      userPrompt = `## CV Content:\n${cvText}\n\n## Job Description:\n${jdText}\n\n## Cover Letter Template Reference (${style}, ${lang}):\n${coverTemplate}\n\nWrite a complete cover letter. Replace all placeholders with actual CV data. All in ${lang}.`;
+      toolName = "write_cover_letter";
+      toolDef = {
+        type: "function",
+        function: {
+          name: "write_cover_letter",
+          description: "Return cover letter",
+          parameters: {
+            type: "object",
+            properties: {
+              cover_letter: { type: "string", description: "Complete professional cover letter" },
+            },
+            required: ["cover_letter"],
+            additionalProperties: false,
+          },
+        },
+      };
+    } else {
+      // full mode (legacy)
+      const emailTemplate = EMAIL_TEMPLATES[language as "vi" | "en"]?.[style as "formal" | "modern" | "creative"] || EMAIL_TEMPLATES.vi.formal;
+      const coverTemplate = COVER_LETTER_TEMPLATES[language as "vi" | "en"]?.[style as "formal" | "modern" | "creative"] || COVER_LETTER_TEMPLATES.vi.formal;
+      systemPrompt = `You are an expert career consultant. ALL output must be in ${lang}. Use "${style}" style. Replace ALL [placeholders] with real data from CV.`;
+      userPrompt = `## CV Content:\n${cvText}\n\n## Job Description:\n${jdText}\n\n## Email Template:\n${emailTemplate}\n\n## Cover Letter Template:\n${coverTemplate}\n\nAnalyze CV, score match, write email and cover letter. All in ${lang}.`;
+      toolName = "analyze_cv";
+      toolDef = {
+        type: "function",
+        function: {
+          name: "analyze_cv",
+          description: "Return structured CV analysis with email and cover letter",
+          parameters: {
+            type: "object",
+            properties: {
+              score: { type: "number" },
+              strengths: { type: "array", items: { type: "string" } },
+              weaknesses: { type: "array", items: { type: "string" } },
+              improvement_tips: { type: "array", items: { type: "string" } },
+              email_subject: { type: "string" },
+              email_body: { type: "string" },
+              cover_letter: { type: "string" },
+            },
+            required: ["score", "strengths", "weaknesses", "improvement_tips", "email_subject", "email_body", "cover_letter"],
+            additionalProperties: false,
+          },
+        },
+      };
+    }
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
