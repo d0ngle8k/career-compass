@@ -15,5 +15,6 @@ I've researched your company and I'm impressed by the work environment and the i
 Looking forward to discussing this opportunity with you!
 
 {{ candidate_name }}
+{% if address %}Address: {{ address }}{% endif %}
 {% if phone %}Phone: {{ phone }}{% endif %}
 {% if email %}Email: {{ email }}{% endif %}

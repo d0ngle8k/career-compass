@@ -17,7 +17,7 @@ pub async fn generate_email(
     ensure_inputs(&payload.cv_text, &payload.jd_text)?;
 
     let language = payload.language.as_deref().unwrap_or("vi");
-    let style = payload.template_style.as_deref().unwrap_or("formal");
+    let style = payload.template_style.as_deref().unwrap_or("auto");
     let result =
         service::generate_email(&state, &payload.cv_text, &payload.jd_text, language, style).await?;
     Ok(ok(result))
@@ -32,7 +32,7 @@ pub async fn generate_cover_letter(
     ensure_inputs(&payload.cv_text, &payload.jd_text)?;
 
     let language = payload.language.as_deref().unwrap_or("vi");
-    let style = payload.template_style.as_deref().unwrap_or("formal");
+    let style = payload.template_style.as_deref().unwrap_or("auto");
     let result = service::generate_cover_letter(
         &state,
         &payload.cv_text,

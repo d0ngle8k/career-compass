@@ -1,0 +1,13 @@
+Kính gửi {{ recipient }},
+
+Tôi gửi email này để ứng tuyển vị trí {{ position }} tại {{ company_name }}. Với {{ years_experience }} năm kinh nghiệm, tôi tự tin có thể tạo giá trị rõ ràng ngay từ giai đoạn đầu.
+
+{% if key_skills %}Năng lực nổi bật của tôi gồm {{ key_skills }}. {% endif %}Trong các dự án gần đây, tôi tập trung vào kết quả đo lường được, cải thiện hiệu suất hệ thống và tối ưu quy trình phối hợp trong nhóm.
+
+Tôi mong muốn có cơ hội trao đổi thêm để làm rõ cách tôi có thể đóng góp trực tiếp cho mục tiêu tuyển dụng của quý công ty.
+
+Trân trọng,
+{{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

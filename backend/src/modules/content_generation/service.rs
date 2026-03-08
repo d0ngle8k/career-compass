@@ -13,6 +13,8 @@ pub async fn generate_email(
     language: &str,
     style: &str,
 ) -> Result<GenerateEmailResponse, ApiError> {
+    let extracted_metadata = template_engine::extract_metadata(cv_text, jd_text, language);
+
     let email_subject = template_engine::render_email_subject(cv_text, jd_text, language, style)
         .map_err(|e| ApiError::Upstream(format!("Template rendering failed: {e}")))?;
     
@@ -22,6 +24,7 @@ pub async fn generate_email(
     Ok(GenerateEmailResponse {
         email_subject,
         email_body,
+        extracted_metadata,
     })
 }
 
@@ -32,8 +35,13 @@ pub async fn generate_cover_letter(
     language: &str,
     style: &str,
 ) -> Result<GenerateCoverLetterResponse, ApiError> {
+    let extracted_metadata = template_engine::extract_metadata(cv_text, jd_text, language);
+
     let cover_letter = template_engine::render_cover_letter(cv_text, jd_text, language, style)
         .map_err(|e| ApiError::Upstream(format!("Template rendering failed: {e}")))?;
     
-    Ok(GenerateCoverLetterResponse { cover_letter })
+    Ok(GenerateCoverLetterResponse {
+        cover_letter,
+        extracted_metadata,
+    })
 }

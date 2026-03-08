@@ -8,5 +8,6 @@ Tôi rất mong được trao đổi thêm về vị trí này và chia sẻ chi
 
 Trân trọng,
 {{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
 {% if phone %}{{ phone }}{% endif %}
 {% if email %}{{ email }}{% endif %}

@@ -33,7 +33,7 @@ impl Settings {
             nlp_service_url: env::var("NLP_SERVICE_URL")
                 .unwrap_or_else(|_| "http://127.0.0.1:8001".to_string()),
             nlp_timeout_ms: env::var("NLP_TIMEOUT_MS")
-                .unwrap_or_else(|_| "1200".to_string())
+                .unwrap_or_else(|_| "10000".to_string())
                 .parse()?,
         })
     }

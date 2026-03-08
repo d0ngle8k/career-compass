@@ -69,3 +69,42 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+# Rust build artifacts
+Cargo.lock
+
+# Package lock files (optional - comment out if you want to track them)
+# bun.lockb
+
+# IDE and temporary files
+*.iml
+.gradle/
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Python test and development
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytest_cache/
+test_results/
+*.egg
+.eggs/
+*.pot
+
+# Temporary and backup files
+*~
+*.bak
+*.swp
+*.tmp
+
+# OS generated files
+.AppleDouble
+.LSOverride
+ehthumbs.db
+
+# Node development
+npm-debug.log
+yarn-error.log

@@ -1,5 +1,18 @@
 use serde::{Deserialize, Serialize};
 
+#[derive(Serialize, Deserialize, Clone)]
+pub struct ExtractedMetadata {
+    pub candidate_name: String,
+    pub recipient: String,
+    pub company_name: String,
+    pub position: String,
+    pub years_experience: String,
+    pub key_skills: String,
+    pub email: Option<String>,
+    pub phone: Option<String>,
+    pub address: Option<String>,
+}
+
 #[derive(Deserialize)]
 pub struct GenerateEmailRequest {
     pub cv_text: String,
@@ -12,6 +25,7 @@ pub struct GenerateEmailRequest {
 pub struct GenerateEmailResponse {
     pub email_subject: String,
     pub email_body: String,
+    pub extracted_metadata: ExtractedMetadata,
 }
 
 #[derive(Deserialize)]
@@ -25,4 +39,5 @@ pub struct GenerateCoverLetterRequest {
 #[derive(Serialize, Deserialize)]
 pub struct GenerateCoverLetterResponse {
     pub cover_letter: String,
+    pub extracted_metadata: ExtractedMetadata,
 }

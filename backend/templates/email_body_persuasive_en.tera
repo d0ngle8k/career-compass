@@ -1,0 +1,13 @@
+Dear {{ recipient }},
+
+I am excited to apply for the {{ position }} role at {{ company_name }}. With {{ years_experience }} years of experience, I focus on delivering measurable outcomes and fast execution.
+
+{% if key_skills %}My strongest capabilities include {{ key_skills }}. {% endif %}In recent projects, I improved delivery speed, strengthened collaboration, and raised product quality through pragmatic technical decisions.
+
+I would welcome the opportunity to discuss how I can contribute to your team goals in the short term.
+
+Best regards,
+{{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

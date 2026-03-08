@@ -1,0 +1,13 @@
+Dear {{ recipient }},
+
+I am {{ candidate_name }}, applying for the {{ position }} role at {{ company_name }}.
+
+{% if key_skills %}My core strengths include {{ key_skills }}. {% endif %}With {{ years_experience }} years of experience, I can ramp up quickly and contribute from day one.
+
+I would value a short conversation to discuss how my background fits your immediate needs.
+
+Best regards,
+{{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

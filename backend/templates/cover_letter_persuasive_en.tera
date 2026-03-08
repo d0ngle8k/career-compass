@@ -1,0 +1,16 @@
+COVER LETTER
+
+{{ company_name }}
+Dear {{ recipient }},
+
+I am excited to apply for the {{ position }} role at {{ company_name }}. With {{ years_experience }} years of experience, I focus on measurable impact and execution speed.
+
+{% if key_skills %}My strongest capabilities include {{ key_skills }}. {% endif %}Across recent projects, I improved delivery quality, accelerated implementation, and aligned technical work with business outcomes.
+
+I am confident I can contribute meaningful results to your team and would welcome an interview to discuss fit in more detail.
+
+Sincerely,
+{{ candidate_name }}
+{% if address %}Address: {{ address }}{% endif %}
+{% if phone %}Phone: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

@@ -8,5 +8,6 @@ Mình rất mong được trao đổi thêm về cơ hội này! CV đính kèm 
 
 Cảm ơn,
 {{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
 {% if phone %}{{ phone }}{% endif %}
 {% if email %}{{ email }}{% endif %}

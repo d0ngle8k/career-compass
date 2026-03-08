@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useMemo, useState, useEffect, type ReactNode } from "react";
 import { backendApi } from "@/shared/lib/backend-api";
 
 type AuthUser = {
@@ -33,6 +33,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return email ? { email } : null;
   });
   const [loading, setLoading] = useState(false);
+
+  // Listen for unauthorized events (401) and clear auth state
+  useEffect(() => {
+    const handleUnauthorized = () => {
+      setToken(null);
+      setUser(null);
+    };
+
+    window.addEventListener("auth:unauthorized", handleUnauthorized);
+    return () => {
+      window.removeEventListener("auth:unauthorized", handleUnauthorized);
+    };
+  }, []);
 
   const login = async (email: string, password: string) => {
     setLoading(true);

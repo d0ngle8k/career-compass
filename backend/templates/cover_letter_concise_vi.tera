@@ -1,0 +1,16 @@
+THƯ ỨNG TUYỂN
+
+{{ company_name }}
+Kính gửi {{ recipient }},
+
+Tôi là {{ candidate_name }}, ứng tuyển vị trí {{ position }}.
+
+Với {{ years_experience }} năm kinh nghiệm, {% if key_skills %}đặc biệt trong {{ key_skills }}, {% endif %}tôi có thể nhanh chóng nắm bắt yêu cầu công việc và đóng góp hiệu quả cho đội ngũ.
+
+Tôi mong muốn được trao đổi trực tiếp để trình bày rõ hơn về kinh nghiệm và cách tôi có thể hỗ trợ mục tiêu của {{ company_name }}.
+
+Trân trọng,
+{{ candidate_name }}
+{% if address %}Địa chỉ: {{ address }}{% endif %}
+{% if phone %}Điện thoại: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

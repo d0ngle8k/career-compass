@@ -1,0 +1,13 @@
+Kính gửi {{ recipient }},
+
+Tôi là {{ candidate_name }} và mong muốn ứng tuyển vị trí {{ position }} tại {{ company_name }}.
+
+{% if key_skills %}Tôi có kinh nghiệm với {{ key_skills }}. {% endif %}Với {{ years_experience }} năm làm việc, tôi có thể bắt nhịp nhanh và đóng góp ngay vào mục tiêu của đội ngũ.
+
+Nếu phù hợp, tôi rất mong có cơ hội trao đổi ngắn để trình bày rõ hơn về kinh nghiệm liên quan đến vị trí này.
+
+Trân trọng,
+{{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

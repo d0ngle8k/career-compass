@@ -81,55 +81,93 @@ fn explain(signals: RuleSignals) -> (Vec<String>, Vec<String>, Vec<String>) {
     let mut weaknesses = Vec::new();
     let mut tips = Vec::new();
 
+    let total_required = signals.matched_skills.len() + signals.missing_skills.len();
+
     if !signals.matched_skills.is_empty() {
+        let match_rate = if total_required > 0 {
+            (signals.matched_skills.len() as f64 / total_required as f64) * 100.0
+        } else {
+            0.0
+        };
         strengths.push(format!(
-            "Matched key skills: {}",
-            signals.matched_skills.join(", ")
+            "Technical match: {}/{} skills ({:.1}%). Strong matches: {}",
+            signals.matched_skills.len(),
+            total_required,
+            match_rate,
+            signals
+                .matched_skills
+                .iter()
+                .take(5)
+                .cloned()
+                .collect::<Vec<_>>()
+                .join(", ")
         ));
     }
 
     if signals.semantic_overlap >= 0.35 {
-        strengths.push("CV content aligns well with the target job description.".to_string());
+        strengths.push("Content alignment is good: CV language is close to JD priorities.".to_string());
     }
 
     if let (Some(cv), Some(jd)) = (signals.cv_years, signals.jd_years) {
         if cv >= jd {
             strengths.push(format!(
-                "Experience level meets requirement ({} years vs {} years required).",
+                "Experience meets requirement ({} years vs {} years required).",
                 cv, jd
             ));
         } else {
             weaknesses.push(format!(
-                "Experience appears below requirement ({} years vs {} years required).",
+                "Experience gap: {} years in CV vs {} years required.",
                 cv, jd
             ));
-            tips.push("Highlight comparable project impact and scope to offset experience gap.".to_string());
+            tips.push(
+                "Offset the experience gap by highlighting project scope, ownership, and measurable impact."
+                    .to_string(),
+            );
         }
     }
 
     if !signals.missing_skills.is_empty() {
         weaknesses.push(format!(
-            "Missing or unclear required skills: {}",
-            signals.missing_skills.join(", ")
+            "Missing or unclear required skills ({}): {}",
+            signals.missing_skills.len(),
+            signals
+                .missing_skills
+                .iter()
+                .take(6)
+                .cloned()
+                .collect::<Vec<_>>()
+                .join(", ")
         ));
-        tips.push("Add concrete evidence for missing skills via projects or quantified achievements.".to_string());
+        tips.push(
+            "For each missing skill, add one bullet with action + tool + measurable result (%, revenue, users, time saved)."
+                .to_string(),
+        );
     }
 
     if signals.section_completeness < 0.75 {
-        weaknesses.push("CV misses some standard sections (experience/skills/education/projects).".to_string());
-        tips.push("Add missing CV sections to improve recruiter readability and ATS matching.".to_string());
+        weaknesses.push(
+            "CV structure is incomplete (missing standard sections like experience/skills/education/projects)."
+                .to_string(),
+        );
+        tips.push(
+            "Add missing sections and keep headings ATS-friendly: Summary, Skills, Experience, Projects, Education."
+                .to_string(),
+        );
     }
 
     if strengths.is_empty() {
-        strengths.push("CV contains relevant signals but needs clearer alignment with JD.".to_string());
+        strengths.push("CV has some relevant signals but key strengths are not clearly mapped to JD requirements.".to_string());
     }
 
     if weaknesses.is_empty() {
-        weaknesses.push("No major gaps detected from baseline rule-based analysis.".to_string());
+        weaknesses.push("No critical gaps detected in baseline checks; remaining improvements are mostly optimization.".to_string());
     }
 
     if tips.is_empty() {
-        tips.push("Tailor summary and bullet points directly to JD keywords and outcomes.".to_string());
+        tips.push(
+            "Tailor the CV summary and top bullets to exact JD keywords and quantified outcomes."
+                .to_string(),
+        );
     }
 
     (strengths, weaknesses, tips)

@@ -1,7 +1,7 @@
 COVER LETTER
 
 {{ company_name }}
-Dear Hiring Manager,
+Dear {{ recipient }},
 
 After learning about the {{ position }} position at {{ company_name }}, I am confident that this opportunity aligns perfectly with my skills and career aspirations. With {{ years_experience }} years of experience in software development, I am well-prepared to meet and exceed the expectations of this role.
 
@@ -20,5 +20,6 @@ I would greatly appreciate the opportunity to discuss this position further. Ple
 Sincerely,
 
 {{ candidate_name }}
+{% if address %}Address: {{ address }}{% endif %}
 {% if phone %}Phone: {{ phone }}{% endif %}
 {% if email %}Email: {{ email }}{% endif %}

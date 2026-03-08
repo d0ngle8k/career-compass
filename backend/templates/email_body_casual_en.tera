@@ -8,5 +8,6 @@ I'd love to chat more about this opportunity! My resume is attached for your ref
 
 Thanks,
 {{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
 {% if phone %}{{ phone }}{% endif %}
 {% if email %}{{ email }}{% endif %}

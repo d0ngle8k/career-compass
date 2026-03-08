@@ -6,14 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
-import { Upload, FileText, Sparkles, X, Globe, Palette, Mail, Copy, Check } from "lucide-react";
+import { Upload, FileText, Sparkles, X, Globe, Mail, Copy, Check } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { backendApi } from "@/shared/lib/backend-api";
+import { backendApi, type ExtractedMetadata } from "@/shared/lib/backend-api";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
+import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
+import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
-type TemplateStyle = "formal" | "modern" | "creative";
+GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const WriteMailPage = () => {
   const { user, token } = useAuth();
@@ -22,10 +24,9 @@ const WriteMailPage = () => {
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [jdText, setJdText] = useState("");
   const [language, setLanguage] = useState<"vi" | "en">("vi");
-  const [templateStyle, setTemplateStyle] = useState<TemplateStyle>("formal");
   const [isGenerating, setIsGenerating] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [result, setResult] = useState<null | { email_subject: string; email_body: string }>(null);
+  const [result, setResult] = useState<null | { email_subject: string; email_body: string; extracted_metadata: ExtractedMetadata }>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -35,7 +36,34 @@ const WriteMailPage = () => {
     }
   };
 
+  const extractTextFromPDF = async (file: File): Promise<string> => {
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await getDocument({ data: arrayBuffer }).promise;
+      let text = "";
+      
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items
+          .map((item) => ("str" in item ? item.str : ""))
+          .join(" ");
+        text += pageText + "\n";
+      }
+
+      return text.trim();
+    } catch (error) {
+      console.error("PDF extraction error:", error);
+      throw new Error("Failed to extract text from PDF");
+    }
+  };
+
   const extractTextFromFile = async (file: File): Promise<string> => {
+    const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (isPdf) {
+      return extractTextFromPDF(file);
+    }
+
     return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = (e) => resolve((e.target?.result as string) || `[File: ${file.name}]`);
@@ -66,7 +94,6 @@ const WriteMailPage = () => {
         cv_text: cvText,
         jd_text: jdText.trim(),
         language,
-        template_style: templateStyle,
       });
       setResult(response.data);
     } catch (err: any) {
@@ -76,12 +103,6 @@ const WriteMailPage = () => {
       setIsGenerating(false);
     }
   };
-
-  const templateStyles: { value: TemplateStyle; labelKey: string; descKey: string; icon: string }[] = [
-    { value: "formal", labelKey: "template.formal", descKey: "template.formal.desc", icon: "📄" },
-    { value: "modern", labelKey: "template.modern", descKey: "template.modern.desc", icon: "✨" },
-    { value: "creative", labelKey: "template.creative", descKey: "template.creative.desc", icon: "🎨" },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -105,13 +126,27 @@ const WriteMailPage = () => {
                   <Upload className="w-5 h-5 text-accent" /> {t("solution.upload")}
                 </h2>
                 <div className="relative">
-                  <input type="file" accept=".pdf,.docx,.txt" onChange={handleFileChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
+                  <input
+                    type="file"
+                    accept=".pdf,.docx,.txt"
+                    onChange={handleFileChange}
+                    title="Upload CV file"
+                    aria-label="Upload CV file"
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                  />
                   <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-accent/50 transition-colors">
                     {cvFile ? (
                       <div className="flex items-center justify-center gap-2">
                         <FileText className="w-5 h-5 text-accent" />
                         <span className="font-medium text-foreground">{cvFile.name}</span>
-                        <button onClick={(e) => { e.stopPropagation(); setCvFile(null); }} className="text-muted-foreground hover:text-destructive"><X className="w-4 h-4" /></button>
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setCvFile(null); }}
+                          className="text-muted-foreground hover:text-destructive"
+                          title="Remove selected file"
+                          aria-label="Remove selected file"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
                       </div>
                     ) : (
                       <>
@@ -143,25 +178,6 @@ const WriteMailPage = () => {
                 </div>
               </motion.div>
 
-              {/* Template style */}
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="glass-card rounded-xl p-6">
-                <Label className="font-display font-semibold text-lg text-foreground mb-3 flex items-center gap-2">
-                  <Palette className="w-5 h-5 text-accent" /> {t("solution.template.style")}
-                </Label>
-                <div className="grid grid-cols-1 gap-3 mt-3">
-                  {templateStyles.map((ts) => (
-                    <button key={ts.value} onClick={() => setTemplateStyle(ts.value)}
-                      className={`flex items-start gap-3 p-3 rounded-lg border-2 text-left transition-all ${templateStyle === ts.value ? "border-accent bg-accent/5" : "border-border hover:border-accent/30"}`}>
-                      <span className="text-xl mt-0.5">{ts.icon}</span>
-                      <div>
-                        <p className="font-medium text-sm text-foreground">{t(ts.labelKey)}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{t(ts.descKey)}</p>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-
               <Button variant="cta" size="lg" className="w-full gap-2" disabled={!cvFile || !jdText.trim() || isGenerating} onClick={handleGenerate}>
                 <Sparkles className="w-5 h-5" />
                 {isGenerating ? t("solution.analyzing") : t("writemail.generate")}
@@ -187,6 +203,18 @@ const WriteMailPage = () => {
                     </Button>
                   </div>
                   <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+                    <div>
+                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{t("content.meta.title")}</span>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-sm text-foreground">
+                        <p><span className="text-muted-foreground">{t("content.meta.candidate")}:</span> {result.extracted_metadata.candidate_name}</p>
+                        <p><span className="text-muted-foreground">{t("content.meta.recipient")}:</span> {result.extracted_metadata.recipient}</p>
+                        <p><span className="text-muted-foreground">{t("content.meta.company")}:</span> {result.extracted_metadata.company_name}</p>
+                        <p><span className="text-muted-foreground">{t("content.meta.position")}:</span> {result.extracted_metadata.position}</p>
+                        {result.extracted_metadata.email && <p><span className="text-muted-foreground">Email:</span> {result.extracted_metadata.email}</p>}
+                        {result.extracted_metadata.phone && <p><span className="text-muted-foreground">{t("content.meta.phone")}:</span> {result.extracted_metadata.phone}</p>}
+                        {result.extracted_metadata.address && <p className="md:col-span-2"><span className="text-muted-foreground">{t("content.meta.address")}:</span> {result.extracted_metadata.address}</p>}
+                      </div>
+                    </div>
                     <div>
                       <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{t("letter.subject")}</span>
                       <p className="text-sm text-foreground font-medium mt-1">{result.email_subject}</p>

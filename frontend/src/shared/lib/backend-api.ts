@@ -19,6 +19,18 @@ type ChatMessage = {
   content: string;
 };
 
+export type ExtractedMetadata = {
+  candidate_name: string;
+  recipient: string;
+  company_name: string;
+  position: string;
+  years_experience: string;
+  key_skills: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+};
+
 const request = async <T>(path: string, init: RequestInit = {}, token?: string): Promise<T> => {
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -37,6 +49,13 @@ const request = async <T>(path: string, init: RequestInit = {}, token?: string):
   const json = await response.json();
 
   if (!response.ok) {
+    // If 401 Unauthorized, clear token from localStorage and redirect to login
+    if (response.status === 401) {
+      localStorage.removeItem("career-compass-token");
+      localStorage.removeItem("career-compass-email");
+      // Dispatch custom event so AuthContext can listen and update
+      window.dispatchEvent(new Event("auth:unauthorized"));
+    }
     throw new Error(json.error || "Request failed");
   }
 
@@ -73,8 +92,8 @@ export const backendApi = {
     );
   },
 
-  async generateEmail(token: string, payload: { cv_text: string; jd_text: string; language: string; template_style: string }) {
-    return request<ApiEnvelope<{ email_subject: string; email_body: string }>>(
+  async generateEmail(token: string, payload: { cv_text: string; jd_text: string; language: string; template_style?: string }) {
+    return request<ApiEnvelope<{ email_subject: string; email_body: string; extracted_metadata: ExtractedMetadata }>>(
       "/api/v1/ai/generate-email",
       {
         method: "POST",
@@ -84,8 +103,8 @@ export const backendApi = {
     );
   },
 
-  async generateCoverLetter(token: string, payload: { cv_text: string; jd_text: string; language: string; template_style: string }) {
-    return request<ApiEnvelope<{ cover_letter: string }>>(
+  async generateCoverLetter(token: string, payload: { cv_text: string; jd_text: string; language: string; template_style?: string }) {
+    return request<ApiEnvelope<{ cover_letter: string; extracted_metadata: ExtractedMetadata }>>(
       "/api/v1/ai/generate-cover-letter",
       {
         method: "POST",

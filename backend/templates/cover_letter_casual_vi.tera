@@ -15,5 +15,6 @@ Mình đã tìm hiểu về công ty và thấy rất ấn tượng với môi t
 Rất mong được trao đổi thêm với bạn về vị trí này!
 
 {{ candidate_name }}
+{% if address %}Địa chỉ: {{ address }}{% endif %}
 {% if phone %}SĐT: {{ phone }}{% endif %}
 {% if email %}Email: {{ email }}{% endif %}

@@ -1,0 +1,16 @@
+COVER LETTER
+
+{{ company_name }}
+Dear {{ recipient }},
+
+I am {{ candidate_name }}, applying for the {{ position }} role.
+
+With {{ years_experience }} years of experience, {% if key_skills %}including {{ key_skills }}, {% endif %}I can quickly adapt to your team context and deliver practical results.
+
+I would appreciate the opportunity to discuss how my background can support {{ company_name }}'s hiring goals.
+
+Sincerely,
+{{ candidate_name }}
+{% if address %}Address: {{ address }}{% endif %}
+{% if phone %}Phone: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

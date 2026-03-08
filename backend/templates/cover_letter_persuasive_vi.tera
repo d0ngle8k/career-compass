@@ -1,0 +1,16 @@
+THƯ ỨNG TUYỂN
+
+{{ company_name }}
+Kính gửi {{ recipient }},
+
+Tôi viết thư này để ứng tuyển vị trí {{ position }} tại {{ company_name }}. Với {{ years_experience }} năm kinh nghiệm, tôi định hướng làm việc theo kết quả và tốc độ triển khai.
+
+{% if key_skills %}Năng lực chuyên môn nổi bật của tôi gồm {{ key_skills }}. {% endif %}Trong các dự án đã tham gia, tôi tập trung vào cải thiện hiệu suất, nâng cao chất lượng đầu ra và tối ưu phối hợp giữa các bên liên quan.
+
+Tôi tin rằng nền tảng chuyên môn cùng tinh thần chủ động sẽ giúp tôi tạo ra tác động rõ ràng tại {{ company_name }}. Rất mong có cơ hội trao đổi thêm trong buổi phỏng vấn gần nhất.
+
+Trân trọng,
+{{ candidate_name }}
+{% if address %}Địa chỉ: {{ address }}{% endif %}
+{% if phone %}Điện thoại: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

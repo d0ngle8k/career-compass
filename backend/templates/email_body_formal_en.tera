@@ -8,5 +8,6 @@ I would welcome the opportunity to discuss how my background and skills align wi
 
 Best regards,
 {{ candidate_name }}
+{% if address %}{{ address }}{% endif %}
 {% if phone %}{{ phone }}{% endif %}
 {% if email %}{{ email }}{% endif %}
