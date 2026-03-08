@@ -324,24 +324,108 @@ fn extract_company_name(jd_text: &str) -> String {
 
 /// Extract recipient (contact person or department) from JD
 fn extract_recipient(jd_text: &str, language: &str) -> String {
-    let recipient_re = Regex::new(
-        r"(?i)(kính\s*gửi|dear|to|người\s*liên\s*hệ|contact\s*person|hiring\s*manager|hr\s*manager|recruiter)\s*[:：,\-]?\s*([^\n,;]{1,100})",
-    )
-    .unwrap();
-
+    let lang_is_vi = language.trim().to_lowercase().contains("vi");
+    
+    // Step 1: Try English-specific patterns first if not Vietnamese
+    if !lang_is_vi {
+        // Pattern 1: "Manager: [Name]" or "Hiring Manager: [Name]"
+        let manager_re = Regex::new(r"(?i)(?:hiring\s*)?manager\s*[:：]\s*([A-Za-z\s\.\-]{2,80}?)(?:\n|$)").unwrap();
+        for line in jd_text.lines() {
+            let normalized = clean_line(line);
+            if let Some(captures) = manager_re.captures(&normalized) {
+                if let Some(value) = captures.get(1) {
+                    let recipient = trim_trailing_punctuation(&clean_line(value.as_str()));
+                    if !recipient.is_empty() && recipient.len() >= 2 && recipient.len() <= 80 {
+                        return recipient;
+                    }
+                }
+            }
+        }
+        
+        // Pattern 2: "Contact[/Person]: [Name]"
+        let contact_re = Regex::new(r"(?i)(?:contact|contact\s*person|hiring\s*lead)\s*[:：]\s*([A-Za-z\s\.\-]{2,80}?)(?:\n|$)").unwrap();
+        for line in jd_text.lines() {
+            let normalized = clean_line(line);
+            if let Some(captures) = contact_re.captures(&normalized) {
+                if let Some(value) = captures.get(1) {
+                    let recipient = trim_trailing_punctuation(&clean_line(value.as_str()));
+                    if !recipient.is_empty() && recipient.len() >= 2 && recipient.len() <= 80 {
+                        return recipient;
+                    }
+                }
+            }
+        }
+        
+        // Pattern 3: "Dear [Name]" (in English JD)
+        let dear_re = Regex::new(r"(?i)dear\s+([A-Za-z\s\.\-]{2,80}?)(?:[,.]|$)").unwrap();
+        for line in jd_text.lines() {
+            let normalized = clean_line(line);
+            if let Some(captures) = dear_re.captures(&normalized) {
+                if let Some(value) = captures.get(1) {
+                    let recipient = trim_trailing_punctuation(&clean_line(value.as_str()));
+                    if !recipient.is_empty() && recipient.len() >= 2 && recipient.len() <= 80 {
+                        return recipient;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Step 2: Try Vietnamese-specific patterns
+    if lang_is_vi || true {  // Always try Vietnamese patterns as fallback
+        // Pattern 1: "Kính gửi: [Name]" or "Thư gửi: [Name]"
+        let kính_re = Regex::new(r"(?i)(?:kính|thư)\s*gửi\s*[:：]\s*([^,\n;]{2,80}?)(?:\n|$)").unwrap();
+        for line in jd_text.lines() {
+            let normalized = clean_line(line);
+            if let Some(captures) = kính_re.captures(&normalized) {
+                if let Some(value) = captures.get(1) {
+                    let recipient = trim_trailing_punctuation(&clean_line(value.as_str()));
+                    if !recipient.is_empty() && recipient.len() >= 2 && recipient.len() <= 80 {
+                        return recipient;
+                    }
+                }
+            }
+        }
+        
+        // Pattern 2: "Người liên hệ: [Name]" or "Liên hệ: [Name]"
+        let contact_vi_re = Regex::new(r"(?i)(?:người\s*)?liên\s*hệ\s*[:：]\s*([^,\n;]{2,80}?)(?:\n|$)").unwrap();
+        for line in jd_text.lines() {
+            let normalized = clean_line(line);
+            if let Some(captures) = contact_vi_re.captures(&normalized) {
+                if let Some(value) = captures.get(1) {
+                    let recipient = trim_trailing_punctuation(&clean_line(value.as_str()));
+                    if !recipient.is_empty() && recipient.len() >= 2 && recipient.len() <= 80 {
+                        return recipient;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Step 3: Fallback to generic pattern
+    let generic_re = Regex::new(
+        r"(?i)(?:kính|dear|contact|manager|người\s*liên\s*hệ)\s*[:：]?\s*([^\n;]{2,80})"
+    ).unwrap();
+    
     for line in jd_text.lines() {
         let normalized = clean_line(line);
-        if let Some(captures) = recipient_re.captures(&normalized) {
-            if let Some(value) = captures.get(2) {
+        if let Some(captures) = generic_re.captures(&normalized) {
+            if let Some(value) = captures.get(1) {
                 let recipient = trim_trailing_punctuation(&clean_line(value.as_str()));
-                if !recipient.is_empty() && recipient.len() <= 80 && !recipient.to_lowercase().contains("company") {
+                if !recipient.is_empty() 
+                    && recipient.len() >= 2 
+                    && recipient.len() <= 80 
+                    && !recipient.to_lowercase().contains("company")
+                    && !recipient.to_lowercase().contains("position")
+                    && !recipient.to_lowercase().contains("role") {
                     return recipient;
                 }
             }
         }
     }
 
-    if language.eq_ignore_ascii_case("vi") {
+    // Step 4: Return appropriate language-specific default
+    if lang_is_vi {
         "Anh/Chị phụ trách tuyển dụng".to_string()
     } else {
         "Hiring Manager".to_string()
