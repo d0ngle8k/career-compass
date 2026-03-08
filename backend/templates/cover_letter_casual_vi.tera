@@ -1,0 +1,19 @@
+Thư ứng tuyển vị trí {{ position }}
+
+Kính gửi {{ company_name }},
+
+Mình là {{ candidate_name }}, và mình rất hứng thú với cơ hội làm việc ở vị trí {{ position }}. Sau {{ years_experience }} năm trong ngành IT, mình cảm thấy đây là bước tiếp theo phù hợp cho sự nghiệp của mình.
+
+VỀ KINH NGHIỆM
+{% if key_skills %}
+Mình có kinh nghiệm làm việc với {{ key_skills }}, thông qua các dự án thực tế. {% endif %}Mình tin rằng kỹ năng kỹ thuật kết hợp với khả năng làm việc nhóm sẽ giúp mình đóng góp tốt cho team.
+
+TẠI SAO CHỌN {{ company_name }}
+
+Mình đã tìm hiểu về công ty và thấy rất ấn tượng với môi trường làm việc cũng như các dự án mà team đang thực hiện. Mình mong muốn được là một phần của đội ngũ và cùng phát triển.
+
+Rất mong được trao đổi thêm với bạn về vị trí này!
+
+{{ candidate_name }}
+{% if phone %}SĐT: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

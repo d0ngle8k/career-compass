@@ -1,0 +1,24 @@
+ĐƠN XIN VIỆC
+
+{{ company_name }}
+Kính gửi Ban Tuyển dụng,
+
+Sau khi tìm hiểu về vị trí {{ position }} tại {{ company_name }}, tôi nhận thấy đây là cơ hội phù hợp với kỹ năng và kinh nghiệm của mình. Với {{ years_experience }} năm làm việc trong lĩnh vực công nghệ thông tin, tôi tự tin có thể đáp ứng tốt yêu cầu công việc.
+
+KINH NGHIỆM VÀ KỸ NĂNG
+{% if key_skills %}
+Tôi có chuyên môn về {{ key_skills }}, được rèn luyện qua các dự án thực tế với quy mô và độ phức tạp khác nhau. {% endif %}Trong quá trình làm việc, tôi đã phát triển khả năng giải quyết vấn đề, làm việc nhóm và giao tiếp hiệu quả với các bên liên quan.
+
+ĐÓNG GÓP KỲ VỌNG
+
+Tôi hiểu rằng {{ position }} đòi hỏi không chỉ kỹ năng kỹ thuật mà còn cả tư duy phân tích và khả năng thích nghi. Với nền tảng vững chắc và tinh thần học hỏi không ngừng, tôi tin mình sẽ đóng góp tích cực vào sự phát triển của {{ company_name }}.
+
+KẾT LUẬN
+
+Tôi rất mong được cơhội trao đổi trực tiếp về vị trí này. Xin vui lòng liên hệ với tôi qua thông tin dưới đây.
+
+Trân trọng,
+
+{{ candidate_name }}
+{% if phone %}Điện thoại: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

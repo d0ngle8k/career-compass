@@ -1,0 +1,12 @@
+Kính gửi {{ recipient }},
+
+Tôi là {{ candidate_name }}, hiện đang tìm kiếm cơ hội nghề nghiệp tại vị trí {{ position }}. Với {{ years_experience }} năm kinh nghiệm trong lĩnh vực công nghệ thông tin, tôi tin rằng mình có đủ năng lực để đóng góp hiệu quả cho {{ company_name }}.
+
+{% if key_skills %}Kỹ năng chính của tôi bao gồm: {{ key_skills }}. {% endif %}Tôi đã có cơ hội làm việc trong các dự án đa dạng, từ phát triển ứng dụng web đến xây dựng hệ thống backend phức tạp.
+
+Tôi rất mong được trao đổi thêm về vị trí này và chia sẻ chi tiết hơn về kinh nghiệm cũng như định hướng phát triển của bản thân. Xin vui lòng xem hồ sơ đính kèm để biết thêm chi tiết.
+
+Trân trọng,
+{{ candidate_name }}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

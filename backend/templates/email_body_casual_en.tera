@@ -1,0 +1,12 @@
+Hi {{ recipient }},
+
+I'm {{ candidate_name }}, and I'm really excited about the {{ position }} opportunity at {{ company_name }}. With {{ years_experience }} years of hands-on experience in software development, I think I'd be a great fit for this role.
+
+{% if key_skills %}I've worked extensively with {{ key_skills }}, {% endif %}and I'm always eager to learn new technologies and tackle interesting challenges.
+
+I'd love to chat more about this opportunity! My resume is attached for your reference.
+
+Thanks,
+{{ candidate_name }}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

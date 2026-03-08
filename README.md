@@ -1,73 +1,281 @@
-# Welcome to your Lovable project
+# Career Compass AI
 
-## Project info
+Full-stack career assistance application built with React + Vite frontend, Rust backend, and Python NLP service.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Architecture
 
-## How can I edit this code?
+- **Frontend**: React + TypeScript + Vite + Tailwind CSS + shadcn/ui
+- **Backend**: Rust + Axum + JWT Auth + Template Engine (Tera) + Google Gemini AI
+- **NLP Service**: Python 3.11 + FastAPI + Transformer Models
+  - PhoBERT (Vietnamese NER)
+  - BERT (English NER)
+  - Sentence-Transformers (Semantic Similarity)
+- **Features**: CV analysis, email generation, cover letter writing, AI assistant chatbot
 
-There are several ways of editing your application.
+##  NLP Models
 
-**Use Lovable**
+The NLP service uses state-of-the-art transformer models for multilingual support:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Vietnamese Processing (PhoBERT)
+- **Model**: `vinai/phobert-base`
+- **Purpose**: Named Entity Recognition for Vietnamese text
+- **Capabilities**: Extracts skills, years of experience from Vietnamese CVs
+- **Size**: ~400MB
 
-Changes made via Lovable will be committed automatically to this repo.
+### English Processing (BERT)
+- **Model**: `bert-base-uncased`
+- **Purpose**: Named Entity Recognition for English text  
+- **Capabilities**: Extracts skills, years of experience from English CVs
+- **Size**: ~440MB
 
-**Use your preferred IDE**
+### Semantic Similarity
+- **Model**: `paraphrase-multilingual-MiniLM-L12-v2`
+- **Purpose**: Compute similarity between texts
+- **Capabilities**: CV-JD matching, duplicate detection
+- **Size**: ~470MB
+- **Output**: Cosine similarity score (0.0 to 1.0)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Template-Based Content Generation
+The backend uses Tera templates for professional email and cover letter generation:
+- **Languages**: Vietnamese (`vi`), English (`en`)
+- **Styles**: Formal, Casual
+- **Content Types**: Email Subject, Email Body, Cover Letter
+- **Features**: Smart context extraction (name, skills, company, position, experience)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Quick Start
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js 18+ and npm
+- Rust 1.70+ and Cargo
+- **Python 3.11+** (for NLP service)
+- Google Gemini API key
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Setup
 
-# Step 3: Install the necessary dependencies.
-npm i
+**1. NLP Service**:
+```bash
+cd nlp-service
+python -m venv .venv311
+.venv311\Scripts\activate  # Windows
+# source .venv311/bin/activate  # Linux/Mac
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+NLP Service runs on `http://127.0.0.1:8001`
+
+**First Run Note**: Initial startup downloads 3 ML models (~900MB total). This may take 2-3 minutes.
+
+**2. Backend**:
+```bash
+cd backend
+cp .env.example .env
+# Edit .env and add your GOOGLE_GEMINI_API_KEY
+cargo run
+```
+
+Backend runs on `http://127.0.0.1:9000`
+
+**3. Frontend**:
+```bash
+cd frontend
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Frontend runs on `http://127.0.0.1:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Default Credentials
 
-**Use GitHub Codespaces**
+- Email: `admin@careercompass.local`
+- Password: `admin123`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+You can also register new accounts via the signup page.
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
+```
+frontend/               # React frontend
+  src/
+    app/               # App entry and routing
+    features/          # Feature modules (auth, cv-analysis, content-generation, marketing)
+    shared/            # Shared components, contexts, hooks, utils
+    legacy/            # Archived integrations reference
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+backend/               # Rust backend
+  src/
+    config/            # Settings management
+    modules/           # Feature modules (auth, ai, content_generation, scoring)
+      content_generation/
+        template_engine.rs  # Template rendering with context extraction
+        templates/          # Tera template files (12 templates)
+    shared/            # Shared utilities (app state, errors, responses)
+  templates/            # Email & cover letter templates (VI/EN, formal/casual)
+  .env                  # Backend config (gitignored)
+  .env.example          # Template for .env
 
-## How can I deploy this project?
+nlp-service/            # Python NLP service
+  app/
+    main.py             # FastAPI app with all endpoints
+    models.py           # ML model wrappers (PhoBERT, BERT, Similarity)
+  tests/
+    test_endpoints.py   # Comprehensive endpoint tests
+  requirements.txt      # Python dependencies
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## API Endpoints
 
-## Can I connect a custom domain to my Lovable project?
+### Auth
+- `POST /api/v1/auth/register` - Register new user
+- `POST /api/v1/auth/login` - Login and get JWT
+- `POST /api/v1/auth/logout` - Logout (requires JWT)
 
-Yes, you can!
+### AI (all require JWT)
+- `POST /api/v1/ai/chat-assistant` - Chat with AI career assistant
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Content Generation (all require JWT) - **Uses Templates**
+- `POST /api/v1/content/generate-email` - Generate application email
+- `POST /api/v1/content/generate-cover-letter` - Generate cover letter
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Scoring (all require JWT) - **Uses NLP Service**
+- `POST /api/v1/scoring/analyze-cv` - Full CV analysis with scoring + email + cover letter
+
+### NLP Service (Internal - Called by Backend)
+- `GET /health` - Health check
+- `POST /score-cv` - Score CV against JD (uses BERT/PhoBERT)
+- `POST /ner/en` - English Named Entity Recognition (uses BERT)
+- `POST /ner/vi` - Vietnamese Named Entity Recognition (uses PhoBERT)
+- `POST /similarity` - Compute semantic similarity (uses Sentence-Transformers)
+
+### Health
+- `GET /health` - Backend health check
+
+## Development
+
+- **Frontend hot reload**: Vite dev server auto-reloads on file changes
+- **Backend auto-rebuild**: Run `cargo watch -x run` for auto recompilation
+- **NLP Service hot reload**: uvicorn `--reload` flag enables auto-reload
+- **Backend logs**: Set `RUST_LOG=debug` in `backend/.env` for verbose logging
+
+## Testing
+
+### NLP Service Tests
+```bash
+cd nlp-service
+pytest tests/test_endpoints.py -v
+```
+
+**Test Coverage**:
+- Health endpoint
+- CV scoring (English & Vietnamese)
+- NER (English with BERT, Vietnamese with PhoBERT)
+- Semantic similarity (similar & dissimilar texts)
+- Performance benchmarks (< 3s response time)
+
+## Troubleshooting
+
+### NLP Service Issues
+
+**Error: Models not found / downloading on every startup**
+- Models are cached in `~/.cache/huggingface/`
+- First download is ~900MB and takes 2-3 minutes
+- Subsequent startups use cached models
+
+**Error: ImportError - cannot import 'cached_download'**
+- Cause: Incompatible sentence-transformers version
+- Solution: Upgrade to sentence-transformers>=2.7.0
+  ```bash
+  pip install sentence-transformers==2.7.0 --upgrade
+  ```
+
+**Error: CUDA not available / torch errors**
+- NLP service runs on CPU by default
+- For GPU: Install CUDA-enabled PyTorch
+- Current config uses CPU (sufficient for production)
+
+**Slow NER/Similarity responses (> 5 seconds)**
+- First request per model is slower (model loading)
+- Subsequent requests are faster due to model caching
+- Consider using quantized models for production
+
+### Gemini API Errors
+
+**Error: "Unknown name 'responseMimeType'"**
+- Cause: Using unsupported field in v1 API
+- Solution: Ensure `backend/src/modules/ai/gemini_client.rs` does NOT include `responseMimeType` in `generationConfig`
+
+**Error: "models/gemini-1.5-flash-latest is not found for API version v1"**
+- Cause: Wrong model name for v1 API  
+- Solution: Use `gemini-2.5-flash` or other v1-compatible models
+- Available models: `gemini-2.5-flash`, `gemini-2.0-flash`, `gemini-2.0-flash-001`
+
+**Error: 502 Bad Gateway or 404 Not Found**
+- Check that `GOOGLE_GEMINI_API_KEY` is valid
+- Ensure using v1 API endpoint: `https://generativelanguage.googleapis.com/v1/models/...`
+- Verify model name is compatible with v1 API (see above)
+
+### Backend Build Issues
+
+**Error: Linker error LNK1104 (Windows)**
+- Cause: File locking by Windows Defender or another process
+- Solution 1: Use `cargo check` to verify code compiles
+- Solution 2: Run `cargo clean` before building
+- Solution 3: Temporarily disable real-time protection
+
+**Error: Address already in use**
+- Another process is using port 9000
+- Solution: Stop the process or change `BACKEND_PORT` in `backend/.env`
+
+### Frontend Connection Issues
+
+**CORS errors in browser console**
+- Verify backend CORS settings in `backend/src/main.rs` allow your frontend origin
+- Default allows: `http://localhost:8080` and `http://127.0.0.1:8080`
+
+**401 Unauthorized on API calls**
+- Check JWT token is being sent in `Authorization: Bearer <token>` header
+- Token expires after 120 minutes (configurable via `JWT_EXPIRES_MINUTES` in backend `.env`)
+
+## Production Build
+
+**Frontend**:
+```bash
+cd frontend
+npm run build
+# Output in frontend/dist/
+```
+
+**Backend**:
+```bash
+cd backend
+cargo build --release
+# Binary in backend/target/release/career_compass_backend
+```
+
+**NLP Service (Docker Recommended)**:
+```dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app/ ./app/
+EXPOSE 8001
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001"]
+```
+
+## Performance Metrics
+
+- **NER Latency**: < 3 seconds per request (including model inference)
+- **Similarity Computation**: < 2 seconds per pair
+- **Template Rendering**: < 50ms per template
+- **Model Loading Time**: 20-40 seconds on startup (3 models)
+- **Memory Usage (NLP Service)**: ~2.5GB with all models loaded
+
+## Release Notes
+
+See [RELEASE_NOTES.md](./RELEASE_NOTES.md) for detailed changelog and migration guide.
+
+## License
+
+MIT License - see LICENSE file for details

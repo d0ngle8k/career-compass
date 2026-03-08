@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 12%;
+
+    --primary: 220 60% 20%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 220 30% 20%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 170 60% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 220 60% 20%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --cta: 12 80% 58%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 12 80% 52%;
+
+    --success: 160 60% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --score-high: 160 60% 42%;
+    --score-mid: 40 90% 55%;
+    --score-low: 0 70% 55%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(220 60% 20%), hsl(220 50% 35%), hsl(170 60% 40%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 30% 97%));
+    --gradient-cta: linear-gradient(135deg, hsl(12 80% 58%), hsl(25 90% 55%));
+
+    --shadow-card: 0 4px 20px -4px hsl(220 30% 12% / 0.08);
+    --shadow-elevated: 0 12px 40px -8px hsl(220 30% 12% / 0.12);
+    --shadow-cta: 0 8px 24px -4px hsl(12 80% 58% / 0.35);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 230 25% 7%;
+    --foreground: 210 40% 92%;
+
+    --card: 230 25% 10%;
+    --card-foreground: 210 40% 92%;
+
+    --popover: 230 25% 10%;
+    --popover-foreground: 210 40% 92%;
+
+    --primary: 210 60% 70%;
+    --primary-foreground: 230 25% 7%;
+
+    --secondary: 230 20% 16%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 230 20% 14%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 170 60% 50%;
+    --accent-foreground: 230 25% 7%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 20% 18%;
+    --input: 230 20% 18%;
+    --ring: 210 60% 70%;
+
+    --cta: 12 80% 58%;
+    --cta-foreground: 0 0% 100%;
+    --cta-hover: 12 80% 52%;
+
+    --success: 160 60% 50%;
+    --success-foreground: 0 0% 100%;
+
+    --score-high: 160 60% 50%;
+    --score-mid: 40 90% 60%;
+    --score-low: 0 70% 60%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(230 30% 8%), hsl(240 25% 15%), hsl(220 40% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(230 25% 10%), hsl(230 20% 12%));
+    --gradient-cta: linear-gradient(135deg, hsl(12 80% 58%), hsl(25 90% 55%));
+
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 12px 40px -8px hsl(0 0% 0% / 0.5);
+    --shadow-cta: 0 8px 24px -4px hsl(12 80% 58% / 0.3);
+
+    --sidebar-background: 230 25% 8%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 210 60% 70%;
+    --sidebar-primary-foreground: 230 25% 7%;
+    --sidebar-accent: 230 20% 14%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 230 20% 18%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-cta {
+    background: var(--gradient-cta);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-cta {
+    box-shadow: var(--shadow-cta);
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+    box-shadow: var(--shadow-card);
+  }
+}

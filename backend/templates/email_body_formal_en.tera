@@ -1,0 +1,12 @@
+Dear {{ recipient }},
+
+I am {{ candidate_name }}, and I am writing to express my interest in the {{ position }} position at {{ company_name }}. With {{ years_experience }} years of experience in software development, I believe I have the skills and expertise to make a meaningful contribution to your team.
+
+{% if key_skills %}My key competencies include: {{ key_skills }}. {% endif %}I have successfully worked on various projects ranging from web application development to building complex backend systems.
+
+I would welcome the opportunity to discuss how my background and skills align with the requirements of this role. Please find my resume attached for your review.
+
+Best regards,
+{{ candidate_name }}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

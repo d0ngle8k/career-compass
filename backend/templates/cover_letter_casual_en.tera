@@ -1,0 +1,19 @@
+Application for {{ position }} Position
+
+Dear {{ company_name }} Team,
+
+I'm {{ candidate_name }}, and I'm genuinely excited about the {{ position }} opportunity. After {{ years_experience }} years in software development, I feel this role is the perfect next step in my career journey.
+
+ABOUT MY EXPERIENCE
+{% if key_skills %}
+I've worked hands-on with {{ key_skills }} through various real-world projects. {% endif %}I believe my technical skills combined with my collaborative approach would make me a valuable addition to the team.
+
+WHY {{ company_name }}
+
+I've researched your company and I'm impressed by the work environment and the innovative projects your team is working on. I'd love to be part of the team and contribute to your success.
+
+Looking forward to discussing this opportunity with you!
+
+{{ candidate_name }}
+{% if phone %}Phone: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}

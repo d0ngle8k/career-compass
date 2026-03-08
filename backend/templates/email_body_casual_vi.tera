@@ -1,0 +1,12 @@
+Chào {{ recipient }},
+
+Mình là {{ candidate_name }}, đang rất quan tâm đến vị trí {{ position }} tại {{ company_name }}. Với {{ years_experience }} năm kinh nghiệm làm việc trong lĩnh vực IT, mình nghĩ bản thân khá phù hợp với yêu cầu công việc này.
+
+{% if key_skills %}Về kỹ năng, mình có kinh nghiệm với {{ key_skills }}. {% endif %}Mình đã tham gia nhiều dự án khác nhau và luôn tìm cách học hỏi công nghệ mới.
+
+Mình rất mong được trao đổi thêm về cơ hội này! CV đính kèm để bạn tham khảo nhé.
+
+Cảm ơn,
+{{ candidate_name }}
+{% if phone %}{{ phone }}{% endif %}
+{% if email %}{{ email }}{% endif %}

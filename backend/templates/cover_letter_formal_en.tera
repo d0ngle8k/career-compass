@@ -1,0 +1,24 @@
+COVER LETTER
+
+{{ company_name }}
+Dear Hiring Manager,
+
+After learning about the {{ position }} position at {{ company_name }}, I am confident that this opportunity aligns perfectly with my skills and career aspirations. With {{ years_experience }} years of experience in software development, I am well-prepared to meet and exceed the expectations of this role.
+
+EXPERIENCE AND SKILLS
+{% if key_skills %}
+I specialize in {{ key_skills }}, developed through hands-on experience with projects of varying scale and complexity. {% endif %}Throughout my career, I have cultivated strong problem-solving abilities, teamwork skills, and effective communication with stakeholders at all levels.
+
+EXPECTED CONTRIBUTIONS
+
+I understand that the {{ position }} role requires not only technical expertise but also analytical thinking and adaptability. With my solid foundation and commitment to continuous learning, I am confident I can contribute positively to {{ company_name }}'s growth and success.
+
+CONCLUSION
+
+I would greatly appreciate the opportunity to discuss this position further. Please feel free to contact me using the information below.
+
+Sincerely,
+
+{{ candidate_name }}
+{% if phone %}Phone: {{ phone }}{% endif %}
+{% if email %}Email: {{ email }}{% endif %}
