@@ -51,7 +51,7 @@ const AboutPage = () => {
       <section className="py-16 bg-muted/30">
         <div className="section-container">
           <h2 className="font-display text-3xl font-bold text-foreground text-center mb-10">{t("about.devteam")}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {team.map((m, i) => (
               <motion.div key={m.name} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="glass-card rounded-xl p-6 text-center">
                 <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
