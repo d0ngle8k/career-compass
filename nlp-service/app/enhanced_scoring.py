@@ -31,85 +31,151 @@ class EnhancedCVScorer(AdvancedCVScorer):
         "angular": ["react", "vue", "vue.js"],
         
         # Backend frameworks
-        "express": ["fastapi", "flask", "django", "nest.js"],
-        "fastapi": ["express", "flask", "django"],
-        "django": ["fastapi", "flask", "rails"],
+        "express": ["fastapi", "flask", "django", "nest.js", "nestjs"],
+        "fastapi": ["express", "flask", "django", "spring boot"],
+        "django": ["fastapi", "flask", "rails", "spring boot"],
         "flask": ["fastapi", "django", "express"],
-        "spring boot": ["spring", "nest.js", "express"],
+        "spring boot": ["spring", "nest.js", "nestjs", "express", "fastapi"],
+        "nest.js": ["nestjs", "express", "spring boot"],
+        "nestjs": ["nest.js", "express", "spring boot"],
         
-        # Databases
-        "postgresql": ["mysql", "mariadb", "postgres"],
-        "mysql": ["postgresql", "mariadb"],
-        "mongodb": ["dynamodb", "cassandra", "cosmosdb"],
+        # Databases - SQL
+        "postgresql": ["mysql", "mariadb", "postgres", "sql"],
+        "postgres": ["postgresql", "mysql", "mariadb", "sql"],
+        "mysql": ["postgresql", "mariadb", "sql"],
+        "mariadb": ["mysql", "postgresql", "sql"],
+        "sql": ["postgresql", "mysql", "mariadb"],
+        
+        # Databases - NoSQL
+        "mongodb": ["dynamodb", "cassandra", "cosmosdb", "couchdb"],
+        "cassandra": ["mongodb", "dynamodb", "scylladb"],
+        "dynamodb": ["mongodb", "cassandra"],
         "redis": ["memcached", "elasticache"],
         
-        # Cloud providers
+        # Cloud providers - AWS
         "aws": ["azure", "gcp", "google cloud"],
+        "ec2": ["azure vm", "gcp compute"],
+        "s3": ["azure blob", "gcp storage"],
+        "lambda": ["azure functions", "gcp functions"],
+        "rds": ["azure sql", "gcp sql"],
+        
+        # Cloud providers - Azure
         "azure": ["aws", "gcp"],
+        "azure vm": ["ec2", "gcp compute"],
+        "azure blob": ["s3", "gcp storage"],
+        "azure functions": ["lambda", "gcp functions"],
+        
+        # Cloud providers - GCP
         "gcp": ["aws", "azure", "google cloud"],
         "google cloud": ["gcp", "aws", "azure"],
+        "gcp compute": ["ec2", "azure vm"],
+        "gcp storage": ["s3", "azure blob"],
+        "gcp functions": ["lambda", "azure functions"],
+        
+        # Infrastructure as Code
+        "terraform": ["cloudformation", "pulumi", "ansible"],
+        "cloudformation": ["terraform", "pulumi"],
+        "pulumi": ["terraform", "cloudformation"],
+        "ansible": ["terraform", "puppet", "chef"],
         
         # Container orchestration
-        "kubernetes": ["k8s", "docker swarm", "nomad"],
-        "k8s": ["kubernetes", "docker swarm"],
+        "kubernetes": ["k8s", "docker swarm", "nomad", "openshift"],
+        "k8s": ["kubernetes", "docker swarm", "openshift"],
         "docker": ["podman", "containerd"],
+        "openshift": ["kubernetes", "k8s"],
         
         # CI/CD
-        "jenkins": ["github actions", "gitlab ci", "circleci"],
+        "jenkins": ["github actions", "gitlab ci", "circleci", "travis ci"],
         "github actions": ["gitlab ci", "jenkins", "circleci"],
         "gitlab ci": ["github actions", "jenkins", "circleci"],
+        "circleci": ["github actions", "gitlab ci", "jenkins"],
         
-        # Programming languages
+        # Programming languages - Similar paradigms
         "javascript": ["typescript"],
         "typescript": ["javascript"],
-        "python": ["java", "go", "c#"],
+        "python": ["ruby", "go"],
+        "java": ["c#", "kotlin", "scala"],
+        "c#": ["java", "f#"],
+        "go": ["rust", "python"],
+        "rust": ["go", "c++"],
+        
+        # Message Queues
+        "kafka": ["rabbitmq", "sqs", "redis", "nats"],
+        "rabbitmq": ["kafka", "sqs", "activemq"],
+        "sqs": ["kafka", "rabbitmq"],
         
         # Methodologies
         "agile": ["scrum", "kanban"],
         "scrum": ["agile", "kanban"],
+        "kanban": ["agile", "scrum"],
         "rest": ["restful", "rest api", "graphql"],
         "restful": ["rest", "rest api"],
+        "rest api": ["rest", "restful", "api"],
         "graphql": ["rest", "restful"],
+        
+        # Testing frameworks
+        "jest": ["mocha", "jasmine", "vitest"],
+        "pytest": ["unittest", "nose"],
+        "junit": ["testng", "mockito"],
     }
     
     # Soft skills that can be inferred from experience descriptions
     SOFT_SKILL_CONTEXTS = {
         "leadership": [
-            r"\b(led|leading|lead)\s+(a\s+)?team",
-            r"\bmanaged?\s+\d+\s+(?:people|developers|engineers|members)",
-            r"\b(mentor|mentored|mentoring)",
-            r"\b(supervised|supervising)",
+            r"(?i)\b(led|leading|lead|dẫn dắt|lãnh đạo|chỉ đạo)\s+(a\s+|the\s+)?(team|nhóm|đội)",
+            r"(?i)\b(managed?|managing|quản lý)\s+\d+\s*(people|developers|engineers|members|người|nhân viên|thành viên)",
+            r"(?i)\b(mentor|mentored|mentoring|hướng dẫn|đào tạo)",
+            r"(?i)\b(supervised?|supervising|giám sát)",
+            r"(?i)\bleadership\s+(role|position|experience)",
+            r"(?i)\b(built|created|xây dựng)\s+(a\s+|the\s+)?(team|nhóm)",
         ],
         "teamwork": [
-            r"\b(collaborated?|collaborating)\s+with",
-            r"\b(worked?|working)\s+(?:with|in)\s+(?:a\s+)?team",
-            r"\bcross-functional\s+team",
-            r"\bteam\s+(?:player|member)",
+            r"(?i)\b(collaborated?|collaborating|cộng tác|hợp tác)\s+(with|cùng|với)",
+            r"(?i)\b(worked?|working|làm việc)\s+(with|in|cùng|trong)\s+(a\s+|the\s+)?(team|nhóm|đội)",
+            r"(?i)\bcross-functional\s+team",
+            r"(?i)\bteam\s+(player|member|work|effort|collaboration)",
+            r"(?i)\b(cooperation|phối hợp)",
         ],
         "communication": [
-            r"\b(presented?|presenting)\s+(?:to|at)",
-            r"\b(communicated?|communicating)\s+with",
-            r"\bstakeholder\s+(?:management|communication)",
-            r"\b(documented?|documenting)",
-            r"\b(reported?|reporting)\s+to",
+            r"(?i)\b(presented?|presenting|trình bày|báo cáo)\s+(to|at|cho|tại|với)",
+            r"(?i)\b(communicated?|communicating|giao tiếp|trao đổi)\s+(with|to|về|với)",
+            r"(?i)\bstakeholder\s+(management|communication|engagement)",
+            r"(?i)\b(documented?|documenting|tài liệu)",
+            r"(?i)\b(reported?|reporting)\s+to",
+            r"(?i)\b(public|presentation)\s+skill",
         ],
         "problem solving": [
-            r"\b(solved?|solving|resolved?|resolving)\s+(?:complex\s+)?(?:problems?|issues?)",
-            r"\b(debugged?|debugging)",
-            r"\b(troubleshot|troubleshooting)",
-            r"\b(optimized?|optimizing|improved?)",
+            r"(?i)\b(solved?|solving|resolved?|resolving|giải quyết|xử lý)\s+(complex\s+)?(problems?|issues?|vấn đề)",
+            r"(?i)\b(debugged?|debugging|fix|fixed)",
+            r"(?i)\b(troubleshot|troubleshooting)",
+            r"(?i)\b(optimized?|optimizing|improved?|tối ưu|cải thiện)\s+(performance|system|process)",
+            r"(?i)\b(innovative|sáng tạo)\s+(solution|approach)",
         ],
         "analytical": [
-            r"\b(analyzed?|analyzing|analysed?|analysing)",
-            r"\b(evaluated?|evaluating)",
-            r"\b(assessed?|assessing)",
-            r"\bdata-driven",
+            r"(?i)\b(analyzed?|analyzing|analysed?|analysing|phân tích)",
+            r"(?i)\b(evaluated?|evaluating|đánh giá)",
+            r"(?i)\b(assessed?|assessing)",
+            r"(?i)\bdata-driven",
+            r"(?i)\b(metrics|KPI|measurement)",
         ],
         "project management": [
-            r"\b(managed?|managing)\s+(?:projects?|initiatives?)",
-            r"\b(coordinated?|coordinating)",
-            r"\b(planned?|planning)\s+and\s+(?:executed?|implementing)",
-            r"\bproject\s+manager",
+            r"(?i)\b(managed?|managing|quản lý)\s+(projects?|initiatives?|dự án)",
+            r"(?i)\b(coordinated?|coordinating|điều phối)",
+            r"(?i)\b(planned?|planning|lập kế hoạch)\s+and\s+(executed?|implementing|execution)",
+            r"(?i)\bproject\s+(manager|lead|coordinator)",
+            r"(?i)\bagile|scrum\s+(master|lead)",
+        ],
+        "adaptability": [
+            r"(?i)\b(adapted?|adapting|thích nghi)",
+            r"(?i)\b(flexible|flexibility|linh hoạt)",
+            r"(?i)\b(quick\s+learner|fast\s+learner)",
+            r"(?i)\b(learned?|learning)\s+(new|quickly)",
+        ],
+        "self-motivated": [
+            r"(?i)\b(self-motivated|proactive|chủ động|tự giác)",
+            r"(?i)\b(initiative|sáng kiến)",
+            r"(?i)\b(independent|independently|độc lập)",
+            r"(?i)\btook\s+initiative",
         ],
     }
     
@@ -301,26 +367,32 @@ class EnhancedCVScorer(AdvancedCVScorer):
             # Add small bonus for having extra relevant skills
             extra_skills = cv_tech - jd_tech
             if extra_skills:
-                bonus = min(10, len(extra_skills) * 2)
+                bonus = min(15, len(extra_skills) * 2.5)
                 tech_score = min(100, tech_score + bonus)
         else:
-            tech_score = 60  # Default if no technical skills in JD
+            tech_score = 70  # Default if no technical skills in JD
         
         # Calculate soft skills score
         if jd_soft:
             soft_score = (len(matched_soft) / len(jd_soft)) * 100
             # Bonus for having more soft skills than required
-            if len(matched_soft) > len(jd_soft) * 0.7:
-                soft_score = min(100, soft_score + 10)
+            if len(matched_soft) >= len(jd_soft) * 0.6:
+                soft_score = min(100, soft_score + 15)
+            # Give base credit if any soft skills found
+            if matched_soft:
+                soft_score = max(soft_score, 40)
         else:
-            soft_score = 60 if cv_soft else 50
+            soft_score = 70 if cv_soft else 60
         
         # Calculate methodology score with related skills
         if jd_method:
             total_method_match = sum(method_matches.values())
             method_score = (total_method_match / len(jd_method)) * 100
+            # Give base credit if any methodologies found
+            if method_score > 0:
+                method_score = max(method_score, 50)
         else:
-            method_score = 60
+            method_score = 70
         
         # Experience matching (same as before)
         cv_years = self.extract_years_experience(cv_text)
@@ -352,8 +424,11 @@ class EnhancedCVScorer(AdvancedCVScorer):
         if jd_certs:
             matched_certs = set(cv_certs) & set(jd_certs)
             cert_score = (len(matched_certs) / len(jd_certs)) * 100
+            # Give partial credit for having any certs even if not exact match
+            if not matched_certs and cv_certs:
+                cert_score = 40
         else:
-            cert_score = 60 if cv_certs else 50
+            cert_score = 70 if cv_certs else 60
         
         # CV structure quality
         sections = self.detect_cv_sections(cv_text)
@@ -370,8 +445,12 @@ class EnhancedCVScorer(AdvancedCVScorer):
             structure_score * weights["structure"]
         )
         
-        # Apply baseline floor - any complete CV gets at least 35
-        if structure_score >= 60:  # Has most standard sections
+        # Apply baseline floor - any complete CV gets at least these minimums
+        if structure_score >= 80:  # Has most standard sections
+            final_score = max(50, final_score)
+        elif structure_score >= 60:
+            final_score = max(45, final_score)
+        else:
             final_score = max(40, final_score)
         
         # Generate detailed feedback
