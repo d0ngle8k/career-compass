@@ -186,6 +186,25 @@ const translations: Translations = {
   "solution.jd.too.short": { vi: "Mô tả công việc quá ngắn. Vui lòng cung cấp thêm chi tiết.", en: "Job description is too short. Please provide more details." },
   "solution.cv.unreadable": { vi: "Không thể đọc nội dung CV. Vui lòng sử dụng file PDF dạng text hoặc file TXT.", en: "Could not read CV content. Please use a text-based PDF or TXT file." },
   "solution.analyze.error": { vi: "Phân tích thất bại. Vui lòng thử lại.", en: "Analysis failed. Please try again." },
+  // Navbar dropdown
+  "nav.cv.analysis": { vi: "Phân tích CV", en: "CV Analysis" },
+  "nav.write.mail": { vi: "Viết Mail", en: "Write Mail" },
+  "nav.write.cover": { vi: "Viết Cover Letter", en: "Write Cover Letter" },
+  // Write Mail page
+  "writemail.title": { vi: "Viết Email ứng tuyển", en: "Write Application Email" },
+  "writemail.desc": { vi: "Tạo email ứng tuyển chuyên nghiệp dựa trên CV và JD", en: "Generate professional application emails based on CV and JD" },
+  "writemail.generate": { vi: "Tạo Email", en: "Generate Email" },
+  "writemail.empty.title": { vi: "Chưa có email", en: "No email yet" },
+  "writemail.empty.desc": { vi: "Upload CV và nhập JD, sau đó nhấn \"Tạo Email\" để bắt đầu.", en: "Upload CV and enter JD, then click \"Generate Email\" to start." },
+  // Cover Letter page
+  "coverletter.title": { vi: "Viết Cover Letter", en: "Write Cover Letter" },
+  "coverletter.desc": { vi: "Tạo cover letter chuyên nghiệp dựa trên CV và JD", en: "Generate professional cover letters based on CV and JD" },
+  "coverletter.generate": { vi: "Tạo Cover Letter", en: "Generate Cover Letter" },
+  "coverletter.empty.title": { vi: "Chưa có cover letter", en: "No cover letter yet" },
+  "coverletter.empty.desc": { vi: "Upload CV và nhập JD, sau đó nhấn \"Tạo Cover Letter\" để bắt đầu.", en: "Upload CV and enter JD, then click \"Generate Cover Letter\" to start." },
+  // Export
+  "export.pdf.success": { vi: "Đã xuất PDF thành công!", en: "PDF exported successfully!" },
+  "export.docx.success": { vi: "Đã xuất DOCX thành công!", en: "DOCX exported successfully!" },
 };
 
 interface LanguageContextType {
