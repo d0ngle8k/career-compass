@@ -153,6 +153,27 @@ const translations: Translations = {
   "auth.login.success": { vi: "Đăng nhập thành công!", en: "Login successful!" },
   "solution.login.required": { vi: "Vui lòng đăng nhập để sử dụng tính năng này", en: "Please login to use this feature" },
   "solution.file.too.large": { vi: "File quá lớn. Vui lòng chọn file dưới 5MB.", en: "File too large. Please select a file under 5MB." },
+  // Auth - login
+  "auth.tab.password": { vi: "Mật khẩu", en: "Password" },
+  "auth.tab.otp": { vi: "Mã OTP", en: "OTP Code" },
+  "auth.login.button": { vi: "Đăng nhập", en: "Sign In" },
+  "auth.no.account": { vi: "Chưa có tài khoản?", en: "Don't have an account?" },
+  "auth.signup.link": { vi: "Đăng ký ngay", en: "Sign up now" },
+  // Signup
+  "nav.signup": { vi: "Đăng ký", en: "Sign Up" },
+  "signup.subtitle": { vi: "Tạo tài khoản để bắt đầu phân tích CV", en: "Create an account to start analyzing your CV" },
+  "signup.google": { vi: "Đăng ký với Google", en: "Sign up with Google" },
+  "signup.name": { vi: "Tên hiển thị", en: "Display Name" },
+  "signup.name.placeholder": { vi: "Nhập tên của bạn", en: "Enter your name" },
+  "signup.password": { vi: "Mật khẩu", en: "Password" },
+  "signup.confirm.password": { vi: "Xác nhận mật khẩu", en: "Confirm Password" },
+  "signup.button": { vi: "Đăng ký", en: "Sign Up" },
+  "signup.have.account": { vi: "Đã có tài khoản?", en: "Already have an account?" },
+  "signup.login.link": { vi: "Đăng nhập", en: "Sign in" },
+  "signup.fill.all": { vi: "Vui lòng điền đầy đủ thông tin", en: "Please fill in all fields" },
+  "signup.password.min": { vi: "Mật khẩu phải có ít nhất 6 ký tự", en: "Password must be at least 6 characters" },
+  "signup.password.mismatch": { vi: "Mật khẩu xác nhận không khớp", en: "Passwords do not match" },
+  "signup.success": { vi: "Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.", en: "Sign up successful! Please check your email to verify your account." },
 };
 
 interface LanguageContextType {
