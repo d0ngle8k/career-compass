@@ -6,7 +6,7 @@ use axum::Router;
 use axum::http::{HeaderValue, Method};
 use config::settings::Settings;
 use modules::{ai, auth, content_generation, health, scoring};
-use shared::app_state::AppState;
+use shared::{app_state::AppState, database};
 use std::net::SocketAddr;
 use tower_http::cors::{Any, CorsLayer};
 use tracing::{error, info};
@@ -22,19 +22,44 @@ async fn main() {
     let host = settings.backend_host.clone();
     let port = settings.backend_port;
     
-        // Initialize templates
-        if let Err(e) = content_generation::template_engine::init_templates() {
-            error!("Failed to initialize templates: {}", e);
+    // Initialize database connection pool
+    info!("Connecting to database...");
+    let db_pool = match database::create_pool(&settings.database_url).await {
+        Ok(pool) => {
+            info!("Database connection pool created successfully");
+            pool
+        }
+        Err(err) => {
+            error!("Failed to create database pool: {}", err);
+            error!("Please ensure PostgreSQL is running and DATABASE_URL is correct");
             std::process::exit(1);
         }
-        info!("Templates initialized successfully");
+    };
     
-    let state = AppState::new(settings);
+    // Run database migrations
+    info!("Running database migrations...");
+    if let Err(err) = database::run_migrations(&db_pool).await {
+        error!("Failed to run database migrations: {}", err);
+        std::process::exit(1);
+    }
+    
+    // Initialize templates
+    if let Err(e) = content_generation::template_engine::init_templates() {
+        error!("Failed to initialize templates: {}", e);
+        std::process::exit(1);
+    }
+    info!("Templates initialized successfully");
+    
+    let state = AppState::new(settings, db_pool);
 
     let cors = CorsLayer::new()
         .allow_origin([
             HeaderValue::from_static("http://localhost:8080"),
             HeaderValue::from_static("http://127.0.0.1:8080"),
+            HeaderValue::from_static("http://localhost:5173"),
+            HeaderValue::from_static("http://127.0.0.1:5173"),
+            HeaderValue::from_static("http://localhost:5174"),
+            HeaderValue::from_static("http://127.0.0.1:5174"),
         ])
         .allow_methods([Method::GET, Method::POST, Method::OPTIONS])
         .allow_headers(Any);

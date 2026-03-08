@@ -1,8 +1,26 @@
-use crate::{shared::{api_error::ApiError, app_state::AppState}, modules::auth::jwt};
+use crate::{
+    shared::{api_error::ApiError, app_state::AppState},
+    modules::auth::{jwt, models::{User, AuthProvider}},
+};
 
-pub fn validate_credentials(email: &str, password: &str, state: &AppState) -> Result<(), ApiError> {
-    let users = state.users.read().map_err(|_| ApiError::Internal)?;
-    let stored_password = users.get(email).ok_or(ApiError::Unauthorized)?;
+pub async fn validate_credentials(email: &str, password: &str, state: &AppState) -> Result<(), ApiError> {
+    let user = sqlx::query_as!(
+        User,
+        r#"
+        SELECT id, email, name, avatar_url, 
+               provider as "provider: AuthProvider", 
+               provider_id, password_hash, created_at, updated_at
+        FROM users 
+        WHERE email = $1 AND provider = 'email'
+        "#,
+        email
+    )
+    .fetch_optional(&state.db)
+    .await
+    .map_err(|_| ApiError::Internal)?
+    .ok_or(ApiError::Unauthorized)?;
+
+    let stored_password = user.password_hash.ok_or(ApiError::Unauthorized)?;
 
     if stored_password == password {
         return Ok(());
@@ -11,7 +29,7 @@ pub fn validate_credentials(email: &str, password: &str, state: &AppState) -> Re
     Err(ApiError::Unauthorized)
 }
 
-pub fn register(email: &str, password: &str, state: &AppState) -> Result<(), ApiError> {
+pub async fn register(email: &str, password: &str, state: &AppState) -> Result<(), ApiError> {
     let normalized_email = email.trim().to_lowercase();
     if normalized_email.len() < 5 || !normalized_email.contains('@') {
         return Err(ApiError::BadRequest("Invalid email format".to_string()));
@@ -21,12 +39,32 @@ pub fn register(email: &str, password: &str, state: &AppState) -> Result<(), Api
         return Err(ApiError::BadRequest("Password must be at least 6 characters".to_string()));
     }
 
-    let mut users = state.users.write().map_err(|_| ApiError::Internal)?;
-    if users.contains_key(&normalized_email) {
+    // Check if user already exists
+    let existing = sqlx::query!(
+        "SELECT id FROM users WHERE email = $1",
+        normalized_email
+    )
+    .fetch_optional(&state.db)
+    .await
+    .map_err(|_| ApiError::Internal)?;
+
+    if existing.is_some() {
         return Err(ApiError::BadRequest("Email already exists".to_string()));
     }
 
-    users.insert(normalized_email, password.to_string());
+    // Insert new user
+    sqlx::query!(
+        r#"
+        INSERT INTO users (email, password_hash, provider)
+        VALUES ($1, $2, 'email')
+        "#,
+        normalized_email,
+        password
+    )
+    .execute(&state.db)
+    .await
+    .map_err(|_| ApiError::Internal)?;
+
     Ok(())
 }
 
@@ -36,4 +74,78 @@ pub fn login(email: &str, state: &AppState) -> Result<String, ApiError> {
 
 pub fn validate_bearer_token(raw_token: &str, state: &AppState) -> Result<(), ApiError> {
     jwt::validate_token(raw_token, state).map(|_| ())
+}
+
+pub async fn find_or_create_oauth_user(
+    email: &str,
+    name: Option<&str>,
+    avatar_url: Option<&str>,
+    provider_id: &str,
+    provider: AuthProvider,
+    state: &AppState,
+) -> Result<User, ApiError> {
+    if let Some(user) = sqlx::query_as!(
+        User,
+        r#"
+        SELECT id, email, name, avatar_url, 
+               provider as "provider: AuthProvider", 
+               provider_id, password_hash, created_at, updated_at
+        FROM users 
+        WHERE provider = $1 AND provider_id = $2
+        "#,
+        provider as AuthProvider,
+        provider_id
+    )
+    .fetch_optional(&state.db)
+    .await
+    .map_err(|_| ApiError::Internal)?
+    {
+        return Ok(user);
+    }
+
+    // Try to find by email (for account linking)
+    if let Some(user) = sqlx::query_as!(
+        User,
+        r#"
+        SELECT id, email, name, avatar_url, 
+               provider as "provider: AuthProvider", 
+               provider_id, password_hash, created_at, updated_at
+        FROM users 
+        WHERE email = $1
+        "#,
+        email
+    )
+    .fetch_optional(&state.db)
+    .await
+    .map_err(|_| ApiError::Internal)?
+    {
+        // Email exists but different provider → return existing user
+        // In a more sophisticated system, we might want to link the accounts
+        return Ok(user);
+    }
+
+    // Create new user
+    let user = sqlx::query_as!(
+        User,
+        r#"
+        INSERT INTO users (email, name, avatar_url, provider, provider_id)
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING id, email, name, avatar_url, 
+                  provider as "provider: AuthProvider", 
+                  provider_id, password_hash, created_at, updated_at
+        "#,
+        email,
+        name,
+        avatar_url,
+        provider as AuthProvider,
+        provider_id
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(|e| {
+        tracing::error!("Failed to create OAuth user: {}", e);
+        ApiError::Internal
+    })?;
+
+    Ok(user)
 }

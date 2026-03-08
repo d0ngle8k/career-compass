@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { backendApi } from "@/shared/lib/backend-api";
+import { OAuthButtons } from "../components/OAuthButtons";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -110,6 +111,9 @@ const SignUpPage = () => {
               {t("nav.signup")}
             </Button>
           </div>
+
+          {/* OAuth Buttons */}
+          <OAuthButtons />
 
           <p className="text-center text-sm text-muted-foreground">
             Da co tai khoan?{" "}

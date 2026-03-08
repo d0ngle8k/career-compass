@@ -12,6 +12,22 @@ pub struct Settings {
     pub gemini_model: String,
     pub nlp_service_url: String,
     pub nlp_timeout_ms: u64,
+    
+    // Database
+    pub database_url: String,
+    
+    // Google OAuth
+    pub google_client_id: String,
+    pub google_client_secret: String,
+    pub google_redirect_uri: String,
+    
+    // GitHub OAuth
+    pub github_client_id: String,
+    pub github_client_secret: String,
+    pub github_redirect_uri: String,
+    
+    // Frontend URL for OAuth redirects
+    pub frontend_url: String,
 }
 
 impl Settings {
@@ -35,6 +51,30 @@ impl Settings {
             nlp_timeout_ms: env::var("NLP_TIMEOUT_MS")
                 .unwrap_or_else(|_| "10000".to_string())
                 .parse()?,
+            
+            // Database
+            database_url: env::var("DATABASE_URL")
+                .map_err(|_| SettingsError::Missing("DATABASE_URL"))?,
+            
+            // Google OAuth
+            google_client_id: env::var("GOOGLE_CLIENT_ID")
+                .unwrap_or_else(|_| "".to_string()),
+            google_client_secret: env::var("GOOGLE_CLIENT_SECRET")
+                .unwrap_or_else(|_| "".to_string()),
+            google_redirect_uri: env::var("GOOGLE_REDIRECT_URI")
+                .unwrap_or_else(|_| "http://localhost:9000/api/auth/google/callback".to_string()),
+            
+            // GitHub OAuth
+            github_client_id: env::var("GITHUB_CLIENT_ID")
+                .unwrap_or_else(|_| "".to_string()),
+            github_client_secret: env::var("GITHUB_CLIENT_SECRET")
+                .unwrap_or_else(|_| "".to_string()),
+            github_redirect_uri: env::var("GITHUB_REDIRECT_URI")
+                .unwrap_or_else(|_| "http://localhost:9000/api/auth/github/callback".to_string()),
+            
+            // Frontend URL
+            frontend_url: env::var("FRONTEND_URL")
+                .unwrap_or_else(|_| "http://localhost:5173".to_string()),
         })
     }
 }

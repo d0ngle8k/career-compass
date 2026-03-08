@@ -1,4 +1,27 @@
 use serde::{Deserialize, Serialize};
+use chrono::{DateTime, Utc};
+use uuid::Uuid;
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, sqlx::Type)]
+#[sqlx(type_name = "auth_provider", rename_all = "lowercase")]
+pub enum AuthProvider {
+    Email,
+    Google,
+    GitHub,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, sqlx::FromRow)]
+pub struct User {
+    pub id: Uuid,
+    pub email: String,
+    pub name: Option<String>,
+    pub avatar_url: Option<String>,
+    pub provider: AuthProvider,
+    pub provider_id: Option<String>,
+    pub password_hash: Option<String>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
+}
 
 #[derive(Deserialize)]
 pub struct LoginRequest {
@@ -34,4 +57,15 @@ pub struct RegisterResponse {
 pub struct Claims {
     pub sub: String,
     pub exp: usize,
+}
+
+#[derive(Deserialize)]
+pub struct OAuthCallbackRequest {
+    pub code: String,
+    pub state: Option<String>,
+}
+
+#[derive(Serialize)]
+pub struct OAuthInitResponse {
+    pub authorization_url: String,
 }

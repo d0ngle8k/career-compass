@@ -13,6 +13,7 @@ import AboutPage from "@/features/marketing/pages/AboutPage";
 import ContactPage from "@/features/marketing/pages/ContactPage";
 import AuthPage from "@/features/auth/pages/AuthPage";
 import SignUpPage from "@/features/auth/pages/SignUpPage";
+import OAuthCallbackPage from "@/features/auth/pages/OAuthCallbackPage";
 import NotFound from "@/pages/NotFound";
 import ChatbotWidget from "@/components/ChatbotWidget";
 import ProtectedRoute from "@/shared/components/auth/ProtectedRoute";
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/" element={<LandingPage />} />
               <Route path="/auth" element={<AuthPage />} />
               <Route path="/signup" element={<SignUpPage />} />
+              <Route path="/auth/callback" element={<OAuthCallbackPage />} />
               <Route element={<ProtectedRoute />}>
                 <Route path="/solution" element={<SolutionPage />} />
                 <Route path="/write-mail" element={<WriteMailPage />} />

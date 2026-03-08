@@ -1,22 +1,19 @@
 use crate::config::settings::Settings;
-use std::{collections::HashMap, sync::{Arc, RwLock}};
+use sqlx::PgPool;
 
 #[derive(Clone)]
 pub struct AppState {
     pub settings: Settings,
     pub http: reqwest::Client,
-    pub users: Arc<RwLock<HashMap<String, String>>>,
+    pub db: PgPool,
 }
 
 impl AppState {
-    pub fn new(settings: Settings) -> Self {
-        let mut users = HashMap::new();
-        users.insert(settings.admin_email.clone(), settings.admin_password.clone());
-
+    pub fn new(settings: Settings, db: PgPool) -> Self {
         Self {
             settings,
             http: reqwest::Client::new(),
-            users: Arc::new(RwLock::new(users)),
+            db,
         }
     }
 }

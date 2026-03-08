@@ -48,6 +48,20 @@ The backend uses Tera templates for professional email and cover letter generati
 
 - Node.js 18+ and npm
 - Rust 1.70+ and Cargo
+- **PostgreSQL 12+** (for database)
+- Python 3.11+ with pip
+- **Google Cloud account** (for Google OAuth - optional)
+- **GitHub account** (for GitHub OAuth - optional)
+
+### OAuth & Database Setup
+
+🔐 **New!** OAuth authentication is now supported with Google and GitHub.
+
+**For complete setup instructions including OAuth configuration:**
+
+👉 **See [SETUP_GUIDE.md](./SETUP_GUIDE.md)** for step-by-step PostgreSQL and OAuth setup.
+
+### Quick Steps:
 - **Python 3.11+** (for NLP service)
 - Google Gemini API key
 

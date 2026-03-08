@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { OAuthButtons } from "../components/OAuthButtons";
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -83,6 +84,9 @@ const AuthPage = () => {
               {t("auth.login.button")}
             </Button>
           </div>
+
+          {/* OAuth Buttons */}
+          <OAuthButtons />
 
           <p className="text-center text-sm text-muted-foreground">
             {t("auth.no.account")}{" "}

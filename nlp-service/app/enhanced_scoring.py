@@ -8,7 +8,7 @@ Features:
 - Contextual soft skills detection from experience descriptions
 """
 import re
-from typing import Dict, List, Tuple, Set
+from typing import Any, Dict, List, Tuple, Set
 from collections import Counter, defaultdict
 import math
 
@@ -522,230 +522,327 @@ class EnhancedCVScorer(AdvancedCVScorer):
         final_score,
         breakdown_scores
     ) -> Dict[str, List[str]]:
-        """Generate detailed, actionable feedback with clear strengths, weaknesses and tips."""
+        """Generate detailed, deterministic feedback driven by score bands and component gaps."""
 
-        strengths: List[str] = []
+        strengths: List[str] = [self._score_band_summary(final_score, language)]
         weaknesses: List[str] = []
-        tips: List[str] = []
 
-        matched_tech_count = len(matched_tech)
-        total_tech_required = matched_tech_count + len(missing_tech)
-        matched_soft_count = len(matched_soft)
-        total_soft_required = matched_soft_count + len(missing_soft)
-        
-        tech_match_rate = (matched_tech_count / total_tech_required * 100) if total_tech_required > 0 else 0
-        soft_match_rate = (matched_soft_count / total_soft_required * 100) if total_soft_required > 0 else 0
+        gap_metrics = self._derive_gap_metrics(
+            matched_tech,
+            missing_tech,
+            matched_soft,
+            missing_soft,
+            matched_method,
+            missing_method,
+            cv_years,
+            jd_years,
+            cv_certs,
+            jd_certs,
+            sections,
+        )
+        ranked_components = self._rank_weak_components(breakdown_scores)
 
-        # ============= STRENGTHS =============
-        # 1. Overall assessment
-        strengths.append(self._score_band_summary(final_score, language))
+        # Strengths: keep concise, evidence-based.
+        if gap_metrics["total_tech_required"] > 0:
+            strengths.append(
+                f"Độ khớp kỹ năng kỹ thuật đạt {gap_metrics['tech_match_rate']:.1f}% "
+                f"({gap_metrics['matched_tech_count']}/{gap_metrics['total_tech_required']})"
+            )
 
-        # 2. Technical skills strengths
-        if matched_tech_count > 0:
-            if tech_match_rate >= 70:
-                matched_list = ', '.join(sorted(list(matched_tech))[:5])
-                strengths.append(
-                    f"Kỹ năng kỹ thuật xuất sắc ({matched_tech_count}/{total_tech_required}): CV thể hiện rõ {matched_list}"
-                    + (f" và {matched_tech_count - 5} kỹ năng khác" if matched_tech_count > 5 else "")
-                )
-            elif tech_match_rate >= 40:
-                matched_list = ', '.join(sorted(list(matched_tech))[:4])
-                strengths.append(
-                    f"Có nền tảng kỹ thuật phù hợp ({matched_tech_count}/{total_tech_required}): Đã match {matched_list}"
-                )
-            else:
-                matched_list = ', '.join(sorted(list(matched_tech))[:3])
-                strengths.append(f"Có một số kỹ năng liên quan: {matched_list}")
-
-        # 3. Soft skills and inferred skills
-        if matched_soft_count > 0 or inferred_soft:
-            soft_skills_total = matched_soft_count + len(inferred_soft)
-            if soft_skills_total >= 3:
-                combined_soft = list(matched_soft)[:3] + list(inferred_soft)[:2]
-                strengths.append(
-                    f"Thể hiện tốt kỹ năng mềm ({soft_skills_total} kỹ năng): {', '.join(sorted(combined_soft[:5]))}"
-                )
-            elif matched_soft_count > 0:
-                strengths.append(f"Có đề cập kỹ năng mềm: {', '.join(sorted(list(matched_soft))[:3])}")
-
-        # 4. Experience alignment
         if jd_years > 0:
             if cv_years >= jd_years:
-                years_excess = cv_years - jd_years
-                if years_excess >= 2:
-                    strengths.append(
-                        f"Kinh nghiệm vượt yêu cầu: {cv_years} năm (vượt {years_excess} năm so với JD)"
-                    )
-                else:
-                    strengths.append(f"Kinh nghiệm đáp ứng yêu cầu: {cv_years} năm (JD yêu cầu {jd_years} năm)")
-            elif cv_years >= jd_years * 0.7:
-                strengths.append(f"Kinh nghiệm gần đạt yêu cầu: {cv_years} năm (JD yêu cầu {jd_years} năm)")
-
-        # 5. Related/transferable skills
-        related_matches = {k: v for k, v in tech_matches.items() if 0.3 < v < 1.0}
-        if related_matches and len(related_matches) >= 2:
-            related_list = ', '.join(list(sorted(related_matches.keys()))[:4])
-            strengths.append(
-                f"Có kỹ năng liên quan đáng giá ({len(related_matches)} kỹ năng): {related_list}"
-            )
-
-        # 6. Structure completeness
-        present_sections = [k for k, v in sections.items() if v]
-        if len(present_sections) >= 3:
-            strengths.append(f"Cấu trúc CV đầy đủ với {len(present_sections)} mục chính: {', '.join(present_sections[:4])}")
-
-        # ============= WEAKNESSES =============
-        # 1. Critical missing technical skills
-        if missing_tech:
-            critical_missing = sorted(list(missing_tech))[:5]
-            if len(missing_tech) >= 5:
-                weaknesses.append(
-                    f"Thiếu nhiều kỹ năng kỹ thuật quan trọng ({len(missing_tech)} kỹ năng): {', '.join(critical_missing)} - Đây là rào cản lớn với ATS và nhà tuyển dụng"
-                )
-            elif len(missing_tech) >= 3:
-                weaknesses.append(
-                    f"Thiếu một số kỹ năng kỹ thuật cốt lõi ({len(missing_tech)} kỹ năng): {', '.join(critical_missing)} - Cần bổ sung để tăng cơ hội"
-                )
+                strengths.append(f"Kinh nghiệm đáp ứng JD: {cv_years:.1f} năm so với yêu cầu {jd_years:.1f} năm")
             else:
-                weaknesses.append(
-                    f"Chưa thể hiện rõ: {', '.join(critical_missing)} - Đây là kỹ năng JD yêu cầu"
-                )
+                strengths.append(f"Kinh nghiệm hiện có: {cv_years:.1f} năm (cần thêm {max(0.0, jd_years - cv_years):.1f} năm)")
 
-        # 2. Missing soft skills
-        if missing_soft:
-            soft_missing = sorted(list(missing_soft))[:4]
-            if len(missing_soft) >= 4:
-                weaknesses.append(
-                    f"Thiếu kỹ năng mềm ({len(missing_soft)} kỹ năng): {', '.join(soft_missing)} - Cần viết lại bullet points để thể hiện"
-                )
-            else:
-                weaknesses.append(f"Chưa nhấn mạnh kỹ năng mềm: {', '.join(soft_missing)}")
+        present_sections = [self._section_label(k) for k, v in sections.items() if v]
+        strengths.append(f"CV có {len(present_sections)} mục chính đã nhận diện: {', '.join(sorted(present_sections)[:4])}")
 
-        # 3. Experience gap
-        if jd_years > 0 and cv_years < jd_years * 0.7:
-            gap = jd_years - cv_years
+        # Weaknesses with 3-part structure: issue + evidence + impact.
+        if gap_metrics["missing_tech_count"] > 0:
             weaknesses.append(
-                f"Kinh nghiệm chưa đạt yêu cầu: CV {cv_years} năm, JD yêu cầu {jd_years} năm (thiếu {gap:.1f} năm) - Cần bù bằng kỹ năng hoặc dự án nổi bật"
+                self._render_detailed_weakness(
+                    "Thiếu kỹ năng kỹ thuật cốt lõi so với JD",
+                    (
+                        f"Thiếu {gap_metrics['missing_tech_count']} kỹ năng; "
+                        f"mức khớp kỹ năng kỹ thuật {gap_metrics['tech_match_rate']:.1f}% "
+                        f"({gap_metrics['matched_tech_count']}/{gap_metrics['total_tech_required']}); "
+                        f"ưu tiên thiếu: {', '.join(gap_metrics['missing_tech_top']) if gap_metrics['missing_tech_top'] else 'N/A'}"
+                    ),
+                    "Giảm điểm kỹ năng kỹ thuật và khả năng qua vòng lọc ATS theo từ khóa"
+                )
             )
 
-        # 4. Missing methodologies
-        if missing_method:
-            method_missing = sorted(list(missing_method))[:4]
+        if gap_metrics["experience_gap"] > 0:
             weaknesses.append(
-                f"Thiếu phương pháp làm việc: {', '.join(method_missing)} - Đây là yếu tố quan trọng để đánh giá quy trình làm việc"
+                self._render_detailed_weakness(
+                    "Khoảng cách kinh nghiệm so với JD",
+                    (
+                        f"CV {cv_years:.1f} năm, JD yêu cầu {jd_years:.1f} năm; "
+                        f"thiếu {gap_metrics['experience_gap']:.1f} năm"
+                    ),
+                    "Giảm mức phù hợp ở tiêu chí seniority, có thể bị loại ở vòng đầu"
+                )
             )
 
-        # 5. Weak component breakdown
-        weakest_components = sorted(breakdown_scores.items(), key=lambda x: x[1])[:2]
-        for comp, comp_score in weakest_components:
-            if comp_score < 40:
-                comp_label = self._component_label(comp)
-                weaknesses.append(
-                    f"Phần {comp_label} rất yếu ({comp_score:.1f}/100): Cần cải thiện đáng kể để vượt vòng sơ tuyển"
+        if gap_metrics["missing_sections_count"] > 0:
+            weaknesses.append(
+                self._render_detailed_weakness(
+                    "Thiếu mục quan trọng trong CV",
+                    (
+                        f"Thiếu {gap_metrics['missing_sections_count']} mục: "
+                        f"{', '.join(gap_metrics['missing_sections_top']) if gap_metrics['missing_sections_top'] else 'N/A'}"
+                    ),
+                    "Khả năng phân tích CV của ATS kém ổn định và nhà tuyển dụng khó xác thực năng lực nhanh"
                 )
+            )
 
-        # 6. Structure issues
-        missing_sections = [k for k, v in sections.items() if not v]
-        if missing_sections:
-            if len(missing_sections) >= 3:
-                weaknesses.append(
-                    f"Thiếu {len(missing_sections)} mục quan trọng: {', '.join(missing_sections[:4])} - ATS thường tìm các mục này để parse dữ liệu"
+        if gap_metrics["cert_gap"] > 0:
+            weaknesses.append(
+                self._render_detailed_weakness(
+                    "Thiếu chứng chỉ JD ưu tiên",
+                    (
+                        f"JD yêu cầu/ưu tiên {gap_metrics['jd_cert_count']} chứng chỉ, "
+                        f"CV đáp ứng {gap_metrics['cv_cert_match_count']}, thiếu {gap_metrics['cert_gap']}"
+                    ),
+                    "Giảm lợi thế cạnh tranh ở vòng shortlist khi so với ứng viên tương đương"
                 )
-            else:
-                weaknesses.append(f"Thiếu mục CV: {', '.join(missing_sections)} - Nên bổ sung để tăng tính chuyên nghiệp")
+            )
 
-        # ============= TIPS =============
-        # 1. Score-based strategic tips
+        # Component-level weaknesses from weakest areas.
+        component_impact = {
+            "technical_skills": "Điểm match tổng thể khó vượt ngưỡng shortlist nếu không tăng độ phủ kỹ năng chính",
+            "soft_skills": "Bullet thiếu năng lực phối hợp/ảnh hưởng, giảm thuyết phục ở vòng phỏng vấn hành vi",
+            "methodologies": "Thiếu tín hiệu quy trình làm việc chuẩn, ảnh hưởng đánh giá mức chuyên nghiệp",
+            "experience": "Khó chứng minh độ chín nghề nghiệp cho role mục tiêu",
+            "education": "Giảm độ tin cậy hồ sơ ở các role có tiêu chí học vấn rõ",
+            "certifications": "Mất điểm cộng ở vị trí yêu cầu chuẩn hóa kiến thức",
+            "structure": "CV khó đọc và khó scan tự động, làm giảm tỷ lệ được đọc sâu",
+        }
+        for comp, comp_score, severity in ranked_components[:3]:
+            if comp_score >= 70:
+                continue
+            weaknesses.append(
+                self._render_detailed_weakness(
+                    f"Thành phần {self._component_label(comp)} ở mức {self._severity_label(severity)}",
+                    f"Điểm {self._component_label(comp)} = {comp_score:.1f}/100",
+                    component_impact.get(comp, "Giảm tổng điểm phù hợp và giảm xác suất được mời phỏng vấn")
+                )
+            )
+
+        # Deduplicate while preserving order.
+        dedup_weaknesses: List[str] = []
+        seen_weaknesses = set()
+        for item in weaknesses:
+            if item not in seen_weaknesses:
+                dedup_weaknesses.append(item)
+                seen_weaknesses.add(item)
+        weaknesses = dedup_weaknesses
+
+        # Ensure >= 3 weaknesses with quantitative evidence.
+        if len(weaknesses) < 3:
+            for comp, comp_score, severity in ranked_components:
+                fallback = self._render_detailed_weakness(
+                    f"Thành phần {self._component_label(comp)} ở mức {self._severity_label(severity)}",
+                    f"Điểm hiện tại {comp_score:.1f}/100",
+                    "Làm giảm tổng điểm phù hợp và mức cạnh tranh của hồ sơ"
+                )
+                if fallback not in weaknesses:
+                    weaknesses.append(fallback)
+                if len(weaknesses) >= 3:
+                    break
+
+        tips = self._build_priority_actions(
+            final_score,
+            field,
+            language,
+            gap_metrics,
+            ranked_components,
+        )
         tips.extend(self._score_band_tips(final_score, language))
 
-        # 2. Technical skills action plan
-        if missing_tech:
-            priority_tech = sorted(list(missing_tech))[:3]
-            if len(missing_tech) <= 3:
-                tips.append(
-                    f"ƯU TIÊN CAO: Bổ sung ngay {', '.join(priority_tech)} vào CV - Thêm 1-2 dự án cụ thể cho mỗi kỹ năng này"
-                )
-            else:
-                tips.append(
-                    f"ƯU TIÊN CAO: Tập trung vào top 3 kỹ năng thiếu ({', '.join(priority_tech)}) - Viết 2-3 bullet points với kết quả đo lường được cho mỗi kỹ năng"
-                )
-                
-            # Add second-tier tech tips
-            if len(missing_tech) > 3:
-                secondary_tech = sorted(list(missing_tech))[3:6]
-                tips.append(
-                    f"BƯỚC 2: Sau khi bổ sung top 3, hãy thêm: {', '.join(secondary_tech)} để tăng độ phủ lên 80%+"
-                )
+        # Guardrails for meaningless/generic output.
+        cleaned_tips: List[str] = []
+        for tip in tips:
+            low = tip.lower()
+            if "cải thiện đáng kể" in low and "Bằng chứng" not in tip:
+                continue
+            cleaned_tips.append(tip)
 
-        # 3. Soft skills enhancement
-        if missing_soft or (matched_soft_count > 0 and matched_soft_count < total_soft_required):
-            if missing_soft:
-                priority_soft = sorted(list(missing_soft))[:2]
-                tips.append(
-                    f"Viết lại experience bullets để thể hiện {', '.join(priority_soft)} - Dùng công thức: [Hành động] + [Kết quả] + [Tác động]"
-                )
-            if matched_soft_count > 0:
-                tips.append(
-                    "Soft skills đã có cần được NHẤN MẠNH hơn: Đưa lên phần tóm tắt hoặc top 3 bullets của mỗi công việc"
-                )
-
-        # 4. Experience gap solutions
-        if jd_years > 0 and cv_years < jd_years:
-            gap = jd_years - cv_years
-            if gap >= 2:
-                tips.append(
-                    f"Bù đắp khoảng trống {gap:.0f} năm kinh nghiệm: (1) Nhấn mạnh độ phức tạp/quy mô dự án, (2) Thêm freelance/side projects, (3) Highlight leadership hoặc impact lớn"
-                )
-            else:
-                tips.append(
-                    "Tối ưu phần kinh nghiệm: Thêm metrics cụ thể (tăng trưởng %, số lượng users, revenue...) để thể hiện impact tương đương senior"
-                )
-
-        # 5. ATS optimization
-        if final_score < 60:
-            tips.append(
-                "Tối ưu ATS: (1) Sao chép CHÍNH XÁC từ khóa từ JD, (2) Đưa từ khóa quan trọng lên đầu mỗi section, (3) Tránh table/hình ảnh trong phần skills"
-            )
-
-        # 6. Field-specific tips
-        if field == "software":
-            if missing_tech and breakdown_scores.get("technical_skills", 0) < 50:
-                tips.append(
-                    "Chiến lược cho Software role: Tạo GitHub repo demo các tech thiếu + link vào CV, hoặc viết blog post về cách implement"
-                )
-        elif field in ["marketing", "hr"] and soft_match_rate < 50:
-            tips.append(
-                "Chiến lược cho Marketing/HR role: Mỗi bullet point cần có số liệu cụ thể (conversion rate, engagement, retention...) để thể hiện soft skills"
-            )
-
-        # 7. Structure improvements
-        if missing_sections:
-            section_tips = {
-                "experience": "Thêm mục KINH NGHIỆM với format: [Vị trí] | [Công ty] | [Thời gian] - Liệt kê 3-5 achievements",
-                "education": "Thêm mục HỌC VẤN: Tên trường, chuyên ngành, năm tốt nghiệp (GPA nếu >= 3.0/4.0)",
-                "skills": "Thêm mục KỸ NĂNG: Phân loại theo nhóm (Technical, Soft Skills, Languages) với cấp độ thành thạo",
-                "projects": "Thêm mục DỰ ÁN: 2-3 projects nổi bật với tech stack, role và kết quả đạt được",
-            }
-            for missing_sec in missing_sections[:2]:
-                if missing_sec in section_tips:
-                    tips.append(section_tips[missing_sec])
-
-        # Fallback guards
-        if not strengths:
-            strengths.append("CV có một số tín hiệu phù hợp nhưng cần điều chỉnh để tăng độ match với JD này")
-        
-        if not weaknesses:
-            weaknesses.append("Không phát hiện điểm yếu nghiêm trọng - Chỉ cần tối ưu nhỏ để đạt điểm cao hơn")
+        # Deduplicate and clamp 3-5 tips.
+        dedup_tips: List[str] = []
+        seen_tips = set()
+        for item in cleaned_tips:
+            if item not in seen_tips:
+                dedup_tips.append(item)
+                seen_tips.add(item)
+        tips = dedup_tips
 
         if len(tips) < 3:
-            tips.append("Sử dụng từ khóa chính xác từ JD trong phần tóm tắt và top 3 bullet points")
-            tips.append("Thêm số liệu định lượng (%, số lượng, thời gian) vào mọi achievement có thể")
+            tips.extend([
+                "P1 (24h) - Đồng bộ top 10 từ khóa xuất hiện nhiều nhất trong JD vào Summary và Skills; đầu ra: độ phủ từ khóa >= 80%.",
+                "P2 (3-7 ngày) - Viết lại 3 bullet mạnh nhất theo công thức Hành động + Chỉ số + Tác động; đầu ra: mỗi bullet có ít nhất 1 metric.",
+                "P3 (sau ngưỡng) - Tùy chỉnh CV theo từng JD thay vì một bản dùng chung; đầu ra: tăng tỷ lệ phản hồi phỏng vấn.",
+            ])
 
         return {
-            "strengths": strengths[:8],
+            "strengths": strengths[:6],
             "weaknesses": weaknesses[:8],
-            "tips": tips[:10]
+            "tips": tips[:5]
         }
+
+    def _derive_gap_metrics(
+        self,
+        matched_tech,
+        missing_tech,
+        matched_soft,
+        missing_soft,
+        matched_method,
+        missing_method,
+        cv_years,
+        jd_years,
+        cv_certs,
+        jd_certs,
+        sections,
+    ) -> Dict[str, Any]:
+        """Derive stable, numeric gap metrics used by feedback policies."""
+        matched_tech_count = len(matched_tech)
+        missing_tech_count = len(missing_tech)
+        total_tech_required = matched_tech_count + missing_tech_count
+        tech_match_rate = (matched_tech_count / total_tech_required * 100) if total_tech_required > 0 else 0.0
+
+        matched_soft_count = len(matched_soft)
+        missing_soft_count = len(missing_soft)
+        total_soft_required = matched_soft_count + missing_soft_count
+        soft_match_rate = (matched_soft_count / total_soft_required * 100) if total_soft_required > 0 else 0.0
+
+        experience_gap = max(0.0, float(jd_years) - float(cv_years)) if jd_years > 0 else 0.0
+
+        jd_cert_set = {str(c).strip().lower() for c in jd_certs if str(c).strip()}
+        cv_cert_set = {str(c).strip().lower() for c in cv_certs if str(c).strip()}
+        cert_gap_set = jd_cert_set - cv_cert_set
+
+        missing_sections = sorted([self._section_label(k) for k, v in sections.items() if not v])
+
+        return {
+            "matched_tech_count": matched_tech_count,
+            "missing_tech_count": missing_tech_count,
+            "total_tech_required": total_tech_required,
+            "tech_match_rate": tech_match_rate,
+            "missing_tech_top": sorted(list(missing_tech))[:5],
+            "matched_soft_count": matched_soft_count,
+            "missing_soft_count": missing_soft_count,
+            "soft_match_rate": soft_match_rate,
+            "missing_soft_top": sorted(list(missing_soft))[:4],
+            "matched_method_count": len(matched_method),
+            "missing_method_count": len(missing_method),
+            "missing_method_top": sorted(list(missing_method))[:4],
+            "experience_gap": experience_gap,
+            "missing_sections_count": len(missing_sections),
+            "missing_sections_top": missing_sections[:4],
+            "jd_cert_count": len(jd_cert_set),
+            "cv_cert_match_count": len(jd_cert_set & cv_cert_set),
+            "cert_gap": len(cert_gap_set),
+        }
+
+    def _rank_weak_components(self, breakdown_scores: Dict[str, float]) -> List[Tuple[str, float, str]]:
+        """Rank weak components by severity for deterministic planning."""
+        ranked: List[Tuple[str, float, str]] = []
+        for comp, score in sorted(breakdown_scores.items(), key=lambda x: x[1]):
+            if score < 40:
+                severity = "critical"
+            elif score < 60:
+                severity = "high"
+            elif score < 75:
+                severity = "medium"
+            else:
+                severity = "low"
+            ranked.append((comp, float(score), severity))
+        return ranked
+
+    def _build_priority_actions(
+        self,
+        final_score: float,
+        field: str,
+        language: str,
+        gap_metrics: Dict[str, Any],
+        ranked_components: List[Tuple[str, float, str]],
+    ) -> List[str]:
+        """Build actionable P1/P2/P3 plan from score band + gap severities."""
+        _ = str(language).lower()
+        tips: List[str] = []
+
+        # P1: highest-impact fixes in 24h.
+        p1_actions: List[str] = []
+        if gap_metrics["missing_tech_count"] > 0:
+            top_tech = ', '.join(gap_metrics["missing_tech_top"][:3])
+            p1_actions.append(
+                f"Lấp top kỹ năng thiếu: {top_tech if top_tech else 'N/A'}"
+            )
+        if gap_metrics["missing_sections_count"] > 0:
+            top_sections = ', '.join(gap_metrics["missing_sections_top"][:2])
+            p1_actions.append(
+                f"Bổ sung mục bắt buộc: {top_sections if top_sections else 'kinh nghiệm, kỹ năng'}"
+            )
+        if not p1_actions and ranked_components:
+            p1_actions.append(f"Tối ưu component yếu nhất: {self._component_label(ranked_components[0][0])}")
+
+        tips.append(
+            "P1 (24h) - "
+            + " + ".join(p1_actions[:2])
+            + "; Đầu ra: tăng rõ điểm ở component yếu nhất và CV đủ section cốt lõi."
+        )
+
+        # P2: structured rewrite in 3-7 days.
+        p2_focus = []
+        if gap_metrics["experience_gap"] > 0:
+            p2_focus.append(
+                f"viết lại phần kinh nghiệm để bù thiếu {gap_metrics['experience_gap']:.1f} năm bằng tác động/độ phức tạp"
+            )
+        if gap_metrics["missing_soft_count"] > 0:
+            p2_focus.append(
+                f"thể hiện {', '.join(gap_metrics['missing_soft_top'][:2])} qua bullet có số liệu"
+            )
+        if gap_metrics["cert_gap"] > 0:
+            p2_focus.append("nêu chứng chỉ đang có hoặc kế hoạch thi chứng chỉ liên quan JD")
+        if not p2_focus:
+            p2_focus.append("chuẩn hóa 5 bullet thành định dạng Hành động + Chỉ số + Tác động")
+
+        tips.append(
+            "P2 (3-7 ngày) - "
+            + "; ".join(p2_focus[:3])
+            + "; Đầu ra: mỗi bullet chính có số liệu cụ thể và ngôn ngữ bám JD."
+        )
+
+        # P3: after threshold is reached.
+        score_target = 95 if final_score >= 90 else 90 if final_score >= 80 else 80 if final_score >= 70 else 70 if final_score >= 60 else 60
+        p3_text = (
+            f"P3 (sau ngưỡng) - Tối ưu CV theo từng JD để đạt mốc {score_target}+; "
+            "Đầu ra: tăng tỷ lệ vào danh sách rút gọn/phỏng vấn nhờ bản CV chuyên biệt theo vị trí."
+        )
+        tips.append(p3_text)
+
+        # Field-aware actionable add-on.
+        if field == "software" and gap_metrics["missing_tech_count"] > 0:
+            tips.append(
+                "P2 (software) - Thêm 1 dự án minh họa cho mỗi kỹ năng thiếu quan trọng; Đầu ra: có bằng chứng năng lực qua liên kết GitHub/portfolio."
+            )
+        elif field in ["marketing", "hr"]:
+            tips.append(
+                "P2 (marketing/hr) - Mỗi bullet cần KPI định lượng (conversion, retention, engagement...); Đầu ra: kỹ năng mềm được chứng minh bằng số liệu."
+            )
+
+        # Guardrail: avoid long upskilling advice for high bands.
+        if final_score < 50:
+            tips.append(
+                "P3 (nâng nền) - Lập lộ trình nâng cấp kỹ năng 6-8 tuần theo 2 kỹ năng cốt lõi nhất từ JD; Đầu ra: có dự án minh chứng trước khi ứng tuyển lại."
+            )
+
+        return tips
+
+    def _render_detailed_weakness(self, issue: str, evidence: str, impact: str) -> str:
+        """Render weakness with mandatory 3-part structure."""
+        return f"{issue}. Bằng chứng: {evidence}. Tác động: {impact}."
 
     def _component_label(self, component_key: str) -> str:
         labels = {
@@ -759,6 +856,30 @@ class EnhancedCVScorer(AdvancedCVScorer):
         }
         return labels.get(component_key, component_key)
 
+    def _severity_label(self, severity: str) -> str:
+        labels = {
+            "critical": "nghiêm trọng",
+            "high": "cao",
+            "medium": "trung bình",
+            "low": "thấp",
+        }
+        return labels.get(str(severity).lower(), str(severity))
+
+    def _section_label(self, section_key: str) -> str:
+        labels = {
+            "summary": "tóm tắt",
+            "skills": "kỹ năng",
+            "experience": "kinh nghiệm",
+            "projects": "dự án",
+            "education": "học vấn",
+            "certifications": "chứng chỉ",
+            "achievements": "thành tích",
+            "awards": "giải thưởng",
+            "activities": "hoạt động",
+            "contact": "thông tin liên hệ",
+        }
+        return labels.get(str(section_key).lower(), str(section_key))
+
     def _score_band_summary(
         self,
         final_score: float,
@@ -767,7 +888,7 @@ class EnhancedCVScorer(AdvancedCVScorer):
         """Generate detailed score band summary with actionable context"""
         _ = str(language).lower()
         if final_score >= 90:
-            return f"✨ PHÙ HỢP XUẤT SẮC ({final_score:.1f}/100): CV match hầu hết yêu cầu JD - Rất có khả năng vượt vòng sơ tuyển ATS"
+            return f"✨ PHÙ HỢP XUẤT SẮC ({final_score:.1f}/100): CV khớp hầu hết yêu cầu JD - Rất có khả năng vượt vòng sơ tuyển ATS"
         elif final_score >= 80:
             return f"⭐ PHÙ HỢP CAO ({final_score:.1f}/100): CV khớp tốt với JD - Có cơ hội cao được mời phỏng vấn nếu tối ưu thêm một số điểm"
         elif final_score >= 70:
@@ -777,40 +898,34 @@ class EnhancedCVScorer(AdvancedCVScorer):
         elif final_score >= 50:
             return f"⚠ PHÙ HỢP THẤP ({final_score:.1f}/100): CV còn thiếu nhiều yêu cầu cốt lõi - Nguy cơ cao bị loại bởi ATS"
         else:
-            return f"✗ PHÙ HỢP RẤT THẤP ({final_score:.1f}/100): CV chưa match với JD này - Nên xem xét apply vị trí khác hoặc học thêm kỹ năng"
+            return f"✗ PHÙ HỢP RẤT THẤP ({final_score:.1f}/100): CV chưa khớp với JD này - Nên cân nhắc vị trí phù hợp hơn hoặc học thêm kỹ năng"
 
     def _score_band_tips(self, final_score: float, language: str) -> List[str]:
-        """Generate strategic tips based on score band"""
+        """Generate concise score-band strategy without generic wording."""
         _ = str(language).lower()
         if final_score >= 90:
             return [
-                "🎯 CHIẾN LƯỢC ĐẠT 95+: Thêm 1-2 certifications liên quan hoặc side projects để vượt trội hoàn toàn",
-                "📝 POLISH CV: Đảm bảo không có lỗi grammar, format nhất quán, và tailored cho từng company culture",
+                "Chiến lược 90+: tinh chỉnh ngôn ngữ bám JD và thêm 1 bằng chứng tác động nổi bật ngay phần đầu CV.",
             ]
         elif final_score >= 80:
             return [
-                "🎯 CHIẾN LƯỢC ĐẠT 90+: Điền đầy kỹ năng thiếu và thêm 2-3 achievements với metrics cụ thể",
-                "📊 QUANTIFY RESULTS: Mỗi bullet point nên có con số (%, $, time saved, users impacted...)",
+                "Chiến lược 80-89: xử lý đúng 2-3 khoảng trống lớn nhất để vượt 90, tránh sửa dàn trải.",
             ]
         elif final_score >= 70:
             return [
-                "🎯 CHIẾN LƯỢC ĐẠT 80+: Tập trung vào top 3-5 kỹ năng thiếu quan trọng nhất, viết case study cho mỗi skill",
-                "🔑 KEYWORDS: Scan JD tìm từ khóa xuất hiện 2+ lần, đảm bảo chúng có trong CV (chính xác 100%)",
+                "Chiến lược 70-79: tập trung 3 khoảng trống gây mất điểm lớn nhất thay vì thêm quá nhiều nội dung mới.",
             ]
         elif final_score >= 60:
             return [
-                "🎯 CHIẾN LƯỢC ĐẠT 70+: Bổ sung ngay top 5 kỹ năng thiếu + viết lại summary để mirror JD requirements",
-                "⚡ QUICK WINS: (1) Copy exact job title từ JD, (2) Thêm years of experience rõ ràng, (3) Đảm bảo có các section chuẩn",
+                "Chiến lược 60-69: đồng thời tối ưu cấu trúc ATS và khoảng trống kỹ thuật để vượt ngưỡng vào danh sách rút gọn.",
             ]
         elif final_score >= 50:
             return [
-                "🎯 CHIẾN LƯỢC ĐẠT 60+: Học/bổ sung 5-7 kỹ năng thiếu qua online courses (Udemy, Coursera) hoặc mini projects",
-                "🔧 RESTRUCTURE: Viết lại CV theo format ATS-friendly: [Summary] > [Skills] > [Experience] > [Education]",
+                "Chiến lược 50-59: tái cấu trúc CV theo chuẩn ATS trước, rồi bổ sung kỹ năng nền tảng theo mức ưu tiên.",
             ]
         else:
             return [
-                "🎯 XEM XÉT LẠI: CV này có thể không phù hợp với JD - Cân nhắc apply những vị trí match hơn với skillset hiện tại",
-                "📚 UPSKILL: JD này yêu cầu nhiều skills chưa có - Nên đầu tư 2-3 tháng học hoặc tìm junior position trước",
+                "Chiến lược <50: chọn JD gần năng lực hiện tại hơn và xây lộ trình nâng cấp kỹ năng theo 2 năng lực cốt lõi trước khi ứng tuyển lại.",
             ]
 
 
