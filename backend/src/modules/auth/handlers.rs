@@ -66,10 +66,8 @@ fn extract_bearer(headers: &HeaderMap) -> Result<String, ApiError> {
 pub async fn google_login(
     State(state): State<AppState>,
 ) -> Result<impl axum::response::IntoResponse, ApiError> {
-    let (auth_url, _csrf_token) = oauth::generate_google_auth_url(&state)?;
-    
-    // TODO: Store csrf_token in session/cache for verification
-    // For now, we skip CSRF validation for simplicity
+    let (auth_url, csrf_token) = oauth::generate_google_auth_url(&state)?;
+    state.store_oauth_state(csrf_token).await;
     
     Ok(ok(OAuthInitResponse { 
         authorization_url: auth_url 
@@ -81,7 +79,7 @@ pub async fn google_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
 ) -> Result<Redirect, ApiError> {
-    // TODO: Verify CSRF token from state parameter
+    validate_oauth_state(params.state.as_deref(), &state).await?;
     
     let user_info = oauth::exchange_google_code(params.code, &state).await?;
     
@@ -114,7 +112,8 @@ pub async fn google_callback(
 pub async fn github_login(
     State(state): State<AppState>,
 ) -> Result<impl axum::response::IntoResponse, ApiError> {
-    let (auth_url, _csrf_token) = oauth::generate_github_auth_url(&state)?;
+    let (auth_url, csrf_token) = oauth::generate_github_auth_url(&state)?;
+    state.store_oauth_state(csrf_token).await;
     
     Ok(ok(OAuthInitResponse { 
         authorization_url: auth_url 
@@ -126,6 +125,8 @@ pub async fn github_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
 ) -> Result<Redirect, ApiError> {
+    validate_oauth_state(params.state.as_deref(), &state).await?;
+
     let user_info = oauth::exchange_github_code(params.code, &state).await?;
     
     // GitHub users can hide their email, use login as fallback
@@ -152,4 +153,16 @@ pub async fn github_callback(
     );
     
     Ok(Redirect::to(&redirect_url))
+}
+
+async fn validate_oauth_state(state_param: Option<&str>, state: &AppState) -> Result<(), ApiError> {
+    let token = state_param
+        .filter(|value| !value.trim().is_empty())
+        .ok_or_else(|| ApiError::BadRequest("Missing OAuth state".to_string()))?;
+
+    if state.consume_oauth_state(token).await {
+        return Ok(());
+    }
+
+    Err(ApiError::BadRequest("Invalid or expired OAuth state".to_string()))
 }

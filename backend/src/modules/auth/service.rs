@@ -2,6 +2,31 @@ use crate::{
     shared::{api_error::ApiError, app_state::AppState},
     modules::auth::{jwt, models::{User, AuthProvider}},
 };
+use argon2::{
+    Argon2,
+    password_hash::{PasswordHash, PasswordHasher, PasswordVerifier, SaltString, rand_core::OsRng},
+};
+
+fn hash_password(password: &str) -> Result<String, ApiError> {
+    let salt = SaltString::generate(&mut OsRng);
+    let argon2 = Argon2::default();
+    argon2
+        .hash_password(password.as_bytes(), &salt)
+        .map(|hash| hash.to_string())
+        .map_err(|_| ApiError::Internal)
+}
+
+fn verify_password(stored_password: &str, provided_password: &str) -> Result<bool, ApiError> {
+    if stored_password.starts_with("$argon2") {
+        let parsed_hash = PasswordHash::new(stored_password).map_err(|_| ApiError::Internal)?;
+        return Ok(Argon2::default()
+            .verify_password(provided_password.as_bytes(), &parsed_hash)
+            .is_ok());
+    }
+
+    // Backward-compatible fallback for legacy plain-text rows.
+    Ok(stored_password == provided_password)
+}
 
 pub async fn validate_credentials(email: &str, password: &str, state: &AppState) -> Result<(), ApiError> {
     let user = sqlx::query_as!(
@@ -22,7 +47,21 @@ pub async fn validate_credentials(email: &str, password: &str, state: &AppState)
 
     let stored_password = user.password_hash.ok_or(ApiError::Unauthorized)?;
 
-    if stored_password == password {
+    if verify_password(&stored_password, password)? {
+        // One-time migration path: upgrade legacy plain-text password to Argon2.
+        if !stored_password.starts_with("$argon2") {
+            let upgraded_hash = hash_password(password)?;
+            if let Err(err) = sqlx::query!(
+                "UPDATE users SET password_hash = $1, updated_at = NOW() WHERE id = $2",
+                upgraded_hash,
+                user.id
+            )
+            .execute(&state.db)
+            .await
+            {
+                tracing::warn!("Failed to upgrade legacy password hash for {}: {}", email, err);
+            }
+        }
         return Ok(());
     }
 
@@ -52,6 +91,8 @@ pub async fn register(email: &str, password: &str, state: &AppState) -> Result<(
         return Err(ApiError::BadRequest("Email already exists".to_string()));
     }
 
+    let password_hash = hash_password(password)?;
+
     // Insert new user
     sqlx::query!(
         r#"
@@ -59,7 +100,7 @@ pub async fn register(email: &str, password: &str, state: &AppState) -> Result<(
         VALUES ($1, $2, 'email')
         "#,
         normalized_email,
-        password
+        password_hash
     )
     .execute(&state.db)
     .await

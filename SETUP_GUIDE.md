@@ -1,4 +1,4 @@
-# Career Compass AI - OAuth & Database Setup Guide
+s# Career Compass AI - OAuth & Database Setup Guide
 
 ## 🎯 Quick Start Overview
 
@@ -168,7 +168,7 @@ GITHUB_REDIRECT_URI=http://localhost:9000/api/v1/auth/github/callback
 FRONTEND_URL=http://localhost:5173
 
 # Other required variables (keep existing)
-JWT_SECRET=change-me-in-production
+JWT_SECRET=replace-with-a-random-secret-at-least-32-characters
 ADMIN_EMAIL=admin@careercompass.local
 ADMIN_PASSWORD=admin123
 GOOGLE_GEMINI_API_KEY=your-gemini-api-key
@@ -178,6 +178,7 @@ GOOGLE_GEMINI_API_KEY=your-gemini-api-key
 - Replace `postgres:postgres` in DATABASE_URL with your actual username:password
 - Replace OAuth credentials with your actual values from Steps 2 & 3
 - For production, update all URLs to your domain
+- Passwords are stored as Argon2 hashes (not plain text)
 
 ### 4.2 Frontend Configuration
 
@@ -375,10 +376,15 @@ CREATE DATABASE career_compass;
    - Restrict network access
 
 5. **OAuth security:**
-   - Implement CSRF token validation (currently marked as TODO in code)
+   - CSRF `state` validation is enabled for OAuth callbacks
    - Regularly rotate client secrets
    - Review OAuth scopes - only request what you need
    - Monitor for suspicious login attempts
+
+6. **Secret rotation policy:**
+   - Rotate `JWT_SECRET` immediately if it was shared in logs/chat
+   - Rotate `GOOGLE_CLIENT_SECRET` and `GITHUB_CLIENT_SECRET` from provider dashboards if exposed
+   - Restart backend after every secret rotation
 
 ---
 
