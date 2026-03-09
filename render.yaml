@@ -4,8 +4,6 @@ services:
     name: career-compass-db
     plan: starter
     region: singapore
-    databaseName: career_compass
-    databaseUser: career_compass_user
 
   # NLP Service (Python FastAPI)
   - type: web
