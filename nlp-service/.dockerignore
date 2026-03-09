@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+*.md
+!README.md
+
+# Data files (if any)
+*.csv
+*.json
+*.txt
+!requirements.txt
+
+# ML model cache (will be downloaded on startup)
+.cache/
+models/
+
+# Logs
+*.log
