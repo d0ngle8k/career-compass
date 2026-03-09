@@ -41,8 +41,8 @@ impl Settings {
             jwt_expires_minutes: env::var("JWT_EXPIRES_MINUTES")
                 .unwrap_or_else(|_| "120".to_string())
                 .parse()?,
-            admin_email: env::var("ADMIN_EMAIL").map_err(|_| SettingsError::Missing("ADMIN_EMAIL"))?,
-            admin_password: env::var("ADMIN_PASSWORD").map_err(|_| SettingsError::Missing("ADMIN_PASSWORD"))?,
+            admin_email: env::var("ADMIN_EMAIL").unwrap_or_else(|_| "admin@careercompass.local".to_string()),
+            admin_password: env::var("ADMIN_PASSWORD").unwrap_or_else(|_| "".to_string()),
             gemini_api_key: env::var("GOOGLE_GEMINI_API_KEY")
                 .map_err(|_| SettingsError::Missing("GOOGLE_GEMINI_API_KEY"))?,
             gemini_model: env::var("GOOGLE_GEMINI_MODEL").unwrap_or_else(|_| "gemini-1.5-flash".to_string()),
