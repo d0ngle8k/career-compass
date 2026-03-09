@@ -2,7 +2,6 @@ databases:
   - name: career-compass-db
     databaseName: career_compass
     user: career_compass_user
-    plan: starter
 
 services:
   # NLP Service (Python FastAPI)
