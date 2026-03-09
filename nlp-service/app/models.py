@@ -219,31 +219,78 @@ class SimilarityModel:
         return similarities
 
 
-# Global model instances (lazy loading)
+# Global model instances (lazy loading with memory management)
 _phobert_model: PhoBERTModel | None = None
 _bert_model: BERTModel | None = None
 _similarity_model: SimilarityModel | None = None
+_last_used_model: str | None = None  # Track last used model
+
+
+def clear_unused_models(keep_model: str | None = None):
+    """
+    Clear unused models from memory to free up RAM
+    This is critical for Render free tier (512MB limit)
+    """
+    global _phobert_model, _bert_model, _similarity_model
+    
+    if keep_model != "phobert" and _phobert_model is not None:
+        logger.info("Clearing PhoBERT model from memory")
+        del _phobert_model
+        _phobert_model = None
+    
+    if keep_model != "bert" and _bert_model is not None:
+        logger.info("Clearing BERT model from memory")
+        del _bert_model
+        _bert_model = None
+    
+    if keep_model != "similarity" and _similarity_model is not None:
+        logger.info("Clearing Similarity model from memory")
+        del _similarity_model
+        _similarity_model = None
+    
+    # Force garbage collection
+    import gc
+    gc.collect()
+    torch.cuda.empty_cache() if torch.cuda.is_available() else None
 
 
 def get_phobert() -> PhoBERTModel:
-    """Get or initialize PhoBERT model (singleton pattern)"""
-    global _phobert_model
+    """Get or initialize PhoBERT model (singleton pattern with memory management)"""
+    global _phobert_model, _last_used_model
+    
     if _phobert_model is None:
+        # Clear other models to free memory before loading PhoBERT
+        logger.info("Loading PhoBERT - clearing other models to save memory")
+        clear_unused_models(keep_model="phobert")
         _phobert_model = PhoBERTModel()
+    
+    _last_used_model = "phobert"
     return _phobert_model
 
 
 def get_bert() -> BERTModel:
-    """Get or initialize BERT model (singleton pattern)"""
-    global _bert_model
+    """Get or initialize BERT model (singleton pattern with memory management)"""
+    global _bert_model, _last_used_model
+    
     if _bert_model is None:
+        # Clear other models to free memory before loading BERT
+        logger.info("Loading BERT - clearing other models to save memory")
+        clear_unused_models(keep_model="bert")
         _bert_model = BERTModel()
+    
+    _last_used_model = "bert"
     return _bert_model
 
 
 def get_similarity() -> SimilarityModel:
-    """Get or initialize Similarity model (singleton pattern)"""
-    global _similarity_model
+    """Get or initialize Similarity model (singleton pattern with memory management)"""
+    global _similarity_model, _last_used_model
+    
     if _similarity_model is None:
+        # Clear other models to free memory before loading Similarity
+        logger.info("Loading Similarity model - clearing other models to save memory")
+        clear_unused_models(keep_model="similarity")
         _similarity_model = SimilarityModel()
+    
+    _last_used_model = "similarity"
     return _similarity_model

@@ -20,29 +20,10 @@ app = FastAPI(title="Career Compass NLP Service", version="0.4.0")
 
 @app.on_event("startup")
 async def startup_event():
-    """Preload models on startup for faster first request"""
-    logger.info("Preloading ML models...")
-    try:
-        # Preload PhoBERT for Vietnamese
-        get_phobert()
-        logger.info("PhoBERT loaded successfully")
-    except Exception as e:
-        logger.warning(f"Could not preload PhoBERT: {e}. Will use fallback.")
-    
-    try:
-        # Preload BERT for English
-        get_bert()
-        logger.info("BERT loaded successfully")
-    except Exception as e:
-        logger.warning(f"Could not preload BERT: {e}. Will use fallback.")
-    
-    try:
-        # Preload Similarity model
-        get_similarity()
-        logger.info("Similarity model loaded successfully")
-    except Exception as e:
-        logger.warning(f"Could not preload Similarity: {e}. Will use fallback.")
-    
+    """Startup event - lazy loading mode for low memory environments"""
+    logger.info("NLP service starting in LAZY LOADING mode")
+    logger.info("Models will be loaded on-demand to save memory (optimized for Render free tier)")
+    logger.info("First request per model type may be slower (~10-15s)")
     logger.info("NLP service ready")
 
 
