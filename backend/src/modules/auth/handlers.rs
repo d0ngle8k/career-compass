@@ -1,4 +1,9 @@
-use axum::{extract::{Query, State}, http::HeaderMap, response::Redirect, Json};
+use axum::{
+    extract::{Query, State},
+    http::HeaderMap,
+    response::{Html, IntoResponse, Redirect, Response},
+    Json,
+};
 
 use crate::{
     modules::auth::{
@@ -80,17 +85,16 @@ pub async fn google_login(
 pub async fn google_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
-) -> Result<Redirect, ApiError> {
+) -> Result<Response, ApiError> {
     let frontend_url = validate_oauth_state(params.state.as_deref(), &state).await?;
 
     if let Some(provider_error) = params.error.as_deref() {
         let description = params.error_description.as_deref().unwrap_or(provider_error);
-        let redirect_url = format!(
-            "{}/auth?error={}",
-            frontend_url.trim_end_matches('/'),
-            urlencoding::encode(description)
-        );
-        return Ok(Redirect::to(&redirect_url));
+        return Ok(build_oauth_error_bridge_response(
+            &frontend_url,
+            &state.settings.frontend_url,
+            description,
+        ));
     }
 
     let code = params
@@ -114,14 +118,13 @@ pub async fn google_callback(
     
     // Redirect to frontend with token
     let frontend_url = frontend_url.trim_end_matches('/');
-    let redirect_url = format!(
-        "{}/auth/callback?token={}&email={}",
-        frontend_url,
-        token,
-        urlencoding::encode(&user.email)
-    );
     
-    Ok(Redirect::to(&redirect_url))
+    Ok(build_oauth_success_bridge_response(
+        &frontend_url,
+        &state.settings.frontend_url,
+        &token,
+        &user.email,
+    ))
 }
 
 /// GitHub OAuth: Step 1 - Redirect user to GitHub consent screen
@@ -142,17 +145,16 @@ pub async fn github_login(
 pub async fn github_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
-) -> Result<Redirect, ApiError> {
+) -> Result<Response, ApiError> {
     let frontend_url = validate_oauth_state(params.state.as_deref(), &state).await?;
 
     if let Some(provider_error) = params.error.as_deref() {
         let description = params.error_description.as_deref().unwrap_or(provider_error);
-        let redirect_url = format!(
-            "{}/auth?error={}",
-            frontend_url.trim_end_matches('/'),
-            urlencoding::encode(description)
-        );
-        return Ok(Redirect::to(&redirect_url));
+        return Ok(build_oauth_error_bridge_response(
+            &frontend_url,
+            &state.settings.frontend_url,
+            description,
+        ));
     }
 
     let code = params
@@ -177,14 +179,13 @@ pub async fn github_callback(
     let token = service::login(&user.email, &state)?;
     
     let frontend_url = frontend_url.trim_end_matches('/');
-    let redirect_url = format!(
-        "{}/auth/callback?token={}&email={}",
-        frontend_url,
-        token,
-        urlencoding::encode(&user.email)
-    );
     
-    Ok(Redirect::to(&redirect_url))
+    Ok(build_oauth_success_bridge_response(
+        &frontend_url,
+        &state.settings.frontend_url,
+        &token,
+        &user.email,
+    ))
 }
 
 async fn validate_oauth_state(state_param: Option<&str>, state: &AppState) -> Result<String, ApiError> {
@@ -211,4 +212,98 @@ fn extract_frontend_url(headers: &HeaderMap, state: &AppState) -> String {
         })
         .map(|origin| origin.trim_end_matches('/').to_string())
         .unwrap_or(fallback)
+}
+
+fn build_oauth_success_bridge_response(
+        preferred_frontend: &str,
+        fallback_frontend: &str,
+        token: &str,
+        email: &str,
+) -> Response {
+        let candidates = oauth_frontend_candidates(preferred_frontend, fallback_frontend);
+        let candidates_json = serde_json::to_string(&candidates)
+                .unwrap_or_else(|_| "[\"http://localhost:8080\",\"http://localhost:5173\"]".to_string());
+        let token_json = serde_json::to_string(token).unwrap_or_else(|_| "\"\"".to_string());
+        let email_json = serde_json::to_string(email).unwrap_or_else(|_| "\"\"".to_string());
+
+        let html = format!(
+                r#"<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>OAuth Redirect</title>
+    </head>
+    <body>
+        <p>Completing sign-in...</p>
+        <script>
+            const candidates = {candidates_json};
+            const token = {token_json};
+            const email = {email_json};
+
+            const withPath = (base, path) => `${{String(base || '').replace(/\/$/, '')}}${{path}}`;
+
+            async function resolveFrontendAndRedirect() {{
+                const query = `token=${{encodeURIComponent(token)}}&email=${{encodeURIComponent(email)}}`;
+                for (const base of candidates) {{
+                    try {{
+                        await fetch(withPath(base, '/'), {{ mode: 'no-cors', cache: 'no-store' }});
+                        window.location.replace(withPath(base, `/auth/callback?${{query}}`));
+                        return;
+                    }} catch (_err) {{
+                        // Try next candidate
+                    }}
+                }}
+
+                // Last-resort fallback
+                window.location.replace(withPath('http://localhost:8080', `/auth/callback?${{query}}`));
+            }}
+
+            resolveFrontendAndRedirect();
+        </script>
+    </body>
+</html>"#
+        );
+
+        Html(html).into_response()
+}
+
+fn build_oauth_error_bridge_response(
+        preferred_frontend: &str,
+        fallback_frontend: &str,
+        error: &str,
+) -> Response {
+        let candidates = oauth_frontend_candidates(preferred_frontend, fallback_frontend);
+        for base in candidates {
+                let redirect_url = format!(
+                        "{}/auth?error={}",
+                        base.trim_end_matches('/'),
+                        urlencoding::encode(error)
+                );
+                return Redirect::to(&redirect_url).into_response();
+        }
+
+        Redirect::to("http://localhost:8080/auth").into_response()
+}
+
+fn oauth_frontend_candidates(preferred_frontend: &str, fallback_frontend: &str) -> Vec<String> {
+        let mut candidates = Vec::new();
+
+        for url in [
+                preferred_frontend,
+                fallback_frontend,
+                "http://localhost:8080",
+                "http://127.0.0.1:8080",
+                "http://localhost:5173",
+                "http://127.0.0.1:5173",
+        ] {
+                let normalized = url.trim().trim_end_matches('/');
+                if normalized.is_empty() {
+                        continue;
+                }
+                if !candidates.iter().any(|existing| existing == normalized) {
+                        candidates.push(normalized.to_string());
+                }
+        }
+
+        candidates
 }
