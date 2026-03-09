@@ -1,9 +1,10 @@
-services:
-  # PostgreSQL Database
-  - type: pserv
-    name: career-compass-db
+databases:
+  - name: career-compass-db
+    databaseName: career_compass
+    user: career_compass_user
     plan: starter
 
+services:
   # NLP Service (Python FastAPI)
   - type: web
     name: career-compass-nlp
