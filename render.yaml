@@ -6,7 +6,6 @@ services:
     region: singapore
     databaseName: career_compass
     databaseUser: career_compass_user
-    ipAllowList: []
 
   # NLP Service (Python FastAPI)
   - type: web
@@ -44,16 +43,16 @@ services:
       - key: ADMIN_EMAIL
         value: admin@careercompass.local
       - key: ADMIN_PASSWORD
-        sync: false  # Set manually in dashboard
+        sync: false
       - key: GOOGLE_GEMINI_API_KEY
-        sync: false  # Set manually in dashboard
+        sync: false
       - key: GOOGLE_GEMINI_MODEL
         value: gemini-2.5-flash
       - key: NLP_SERVICE_URL
         fromService:
           type: web
           name: career-compass-nlp
-          property: host
+          property: url
       - key: NLP_TIMEOUT_MS
         value: 10000
       - key: DATABASE_URL
@@ -64,27 +63,28 @@ services:
         fromService:
           type: web
           name: career-compass-frontend
-          property: host
+          property: url
       - key: GOOGLE_CLIENT_ID
-        sync: false  # Optional: Set manually if using OAuth
+        sync: false
       - key: GOOGLE_CLIENT_SECRET
-        sync: false  # Optional
+        sync: false
       - key: GOOGLE_REDIRECT_URI
-        sync: false  # Optional
+        sync: false
       - key: GITHUB_CLIENT_ID
-        sync: false  # Optional
+        sync: false
       - key: GITHUB_CLIENT_SECRET
-        sync: false  # Optional
+        sync: false
       - key: GITHUB_REDIRECT_URI
-        sync: false  # Optional
+        sync: false
 
   # Frontend (Vite Static Site)
   - type: web
     name: career-compass-frontend
     runtime: static
     region: singapore
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
     routes:
       - type: rewrite
         source: /*
@@ -94,4 +94,4 @@ services:
         fromService:
           type: web
           name: career-compass-backend
-          property: host
+          property: url
