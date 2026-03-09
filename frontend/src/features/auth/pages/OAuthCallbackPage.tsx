@@ -22,7 +22,7 @@ const OAuthCallbackPage = () => {
       window.location.href = "/solution";
     } else {
       toast.error("Đăng nhập thất bại. Vui lòng thử lại.");
-      navigate("/login", { replace: true });
+      navigate("/auth", { replace: true });
     }
   }, [searchParams, navigate]);
 

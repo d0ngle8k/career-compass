@@ -65,9 +65,11 @@ fn extract_bearer(headers: &HeaderMap) -> Result<String, ApiError> {
 /// Google OAuth: Step 1 - Redirect user to Google consent screen
 pub async fn google_login(
     State(state): State<AppState>,
+    headers: HeaderMap,
 ) -> Result<impl axum::response::IntoResponse, ApiError> {
     let (auth_url, csrf_token) = oauth::generate_google_auth_url(&state)?;
-    state.store_oauth_state(csrf_token).await;
+    let frontend_url = extract_frontend_url(&headers, &state);
+    state.store_oauth_state(csrf_token, frontend_url).await;
     
     Ok(ok(OAuthInitResponse { 
         authorization_url: auth_url 
@@ -79,12 +81,13 @@ pub async fn google_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
 ) -> Result<Redirect, ApiError> {
+    let frontend_url = validate_oauth_state(params.state.as_deref(), &state).await?;
+
     if let Some(provider_error) = params.error.as_deref() {
-        let frontend_url = state.settings.frontend_url.trim_end_matches('/');
         let description = params.error_description.as_deref().unwrap_or(provider_error);
         let redirect_url = format!(
             "{}/auth?error={}",
-            frontend_url,
+            frontend_url.trim_end_matches('/'),
             urlencoding::encode(description)
         );
         return Ok(Redirect::to(&redirect_url));
@@ -94,8 +97,6 @@ pub async fn google_callback(
         .code
         .ok_or_else(|| ApiError::BadRequest("Missing authorization code".to_string()))?;
 
-    validate_oauth_state(params.state.as_deref(), &state).await?;
-    
     let user_info = oauth::exchange_google_code(code, &state).await?;
     
     // Find or create user in database
@@ -112,7 +113,7 @@ pub async fn google_callback(
     let token = service::login(&user.email, &state)?;
     
     // Redirect to frontend with token
-    let frontend_url = state.settings.frontend_url.trim_end_matches('/');
+    let frontend_url = frontend_url.trim_end_matches('/');
     let redirect_url = format!(
         "{}/auth/callback?token={}&email={}",
         frontend_url,
@@ -126,9 +127,11 @@ pub async fn google_callback(
 /// GitHub OAuth: Step 1 - Redirect user to GitHub consent screen
 pub async fn github_login(
     State(state): State<AppState>,
+    headers: HeaderMap,
 ) -> Result<impl axum::response::IntoResponse, ApiError> {
     let (auth_url, csrf_token) = oauth::generate_github_auth_url(&state)?;
-    state.store_oauth_state(csrf_token).await;
+    let frontend_url = extract_frontend_url(&headers, &state);
+    state.store_oauth_state(csrf_token, frontend_url).await;
     
     Ok(ok(OAuthInitResponse { 
         authorization_url: auth_url 
@@ -140,12 +143,13 @@ pub async fn github_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
 ) -> Result<Redirect, ApiError> {
+    let frontend_url = validate_oauth_state(params.state.as_deref(), &state).await?;
+
     if let Some(provider_error) = params.error.as_deref() {
-        let frontend_url = state.settings.frontend_url.trim_end_matches('/');
         let description = params.error_description.as_deref().unwrap_or(provider_error);
         let redirect_url = format!(
             "{}/auth?error={}",
-            frontend_url,
+            frontend_url.trim_end_matches('/'),
             urlencoding::encode(description)
         );
         return Ok(Redirect::to(&redirect_url));
@@ -154,8 +158,6 @@ pub async fn github_callback(
     let code = params
         .code
         .ok_or_else(|| ApiError::BadRequest("Missing authorization code".to_string()))?;
-
-    validate_oauth_state(params.state.as_deref(), &state).await?;
 
     let user_info = oauth::exchange_github_code(code, &state).await?;
     
@@ -174,7 +176,7 @@ pub async fn github_callback(
     
     let token = service::login(&user.email, &state)?;
     
-    let frontend_url = state.settings.frontend_url.trim_end_matches('/');
+    let frontend_url = frontend_url.trim_end_matches('/');
     let redirect_url = format!(
         "{}/auth/callback?token={}&email={}",
         frontend_url,
@@ -185,14 +187,28 @@ pub async fn github_callback(
     Ok(Redirect::to(&redirect_url))
 }
 
-async fn validate_oauth_state(state_param: Option<&str>, state: &AppState) -> Result<(), ApiError> {
+async fn validate_oauth_state(state_param: Option<&str>, state: &AppState) -> Result<String, ApiError> {
     let token = state_param
         .filter(|value| !value.trim().is_empty())
         .ok_or_else(|| ApiError::BadRequest("Missing OAuth state".to_string()))?;
 
-    if state.consume_oauth_state(token).await {
-        return Ok(());
+    if let Some(frontend_url) = state.consume_oauth_state(token).await {
+        return Ok(frontend_url);
     }
 
     Err(ApiError::BadRequest("Invalid or expired OAuth state".to_string()))
+}
+
+fn extract_frontend_url(headers: &HeaderMap, state: &AppState) -> String {
+    let fallback = state.settings.frontend_url.trim_end_matches('/').to_string();
+
+    headers
+        .get("origin")
+        .and_then(|v| v.to_str().ok())
+        .map(str::trim)
+        .filter(|origin| {
+            origin.starts_with("http://localhost") || origin.starts_with("http://127.0.0.1")
+        })
+        .map(|origin| origin.trim_end_matches('/').to_string())
+        .unwrap_or(fallback)
 }
