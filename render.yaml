@@ -24,7 +24,7 @@ services:
     env: rust
     region: singapore
     plan: starter
-    rootDir: backend
+    rootDir: /opt/render/project/src/backend/target/release/career_compass_backend
     buildCommand: cargo build --release --bin career_compass_backend
     startCommand: ./target/release/career_compass_backend
     healthCheckPath: /health
