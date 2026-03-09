@@ -25,8 +25,8 @@ services:
     region: singapore
     plan: starter
     rootDir: backend
-    buildCommand: cargo build --release
-    startCommand: BACKEND_HOST=0.0.0.0 BACKEND_PORT=$PORT ./target/release/career_compass_backend
+    buildCommand: cargo build --release --bin career_compass_backend
+    startCommand: BACKEND_HOST=0.0.0.0 BACKEND_PORT=$PORT target/release/career_compass_backend
     healthCheckPath: /health
     envVars:
       - key: RUST_LOG
