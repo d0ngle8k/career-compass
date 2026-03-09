@@ -51,16 +51,28 @@ async fn main() {
     info!("Templates initialized successfully");
     
     let state = AppState::new(settings, db_pool);
-
+    
+    // Build CORS allowed origins
+    let mut allowed_origins = vec![
+        HeaderValue::from_static("http://localhost:8080"),
+        HeaderValue::from_static("http://127.0.0.1:8080"),
+        HeaderValue::from_static("http://localhost:5173"),
+        HeaderValue::from_static("http://127.0.0.1:5173"),
+        HeaderValue::from_static("http://localhost:5174"),
+        HeaderValue::from_static("http://127.0.0.1:5174"),
+    ];
+    
+    // Add production frontend URL from environment
+    let frontend_url = &state.settings.frontend_url;
+    if !frontend_url.starts_with("http://localhost") && !frontend_url.starts_with("http://127.0.0.1") {
+        if let Ok(origin) = HeaderValue::from_str(frontend_url) {
+            info!("Adding production frontend origin: {}", frontend_url);
+            allowed_origins.push(origin);
+        }
+    }
+    
     let cors = CorsLayer::new()
-        .allow_origin([
-            HeaderValue::from_static("http://localhost:8080"),
-            HeaderValue::from_static("http://127.0.0.1:8080"),
-            HeaderValue::from_static("http://localhost:5173"),
-            HeaderValue::from_static("http://127.0.0.1:5173"),
-            HeaderValue::from_static("http://localhost:5174"),
-            HeaderValue::from_static("http://127.0.0.1:5174"),
-        ])
+        .allow_origin(allowed_origins)
         .allow_methods([Method::GET, Method::POST, Method::OPTIONS])
         .allow_headers(Any);
 

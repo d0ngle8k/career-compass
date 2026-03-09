@@ -1,0 +1,97 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: career-compass-db
+    plan: starter
+    region: singapore
+    databaseName: career_compass
+    databaseUser: career_compass_user
+    ipAllowList: []
+
+  # NLP Service (Python FastAPI)
+  - type: web
+    name: career-compass-nlp
+    runtime: python
+    region: singapore
+    plan: starter
+    rootDir: nlp-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.10
+
+  # Backend (Rust Axum)
+  - type: web
+    name: career-compass-backend
+    runtime: rust
+    region: singapore
+    plan: starter
+    rootDir: backend
+    buildCommand: cargo build --release
+    startCommand: BACKEND_HOST=0.0.0.0 BACKEND_PORT=$PORT ./target/release/career_compass_backend
+    healthCheckPath: /health
+    envVars:
+      - key: RUST_LOG
+        value: info
+      - key: SQLX_OFFLINE
+        value: true
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_MINUTES
+        value: 120
+      - key: ADMIN_EMAIL
+        value: admin@careercompass.local
+      - key: ADMIN_PASSWORD
+        sync: false  # Set manually in dashboard
+      - key: GOOGLE_GEMINI_API_KEY
+        sync: false  # Set manually in dashboard
+      - key: GOOGLE_GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: NLP_SERVICE_URL
+        fromService:
+          type: web
+          name: career-compass-nlp
+          property: host
+      - key: NLP_TIMEOUT_MS
+        value: 10000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: career-compass-db
+          property: connectionString
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: career-compass-frontend
+          property: host
+      - key: GOOGLE_CLIENT_ID
+        sync: false  # Optional: Set manually if using OAuth
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false  # Optional
+      - key: GOOGLE_REDIRECT_URI
+        sync: false  # Optional
+      - key: GITHUB_CLIENT_ID
+        sync: false  # Optional
+      - key: GITHUB_CLIENT_SECRET
+        sync: false  # Optional
+      - key: GITHUB_REDIRECT_URI
+        sync: false  # Optional
+
+  # Frontend (Vite Static Site)
+  - type: web
+    name: career-compass-frontend
+    runtime: static
+    region: singapore
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_BACKEND_URL
+        fromService:
+          type: web
+          name: career-compass-backend
+          property: host
