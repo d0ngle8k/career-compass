@@ -79,9 +79,24 @@ pub async fn google_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
 ) -> Result<Redirect, ApiError> {
+    if let Some(provider_error) = params.error.as_deref() {
+        let frontend_url = state.settings.frontend_url.trim_end_matches('/');
+        let description = params.error_description.as_deref().unwrap_or(provider_error);
+        let redirect_url = format!(
+            "{}/auth?error={}",
+            frontend_url,
+            urlencoding::encode(description)
+        );
+        return Ok(Redirect::to(&redirect_url));
+    }
+
+    let code = params
+        .code
+        .ok_or_else(|| ApiError::BadRequest("Missing authorization code".to_string()))?;
+
     validate_oauth_state(params.state.as_deref(), &state).await?;
     
-    let user_info = oauth::exchange_google_code(params.code, &state).await?;
+    let user_info = oauth::exchange_google_code(code, &state).await?;
     
     // Find or create user in database
     let user = service::find_or_create_oauth_user(
@@ -125,9 +140,24 @@ pub async fn github_callback(
     State(state): State<AppState>,
     Query(params): Query<OAuthCallbackRequest>,
 ) -> Result<Redirect, ApiError> {
+    if let Some(provider_error) = params.error.as_deref() {
+        let frontend_url = state.settings.frontend_url.trim_end_matches('/');
+        let description = params.error_description.as_deref().unwrap_or(provider_error);
+        let redirect_url = format!(
+            "{}/auth?error={}",
+            frontend_url,
+            urlencoding::encode(description)
+        );
+        return Ok(Redirect::to(&redirect_url));
+    }
+
+    let code = params
+        .code
+        .ok_or_else(|| ApiError::BadRequest("Missing authorization code".to_string()))?;
+
     validate_oauth_state(params.state.as_deref(), &state).await?;
 
-    let user_info = oauth::exchange_github_code(params.code, &state).await?;
+    let user_info = oauth::exchange_github_code(code, &state).await?;
     
     // GitHub users can hide their email, use login as fallback
     let email = user_info.email

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Loader2, LogIn } from "lucide-react";
 import { toast } from "sonner";
@@ -13,6 +13,7 @@ import { OAuthButtons } from "../components/OAuthButtons";
 
 const AuthPage = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { user, login, loading } = useAuth();
   const { t } = useLanguage();
 
@@ -23,6 +24,15 @@ const AuthPage = () => {
   useEffect(() => {
     if (user) navigate("/solution", { replace: true });
   }, [user, navigate]);
+
+  useEffect(() => {
+    const oauthError = searchParams.get("error");
+    if (!oauthError) return;
+
+    toast.error(`OAuth error: ${decodeURIComponent(oauthError)}`);
+    searchParams.delete("error");
+    setSearchParams(searchParams, { replace: true });
+  }, [searchParams, setSearchParams]);
 
   const handleLogin = async () => {
     if (!email.trim() || !password) return;

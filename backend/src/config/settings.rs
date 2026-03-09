@@ -62,7 +62,7 @@ impl Settings {
             google_client_secret: env::var("GOOGLE_CLIENT_SECRET")
                 .unwrap_or_else(|_| "".to_string()),
             google_redirect_uri: env::var("GOOGLE_REDIRECT_URI")
-                .unwrap_or_else(|_| "http://localhost:9000/api/auth/google/callback".to_string()),
+                .unwrap_or_else(|_| "http://localhost:9000/api/v1/auth/google/callback".to_string()),
             
             // GitHub OAuth
             github_client_id: env::var("GITHUB_CLIENT_ID")
@@ -70,11 +70,11 @@ impl Settings {
             github_client_secret: env::var("GITHUB_CLIENT_SECRET")
                 .unwrap_or_else(|_| "".to_string()),
             github_redirect_uri: env::var("GITHUB_REDIRECT_URI")
-                .unwrap_or_else(|_| "http://localhost:9000/api/auth/github/callback".to_string()),
+                .unwrap_or_else(|_| "http://localhost:9000/api/v1/auth/github/callback".to_string()),
             
             // Frontend URL
             frontend_url: env::var("FRONTEND_URL")
-                .unwrap_or_else(|_| "http://localhost:5173".to_string()),
+                .unwrap_or_else(|_| "http://localhost:8080".to_string()),
         })
     }
 }

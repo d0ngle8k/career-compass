@@ -61,8 +61,10 @@ pub struct Claims {
 
 #[derive(Deserialize)]
 pub struct OAuthCallbackRequest {
-    pub code: String,
+    pub code: Option<String>,
     pub state: Option<String>,
+    pub error: Option<String>,
+    pub error_description: Option<String>,
 }
 
 #[derive(Serialize)]

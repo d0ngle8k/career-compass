@@ -1,6 +1,7 @@
 use oauth2::{
     AuthUrl, AuthorizationCode, ClientId, ClientSecret, CsrfToken,
     RedirectUrl, Scope, TokenResponse, TokenUrl,
+    AuthType,
     basic::BasicClient,
     reqwest::async_http_client,
 };
@@ -70,6 +71,7 @@ pub fn create_github_client(state: &AppState) -> Result<BasicClient, ApiError> {
         AuthUrl::new(GITHUB_AUTH_URL.to_string()).map_err(|_| ApiError::Internal)?,
         Some(TokenUrl::new(GITHUB_TOKEN_URL.to_string()).map_err(|_| ApiError::Internal)?),
     )
+    .set_auth_type(AuthType::RequestBody)
     .set_redirect_uri(
         RedirectUrl::new(state.settings.github_redirect_uri.clone())
             .map_err(|_| ApiError::Internal)?,
